@@ -1,0 +1,47 @@
+﻿<Page x:Class="MensErgerJeNiet.SpelRegels"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:MensErgerJeNiet"
+      mc:Ignorable="d" 
+      d:DesignHeight="720" d:DesignWidth="1280"
+      Title="SpelRegels">
+
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="styles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="125" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="350" />
+            <RowDefinition Height="Auto" MinHeight="57" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <TextBlock Grid.Row="0" Style="{StaticResource GameTitle}" >Mens erger je niet!</TextBlock>
+        <TextBlock Grid.Row="1" Style="{StaticResource Title}">Spelregels</TextBlock>
+        <ScrollViewer Grid.Row="2">
+            <TextBlock Style="{StaticResource TextBlock}" VerticalAlignment="Top" TextWrapping="Wrap" Padding="250 0 250 0" ScrollViewer.VerticalScrollBarVisibility="Auto">
+            Bij dit spel heeft iedere speler vier pionnen die een ronde over het bord moeten maken om veilig op een van de eindcirkels te geraken. Eenmaal daar kan een pion niet meer worden verzet. Als dat met alle pionnen is gelukt, heeft men het spel gewonnen.
+            <LineBreak/><LineBreak/>
+            Elke speler heeft pionnen van een eigen kleur, een eigen beginpunt, en eigen eindcirkels waar andere pionnen niet mogen komen. De spelers gooien om beurten met een dobbelsteen en moeten een van hun pionnen met de klok mee het aantal cirkels verplaatsen dat de worp aangeeft. Als men een pion heeft aangeraakt is de keuze definitief en moet deze pion verplaatst worden. Wanneer een pion op een cirkel komt waar al een andere pion staat, dan wordt deze afgegooid (geslagen). Een afgegooide pion moet weer opnieuw in het spel worden gebracht en van voren af aan zijn ronde maken.
+            <LineBreak/><LineBreak/>
+            Als men het rijtje met de vier eindcirkels van de eigen kleur bereikt, mag men doortellend afhankelijk van het aantal gegooide ogen dit rijtje binnengaan. Het is niet verplicht om eerst 1 te gooien om het rijtje eindcirkels binnen te mogen lopen. Men zet het aantal stappen dat met de dobbelsteen is gegooid; als het eindpunt van de rij eindcirkels wordt bereikt, dan kan de pion niet verder worden verplaatst.
+            <LineBreak/><LineBreak/>
+            Wanneer een zes wordt gegooid mag de speler, indien voorradig, een nieuwe pion in het spel brengen. Daarna gooit hij nogmaals, en daarbij is hij verplicht met de zojuist net in het spel gekomen pion te spelen, met het risico een andere eigen pion af te gooien. Een speler moet ook zes gooien om te kunnen beginnen met zetten, aangezien pas dan een pion op het bord mag worden geplaatst. Hierdoor kan het gebeuren dat de speler een aantal beurten niet kan zetten. Dit kan ook gebeuren als al zijn pionnen zijn afgegooid en hij helemaal opnieuw moet beginnen.
+            <LineBreak/><LineBreak/>
+            Wordt er een zes gegooid terwijl er geen nieuwe pionnen voorradig zijn, dan kan met een willekeurige pion gespeeld worden. Ook dan krijgt de speler een extra beurt en wordt er met een willekeurige pion gespeeld.
+            </TextBlock>
+        </ScrollViewer>
+
+        <Button Click="Button_Terug_Click" Grid.Row="3" >Terug</Button>
+    </Grid>
+</Page>
