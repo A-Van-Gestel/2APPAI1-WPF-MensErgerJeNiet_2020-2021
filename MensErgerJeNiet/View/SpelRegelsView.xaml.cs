@@ -16,19 +16,19 @@ using System.Windows.Shapes;
 namespace MensErgerJeNiet
 {
     /// <summary>
-    /// Interaction logic for Home.xaml
+    /// Interaction logic for SpelRegels.xaml
     /// </summary>
-    public partial class Home : Page
+    public partial class SpelRegelsView : Page
     {
-        public Home()
+        public SpelRegelsView()
         {
             InitializeComponent();
         }
 
-        private void Button_Spelregels_Click(object sender, RoutedEventArgs e)
+        private void Button_Terug_Click(object sender, RoutedEventArgs e)
         {
-            SpelRegels spelRegelsPage = new SpelRegels();
-            NavigationService.Navigate(spelRegelsPage);
+            HomeView homePage = new HomeView();
+            NavigationService.Navigate(homePage);
         }
     }
 }
