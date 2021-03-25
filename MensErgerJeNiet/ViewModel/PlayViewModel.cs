@@ -7,14 +7,13 @@ using System.Windows.Input;
 
 namespace MensErgerJeNiet.ViewModel
 {
-    class PlayerSelectionViewModel : BaseViewModel
+    class PlayViewModel : BaseViewModel
     {
         // ----- ICommands -----
         public ICommand GotoHomeViewCommand { get; set; }
-        public ICommand PlayCommand { get; set; }
 
 
-        public PlayerSelectionViewModel()
+        public PlayViewModel()
         {
             KoppelenCommands();
         }
@@ -22,7 +21,6 @@ namespace MensErgerJeNiet.ViewModel
         private void KoppelenCommands()
         {
             GotoHomeViewCommand = new BaseCommand(HomeView);
-            PlayCommand = new BaseCommand(Play);
         }
 
         // ----- Commands -----
@@ -30,12 +28,6 @@ namespace MensErgerJeNiet.ViewModel
         {
             PageNavigationService pageNavigationService = new PageNavigationService();
             pageNavigationService.Navigate("HomeView");
-        }
-
-        private void Play()
-        {
-            PageNavigationService pageNavigationService = new PageNavigationService();
-            pageNavigationService.Navigate("PlayView");
         }
     }
 }

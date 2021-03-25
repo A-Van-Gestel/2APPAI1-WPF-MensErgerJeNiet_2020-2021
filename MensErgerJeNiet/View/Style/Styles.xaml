@@ -58,6 +58,7 @@
         <Setter Property="HorizontalAlignment" Value="Left" />
         <Setter Property="VerticalAlignment" Value="Center" />
         <Setter Property="FontSize" Value="25" />
+        <Setter Property="FontWeight" Value="Normal" />
         <Setter Property="Height" Value="40" />
         <Setter Property="Width" Value="620" />
     </Style>
@@ -66,8 +67,27 @@
     <Style  BasedOn="{StaticResource MaterialDesignComboBox}" TargetType="{x:Type ComboBox}" x:Key="PlayerSelectionInputKleur">
         <Setter Property="HorizontalAlignment" Value="Left" />
         <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="FontWeight" Value="Normal" />
         <Setter Property="FontSize" Value="25" />
         <Setter Property="Height" Value="40" />
         <Setter Property="Width" Value="200" />
+    </Style>
+    
+    
+    <!-- ##### PlayView ##### -->
+    <!-- PlayViewLabelLeft TextBlock -->
+    <Style  BasedOn="{StaticResource MaterialDesignTextBlock}" TargetType="{x:Type TextBlock}" x:Key="PlayViewLabel">
+        <Setter Property="HorizontalAlignment" Value="Right" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="FontSize" Value="18" />
+        <Setter Property="FontWeight" Value="Bold" />
+        <Setter Property="Margin" Value="0,0,10,0" />
+    </Style>
+
+    <!-- PlayViewValueLeft TextBlock -->
+    <Style  BasedOn="{StaticResource MaterialDesignTextBlock}" TargetType="{x:Type TextBlock}" x:Key="PlayViewValue">
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="FontSize" Value="18" />
     </Style>
 </ResourceDictionary>

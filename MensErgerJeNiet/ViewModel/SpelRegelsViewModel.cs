@@ -23,6 +23,7 @@ namespace MensErgerJeNiet.ViewModel
             GotoHomeViewCommand = new BaseCommand(HomeView);
         }
 
+        // ----- Commands -----
         private void HomeView()
         {
             PageNavigationService pageNavigationService = new PageNavigationService();

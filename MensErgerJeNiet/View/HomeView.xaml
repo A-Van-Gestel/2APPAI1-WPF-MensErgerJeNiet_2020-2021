@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:MensErgerJeNiet.View"
       xmlns:viewmodel="clr-namespace:MensErgerJeNiet.ViewModel"
       mc:Ignorable="d" 
-      d:DesignHeight="720" d:DesignWidth="1280"
+      d:DesignHeight="681" d:DesignWidth="1280"
       Title="Home">
 
     <Page.Resources>
