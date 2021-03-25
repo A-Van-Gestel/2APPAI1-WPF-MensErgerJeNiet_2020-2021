@@ -11,6 +11,7 @@ namespace MensErgerJeNiet.ViewModel
     {
         // ----- ICommands -----
         public ICommand GotoSpelRegelsViewCommand { get; set; }
+        public ICommand GotoPlayerSelectionViewCommand { get; set; }
 
 
         public HomeViewModel()
@@ -21,12 +22,20 @@ namespace MensErgerJeNiet.ViewModel
         private void KoppelenCommands()
         {
             GotoSpelRegelsViewCommand = new BaseCommand(SpelRegelsView);
+            GotoPlayerSelectionViewCommand = new BaseCommand(PlayerSelectionView);
         }
 
+        // ----- Commands -----
         private void SpelRegelsView()
         {
             PageNavigationService pageNavigationService = new PageNavigationService();
             pageNavigationService.Navigate("SpelRegelsView");
+        }
+
+        private void PlayerSelectionView()
+        {
+            PageNavigationService pageNavigationService = new PageNavigationService();
+            pageNavigationService.Navigate("PlayerSelectionView");
         }
     }
 }

@@ -12,6 +12,7 @@ namespace MensErgerJeNiet
     {
         HomeView homePage = null;
         SpelRegelsView spelRegelsPage = null;
+        PlayerSelectionView PlayerSelectionPage = null;
         public PageNavigationService()
         {
 
@@ -28,6 +29,10 @@ namespace MensErgerJeNiet
                 case "SpelRegelsView":
                     spelRegelsPage = new SpelRegelsView();
                     ApplicationHelper.NavigationService.Navigate(spelRegelsPage);
+                    break;
+                case "PlayerSelectionView":
+                    PlayerSelectionPage = new PlayerSelectionView();
+                    ApplicationHelper.NavigationService.Navigate(PlayerSelectionPage);
                     break;
                 default:
                     break;
