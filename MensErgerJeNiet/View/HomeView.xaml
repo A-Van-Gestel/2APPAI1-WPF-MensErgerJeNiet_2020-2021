@@ -1,22 +1,24 @@
-﻿<Page x:Class="MensErgerJeNiet.HomeView"
+﻿<Page x:Class="MensErgerJeNiet.View.HomeView"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:MensErgerJeNiet"
+      xmlns:local="clr-namespace:MensErgerJeNiet.View"
+      xmlns:viewmodel="clr-namespace:MensErgerJeNiet.ViewModel"
       mc:Ignorable="d" 
       d:DesignHeight="720" d:DesignWidth="1280"
       Title="Home">
 
     <Page.Resources>
         <ResourceDictionary>
+            <viewmodel:HomeViewModel x:Key="HomeViewModel" />
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Style/styles.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Page.Resources>
 
-    <Grid>
+    <Grid DataContext="{StaticResource HomeViewModel}">
         <Grid.RowDefinitions>
             <RowDefinition Height="275" />
             <RowDefinition Height="53" />
@@ -29,6 +31,6 @@
         <TextBlock Grid.Row="0" Style="{StaticResource GameTitle}" >Mens erger je niet!</TextBlock>
         <Button Grid.Row="1" >Speel</Button>
         <Button Grid.Row="2" >Historiek</Button>
-        <Button Click="Button_Spelregels_Click" Grid.Row="3" >Spelregels</Button>
+        <Button Grid.Row="3" Command="{Binding GotoSpelRegelsViewCommand}" >Spelregels</Button>
     </Grid>
 </Page>

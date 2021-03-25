@@ -1,22 +1,24 @@
-﻿<Page x:Class="MensErgerJeNiet.SpelRegelsView"
+﻿<Page x:Class="MensErgerJeNiet.View.SpelRegelsView"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:MensErgerJeNiet"
+      xmlns:local="clr-namespace:MensErgerJeNiet.View"
+      xmlns:viewmodel="clr-namespace:MensErgerJeNiet.ViewModel"
       mc:Ignorable="d" 
       d:DesignHeight="720" d:DesignWidth="1280"
       Title="SpelRegels">
 
     <Page.Resources>
         <ResourceDictionary>
+            <viewmodel:SpelRegelsViewModel x:Key="SpelRegelsViewModel" />
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Style/styles.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Page.Resources>
 
-    <Grid>
+    <Grid DataContext="{StaticResource SpelRegelsViewModel}">
         <Grid.RowDefinitions>
             <RowDefinition Height="125" />
             <RowDefinition Height="50" />
@@ -42,6 +44,6 @@
             </TextBlock>
         </ScrollViewer>
 
-        <Button Click="Button_Terug_Click" Grid.Row="3" >Terug</Button>
+        <Button Grid.Row="3" Command="{Binding GotoHomeViewCommand}" >Terug</Button>
     </Grid>
 </Page>

@@ -13,22 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace MensErgerJeNiet
+namespace MensErgerJeNiet.View
 {
     /// <summary>
-    /// Interaction logic for SpelRegels.xaml
+    /// Interaction logic for SpelRegelsView.xaml
     /// </summary>
     public partial class SpelRegelsView : Page
     {
         public SpelRegelsView()
         {
             InitializeComponent();
-        }
-
-        private void Button_Terug_Click(object sender, RoutedEventArgs e)
-        {
-            HomeView homePage = new HomeView();
-            NavigationService.Navigate(homePage);
         }
     }
 }
