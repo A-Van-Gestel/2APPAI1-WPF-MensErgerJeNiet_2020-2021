@@ -72,7 +72,7 @@
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
                 <Button Grid.Row="1" Command="" >Pauze</Button>
-                <Button Grid.Row="3" Command="{Binding GotoHomeViewCommand}" >Home</Button>
+                <Button Grid.Row="3" Command="{Binding GotoHomeViewCommand}" >Stop</Button>
             </Grid>
 
             <!-- Red -->
