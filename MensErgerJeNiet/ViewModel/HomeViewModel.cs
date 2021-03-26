@@ -13,6 +13,7 @@ namespace MensErgerJeNiet.ViewModel
         public ICommand GotoPlayerSelectionViewCommand { get; set; }
         public ICommand GotoHistoryViewCommand { get; set; }
         public ICommand GotoSpelRegelsViewCommand { get; set; }
+        public ICommand GotoAdminViewCommand { get; set; }
 
 
         public HomeViewModel()
@@ -25,6 +26,7 @@ namespace MensErgerJeNiet.ViewModel
             GotoPlayerSelectionViewCommand = new BaseCommand(PlayerSelectionView);
             GotoHistoryViewCommand = new BaseCommand(HistoryView);
             GotoSpelRegelsViewCommand = new BaseCommand(SpelRegelsView);
+            GotoAdminViewCommand = new BaseCommand(AdminView);
         }
 
         // ----- Commands -----
@@ -44,6 +46,12 @@ namespace MensErgerJeNiet.ViewModel
         {
             PageNavigationService pageNavigationService = new PageNavigationService();
             pageNavigationService.Navigate("SpelRegelsView");
+        }
+        
+        private void AdminView()
+        {
+            PageNavigationService pageNavigationService = new PageNavigationService();
+            pageNavigationService.Navigate("AdminView");
         }
     }
 }

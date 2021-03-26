@@ -24,7 +24,7 @@ namespace MensErgerJeNiet
         private void App_Startup(object sender, StartupEventArgs e)
         {
             // Create new SplashScreen & show it without autoclosing
-            SplashScreen splash = new SplashScreen("images/SplashScreen.png");
+            SplashScreen splash = new SplashScreen("Resources/Images/SplashScreen.png");
             splash.Show(false);
 
             // Create new MainWindow
