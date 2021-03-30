@@ -180,7 +180,7 @@
     </Resource>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Resources\SQL\Colors.sql" />
+    <Content Include="Resources\SQL\MensErgerJeNiet.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.4.0.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.4.0.0\build\MaterialDesignThemes.targets')" />
