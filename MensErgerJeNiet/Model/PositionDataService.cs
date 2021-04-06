@@ -6,7 +6,7 @@ using System.Configuration;
 
 namespace MensErgerJeNiet.Model
 {
-    class GameDataService
+    class PositionDataService
     {
         // Ophalen ConnectionString uit App.config
         private static string connectionString =
@@ -19,71 +19,75 @@ namespace MensErgerJeNiet.Model
         // Dit betekent dat de connectie met de database automatisch geopend wordt.
         private static IDbConnection db = new SqlConnection(connectionString);
 
-        // Get All Games in a List
-        public List<Game> GetGame()
+        // Get All Positions in a List
+        public List<Position> GetPosition()
         {
             // Stap 2 Dapper
             // Uitschrijven SQL statement & bewaren in een string. 
-            string sql = "Select * from Game order by Date";
+            string sql = "Select * from Position order by PlayerHistoryID";
 
             // Stap 3 Dapper
             // Uitvoeren SQL statement op db instance 
             // Type casten van het generieke return type naar een collectie van contactpersonen
-            return (List<Game>)db.Query<Game>(sql);
+            return (List<Position>)db.Query<Position>(sql);
         }
 
-        // Get a Game by ID
-        public List<Game> GetGameByID(int id)
+        // Get a Position by ID
+        public List<Position> GetPositionByID(int id)
         {
             // Stap 2 Dapper
             // Uitschrijven SQL statement & bewaren in een string. 
-            string sql = "Select * from Game order by Date where id = @id";
+            string sql = "Select * from Position order by PlayerHistoryID where id = @id";
 
             // Stap 3 Dapper
             // Uitvoeren SQL statement op db instance 
             // Type casten van het generieke return type naar een collectie van colors
-            return (List<Game>)db.Query<Game>(sql, id);
+            return (List<Position>)db.Query<Position>(sql, id);
         }
 
-        // Update a Game
-        public void UpdateGame(Game game)
+        // Update a Position
+        public void UpdatePosition(Position position)
         {
             // SQL statement update 
-            string sql = "Update Game set playerHistoryID = @playerHistoryID, date = @date, isActive = @isActive where id = @id";
+            string sql = "Update Position set playerHistoryID = @playerHistoryID, pion = @pion, coordinate = @coordinate, isHome = @isHome, isActive = @isActive where id = @id";
 
             // Uitvoeren SQL statement en doorgeven parametercollectie
             db.Execute(sql, new
             {
-                game.PlayerHistoryID,
-                game.Date,
-                game.IsActive,
-                game.ID
+                position.PlayerHistoryID,
+                position.Pion,
+                position.Coordinate,
+                position.IsHome,
+                position.IsActive,
+                position.ID
             });
         }
 
-        // Insert a Game
-        public void InsertGame(Game game)
+        // Insert a Position
+        public void InsertPosition(Position position)
         {
             // SQL statement insert
-            string sql = "Insert into Game (playerHistoryID, date, isActive) values (@playerHistoryID, @date, @isActive)";
+            string sql = "Insert into Position (playerHistoryID, pion, coordinate, isHome, isActive) values (@playerHistoryID, @pion, @coordinate, @isHome, @isActive)";
 
             // Uitvoeren SQL statement en doorgeven parametercollectie
             db.Execute(sql, new
             {
-                game.PlayerHistoryID,
-                game.Date,
-                game.IsActive
+                position.PlayerHistoryID,
+                position.Pion,
+                position.Coordinate,
+                position.IsHome,
+                position.IsActive,
             });
         }
 
-        // Delete a Game
-        public void DeleteGame(Game game)
+        // Delete a Position
+        public void DeletePosition(Position position)
         {
             // SQL statement delete 
-            string sql = "Delete Game where id = @id";
+            string sql = "Delete Position where id = @id";
 
             // Uitvoeren SQL statement en doorgeven parametercollectie
-            db.Execute(sql, new { game.ID });
+            db.Execute(sql, new { position.ID });
         }
     }
 }

@@ -20,8 +20,8 @@
 
     <Grid DataContext="{StaticResource AdminViewModel}">
         <Grid.RowDefinitions>
-            <RowDefinition Height="200" />
-            <RowDefinition Height="53" />
+            <RowDefinition Height="125" />
+            <RowDefinition Height="50" />
             <RowDefinition Height="53" />
             <RowDefinition Height="53" />
             <RowDefinition Height="53" />
@@ -34,11 +34,12 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
         <TextBlock Grid.Row="0" Style="{StaticResource GameTitle}" >Admin Tools</TextBlock>
-        <Button Grid.Row="1" Command="{Binding GotoAdminColorsViewCommand}" >Colors</Button>
-        <Button Grid.Row="2" Command="{Binding GotoAdminGamesViewCommand}" >Games</Button>
-        <Button Grid.Row="3" Command="{Binding GotoAdminPlayersViewCommand}" >Players</Button>
-        <Button Grid.Row="4" Command="{Binding GotoAdminPositionsViewCommand}" >Positions</Button>
-        <Button Grid.Row="5" Command="{Binding GotoAdminPlayerHistoriesViewCommand}" >PlayerHistories</Button>
-        <Button Grid.Row="7" Command="{Binding GotoHomeViewCommand}" >Terug</Button>
+        <TextBlock Grid.Row="1" Style="{StaticResource Title}">Very powerfull, may break stuff!</TextBlock>
+        <Button Grid.Row="2" Command="{Binding GotoAdminColorsViewCommand}" >Colors</Button>
+        <Button Grid.Row="3" Command="{Binding GotoAdminGamesViewCommand}" >Games</Button>
+        <Button Grid.Row="4" Command="{Binding GotoAdminPlayersViewCommand}" >Players</Button>
+        <Button Grid.Row="5" Command="{Binding GotoAdminPositionsViewCommand}" >Positions</Button>
+        <Button Grid.Row="6" Command="{Binding GotoAdminPlayerHistoriesViewCommand}" >PlayerHistories</Button>
+        <Button Grid.Row="8" Command="{Binding GotoHomeViewCommand}" >Terug</Button>
     </Grid>
 </Page>

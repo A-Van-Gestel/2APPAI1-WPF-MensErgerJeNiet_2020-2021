@@ -6,7 +6,7 @@ using System.Configuration;
 
 namespace MensErgerJeNiet.Model
 {
-    class GameDataService
+    class PlayerDataService
     {
         // Ophalen ConnectionString uit App.config
         private static string connectionString =
@@ -19,71 +19,67 @@ namespace MensErgerJeNiet.Model
         // Dit betekent dat de connectie met de database automatisch geopend wordt.
         private static IDbConnection db = new SqlConnection(connectionString);
 
-        // Get All Games in a List
-        public List<Game> GetGame()
+        // Get All Players in a List
+        public List<Player> GetPlayer()
         {
             // Stap 2 Dapper
             // Uitschrijven SQL statement & bewaren in een string. 
-            string sql = "Select * from Game order by Date";
+            string sql = "Select * from Player order by Name";
 
             // Stap 3 Dapper
             // Uitvoeren SQL statement op db instance 
-            // Type casten van het generieke return type naar een collectie van contactpersonen
-            return (List<Game>)db.Query<Game>(sql);
+            // Type casten van het generieke return type naar een collectie van players
+            return (List<Player>)db.Query<Player>(sql);
         }
 
-        // Get a Game by ID
-        public List<Game> GetGameByID(int id)
+        // Get a Player by ID
+        public List<Player> GetPlayerByID(int id)
         {
             // Stap 2 Dapper
             // Uitschrijven SQL statement & bewaren in een string. 
-            string sql = "Select * from Game order by Date where id = @id";
+            string sql = "Select * from Player order by Name where id = @id";
 
             // Stap 3 Dapper
             // Uitvoeren SQL statement op db instance 
-            // Type casten van het generieke return type naar een collectie van colors
-            return (List<Game>)db.Query<Game>(sql, id);
+            // Type casten van het generieke return type naar een collectie van players
+            return (List<Player>)db.Query<Player>(sql, id);
         }
 
-        // Update a Game
-        public void UpdateGame(Game game)
+        // Update a Player
+        public void UpdatePlayer(Player player)
         {
             // SQL statement update 
-            string sql = "Update Game set playerHistoryID = @playerHistoryID, date = @date, isActive = @isActive where id = @id";
+            string sql = "Update Player set name = @name where id = @id";
 
             // Uitvoeren SQL statement en doorgeven parametercollectie
             db.Execute(sql, new
             {
-                game.PlayerHistoryID,
-                game.Date,
-                game.IsActive,
-                game.ID
+                player.Name,
+                player.ID
             });
         }
 
-        // Insert a Game
-        public void InsertGame(Game game)
+        // Insert a Player
+        public void InsertPlayer(Player player)
         {
             // SQL statement insert
-            string sql = "Insert into Game (playerHistoryID, date, isActive) values (@playerHistoryID, @date, @isActive)";
+            string sql = "Insert into Player (name) values (@name)";
 
             // Uitvoeren SQL statement en doorgeven parametercollectie
             db.Execute(sql, new
             {
-                game.PlayerHistoryID,
-                game.Date,
-                game.IsActive
+                player.Name,
             });
         }
 
-        // Delete a Game
-        public void DeleteGame(Game game)
+        // Delete a Player
+        public void DeletePlayer(Player player)
         {
             // SQL statement delete 
-            string sql = "Delete Game where id = @id";
+            string sql = "Delete Player where id = @id";
 
             // Uitvoeren SQL statement en doorgeven parametercollectie
-            db.Execute(sql, new { game.ID });
+            db.Execute(sql, new { player.ID });
         }
     }
 }
