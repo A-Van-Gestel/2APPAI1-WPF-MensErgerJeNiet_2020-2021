@@ -6,7 +6,7 @@ using System.Configuration;
 
 namespace MensErgerJeNiet.Model
 {
-    class ColorDataService
+    class GameDataService
     {
         // Ophalen ConnectionString uit App.config
         private static string connectionString =
@@ -19,69 +19,71 @@ namespace MensErgerJeNiet.Model
         // Dit betekent dat de connectie met de database automatisch geopend wordt.
         private static IDbConnection db = new SqlConnection(connectionString);
 
-        // Get All Colors in a List
-        public List<Color> GetColor()
+        // Get All Games in a List
+        public List<Game> GetGame()
         {
             // Stap 2 Dapper
             // Uitschrijven SQL statement & bewaren in een string. 
-            string sql = "Select * from Color order by Name";
+            string sql = "Select * from Game order by Date";
+
+            // Stap 3 Dapper
+            // Uitvoeren SQL statement op db instance 
+            // Type casten van het generieke return type naar een collectie van contactpersonen
+            return (List<Game>)db.Query<Game>(sql);
+        }
+
+        // Get a Game by ID
+        public List<Game> GetColorByID(int id)
+        {
+            // Stap 2 Dapper
+            // Uitschrijven SQL statement & bewaren in een string. 
+            string sql = "Select * from Game order by Date where id = @id";
 
             // Stap 3 Dapper
             // Uitvoeren SQL statement op db instance 
             // Type casten van het generieke return type naar een collectie van colors
-            return (List<Color>)db.Query<Color>(sql);
+            return (List<Game>)db.Query<Game>(sql, id);
         }
 
-        // Get a Color by ID
-        public List<Color> GetColorByID(int id)
-        {
-            // Stap 2 Dapper
-            // Uitschrijven SQL statement & bewaren in een string. 
-            string sql = "Select * from Color order by Name where id = @id";
-
-            // Stap 3 Dapper
-            // Uitvoeren SQL statement op db instance 
-            // Type casten van het generieke return type naar een collectie van colors
-            return (List<Color>)db.Query<Color>(sql, id);
-        }
-
-        // Update a Color
-        public void UpdateColor(Color color)
+        // Update a Game
+        public void UpdateGame(Game game)
         {
             // SQL statement update 
-            string sql = "Update Color set name = @name, code = @code where id = @id";
+            string sql = "Update Game set playerHistoryID = @playerHistoryID, date = @date, isActive = @isActive where id = @id";
 
             // Uitvoeren SQL statement en doorgeven parametercollectie
             db.Execute(sql, new
             {
-                color.Name,
-                color.Code,
-                color.ID
+                game.PlayerHistoryID,
+                game.Date,
+                game.IsActive,
+                game.ID
             });
         }
 
-        // Insert a Color
-        public void InsertColor(Color color)
+        // Insert a Game
+        public void InsertGame(Game game)
         {
             // SQL statement insert
-            string sql = "Insert into Color (name, code) values (@name, @code)";
+            string sql = "Insert into Game (playerHistoryID, date, isActive) values (@playerHistoryID, @date, @isActive)";
 
             // Uitvoeren SQL statement en doorgeven parametercollectie
             db.Execute(sql, new
             {
-                color.Name,
-                color.Code
+                game.PlayerHistoryID,
+                game.Date,
+                game.IsActive
             });
         }
 
-        // Delete a Color
-        public void DeleteColor(Color color)
+        // Delete a Game
+        public void DeleteGame(Game game)
         {
             // SQL statement delete 
-            string sql = "Delete Color where id = @id";
+            string sql = "Delete Game where id = @id";
 
             // Uitvoeren SQL statement en doorgeven parametercollectie
-            db.Execute(sql, new { color.ID });
+            db.Execute(sql, new { game.ID });
         }
     }
 }

@@ -72,8 +72,11 @@
     <Compile Include="Model\BaseModel.cs" />
     <Compile Include="Model\Color.cs" />
     <Compile Include="Model\ColorDataService.cs" />
+    <Compile Include="Model\Game.cs" />
+    <Compile Include="Model\GameDataService.cs" />
     <Compile Include="Model\PageNavigationService.cs" />
     <Compile Include="ViewModel\AdminColorsViewModel.cs" />
+    <Compile Include="ViewModel\AdminGamesViewModel.cs" />
     <Compile Include="ViewModel\AdminViewModel.cs" />
     <Compile Include="ViewModel\BaseCommand.cs" />
     <Compile Include="ViewModel\BaseViewModel.cs" />
@@ -88,6 +91,9 @@
     </Compile>
     <Compile Include="View\AdminColorsView.xaml.cs">
       <DependentUpon>AdminColorsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\AdminGamesView.xaml.cs">
+      <DependentUpon>AdminGamesView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\AdminView.xaml.cs">
       <DependentUpon>AdminView.xaml</DependentUpon>
@@ -111,6 +117,10 @@
       <DependentUpon>SpelRegelsView.xaml</DependentUpon>
     </Compile>
     <Page Include="View\AdminColorsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\AdminGamesView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

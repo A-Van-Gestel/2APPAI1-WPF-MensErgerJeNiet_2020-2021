@@ -1,0 +1,84 @@
+﻿<Page
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:MensErgerJeNiet.View"
+      xmlns:viewmodel="clr-namespace:MensErgerJeNiet.ViewModel"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:converters="clr-namespace:MensErgerJeNiet.Converters"
+      x:Class="MensErgerJeNiet.View.AdminGamesView"
+      mc:Ignorable="d" 
+      d:DesignHeight="681" d:DesignWidth="1280"
+      Title="AdminGamesView">
+
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Style/styles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <viewmodel:AdminGamesViewModel x:Key="AdminGamesViewModel" />
+        </ResourceDictionary>
+    </Page.Resources>
+
+    <Grid DataContext="{StaticResource AdminGamesViewModel}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <ListView Grid.Column="0" 
+                  ItemsSource="{Binding Games}" 
+                  SelectionMode="Single" 
+                  SelectedItem="{Binding CurrentGame}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Width="250" 
+                                    Header="Game PlayerHistoryID"  
+                                    DisplayMemberBinding="{Binding PlayerHistoryID}" />
+                    <GridViewColumn Width="NaN" 
+                                    Header="Game Date"
+                                    DisplayMemberBinding="{Binding Date}" />
+                    <GridViewColumn Width="150" 
+                                    Header="Game isActive"
+                                    DisplayMemberBinding="{Binding IsActive}" />
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <StackPanel Grid.Row="1" Grid.Column="1">
+            <!-- Game PlayerHistoryID -->
+            <TextBlock Style="{StaticResource  MaterialDesignSubtitle2TextBlock}" Margin="10,10,10,3" >Game PlayerHistoryID:</TextBlock>
+            <TextBox Margin="10,5,10,10" 
+                     Text="{Binding CurrentGame.PlayerHistoryID}" 
+                     materialDesign:HintAssist.Hint="Game PlayerHistoryID"
+                     MaxLength="50"
+                     ToolTip="Game PlayerHistoryID" />
+
+            <!-- Game Date -->
+            <TextBlock Style="{StaticResource  MaterialDesignSubtitle2TextBlock}" Margin="10,10,10,3" >Game Date:</TextBlock>
+            <TextBox Margin="10,5,10,10" 
+                     Text="{Binding CurrentGame.Date}" 
+                     materialDesign:HintAssist.Hint="Game Date"
+                     MaxLength="50"
+                     ToolTip="Game Date" />
+
+            <!-- Game IsActive -->
+            <TextBlock Style="{StaticResource  MaterialDesignSubtitle2TextBlock}" Margin="10,10,10,3" >Game IsActive:</TextBlock>
+            <TextBox Margin="10,5,10,10" 
+                     Text="{Binding CurrentGame.IsActive}" 
+                     materialDesign:HintAssist.Hint="Game IsActive"
+                     MaxLength="50"
+                     ToolTip="Game IsActive" />
+
+            <Button Margin="10,50,10,10" Content="Wijzigen"
+                    Command="{Binding WijzigenCommand}" />
+            <Button Margin="10,0,10,10" Content="Verwijderen"
+                    Command="{Binding VerwijderenCommand}" />
+            <Button Margin="10,0,10,10" Content="Toevoegen"
+                    Command="{Binding ToevoegenCommand}" />
+
+            <Button Margin="0,100,0,0" Command="{Binding GotoAdminViewCommand}" Content="Terug" />
+        </StackPanel>
+    </Grid>
+</Page>

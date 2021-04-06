@@ -17,6 +17,7 @@ namespace MensErgerJeNiet
         HistoryView HistoryPage = null;
         AdminView AdminPage = null;
         AdminColorsView AdminColorsPage = null;
+        AdminGamesView AdminGamesPage = null;
         public PageNavigationService()
         {
 
@@ -53,6 +54,10 @@ namespace MensErgerJeNiet
                 case "AdminColorsView":
                     AdminColorsPage = new AdminColorsView();
                     ApplicationHelper.NavigationService.Navigate(AdminColorsPage);
+                    break;
+                case "AdminGamesView":
+                    AdminGamesPage = new AdminGamesView();
+                    ApplicationHelper.NavigationService.Navigate(AdminGamesPage);
                     break;
                 default:
                     break;
