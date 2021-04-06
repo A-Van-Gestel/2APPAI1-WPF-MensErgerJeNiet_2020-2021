@@ -13,6 +13,9 @@ namespace MensErgerJeNiet.ViewModel
         public ICommand GotoHomeViewCommand { get; set; }
         public ICommand GotoAdminColorsViewCommand { get; set; }
         public ICommand GotoAdminGamesViewCommand { get; set; }
+        public ICommand GotoAdminPlayersViewCommand { get; set; }
+        public ICommand GotoAdminPositionsViewCommand { get; set; }
+        public ICommand GotoAdminPlayerHistoriesViewCommand { get; set; }
 
 
         public AdminViewModel()
@@ -25,6 +28,9 @@ namespace MensErgerJeNiet.ViewModel
             GotoHomeViewCommand = new BaseCommand(HomeView);
             GotoAdminColorsViewCommand = new BaseCommand(AdminColorsView);
             GotoAdminGamesViewCommand = new BaseCommand(AdminGamesView);
+            GotoAdminPlayersViewCommand = new BaseCommand(AdminPlayersView);
+            GotoAdminPositionsViewCommand = new BaseCommand(AdminPositionsView);
+            GotoAdminPlayerHistoriesViewCommand = new BaseCommand(AdminPlayerHistoriesView);
         }
 
         // ----- Commands -----
@@ -44,6 +50,24 @@ namespace MensErgerJeNiet.ViewModel
         {
             PageNavigationService pageNavigationService = new PageNavigationService();
             pageNavigationService.Navigate("AdminGamesView");
+        }
+
+        private void AdminPlayersView()
+        {
+            //PageNavigationService pageNavigationService = new PageNavigationService();
+            //pageNavigationService.Navigate("AdminPlayersView");
+        }
+
+        private void AdminPositionsView()
+        {
+            //PageNavigationService pageNavigationService = new PageNavigationService();
+            //pageNavigationService.Navigate("AdminPositionsView");
+        }
+
+        private void AdminPlayerHistoriesView()
+        {
+            //PageNavigationService pageNavigationService = new PageNavigationService();
+            //pageNavigationService.Navigate("AdminPlayerHistoriesView");
         }
     }
 }

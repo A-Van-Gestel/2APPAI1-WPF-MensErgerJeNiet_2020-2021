@@ -15,9 +15,14 @@ namespace MensErgerJeNiet
         PlayerSelectionView PlayerSelectionPage = null;
         PlayView PlayPage = null;
         HistoryView HistoryPage = null;
+        // --- Admin Tools ---
         AdminView AdminPage = null;
         AdminColorsView AdminColorsPage = null;
         AdminGamesView AdminGamesPage = null;
+        //AdminPlayersView AdminPlayersPage = null;
+        //AdminPositionsView AdminPositionsPage = null;
+        //AdminPlayerHistoriesView AdminPlayerHistoriesPage = null;
+
         public PageNavigationService()
         {
 
@@ -47,6 +52,7 @@ namespace MensErgerJeNiet
                     HistoryPage = new HistoryView();
                     ApplicationHelper.NavigationService.Navigate(HistoryPage);
                     break;
+                // --- Admin Tools ---
                 case "AdminView":
                     AdminPage = new AdminView();
                     ApplicationHelper.NavigationService.Navigate(AdminPage);
@@ -59,6 +65,18 @@ namespace MensErgerJeNiet
                     AdminGamesPage = new AdminGamesView();
                     ApplicationHelper.NavigationService.Navigate(AdminGamesPage);
                     break;
+                //case "AdminPlayersView":
+                //    AdminPlayersPage = new AdminPlayersView();
+                //    ApplicationHelper.NavigationService.Navigate(AdminPlayersPage);
+                //    break;
+                //case "AdminPositionsView":
+                //    AdminPositionsPage = new AdminPositionsView();
+                //    ApplicationHelper.NavigationService.Navigate(AdminPositionsPage);
+                //    break;
+                //case "AdminPlayerHistoriesView":
+                //    AdminPlayerHistoriesPage = new AdminPlayerHistoriesView();
+                //    ApplicationHelper.NavigationService.Navigate(AdminPlayerHistoriesPage);
+                //    break;
                 default:
                     break;
             }
