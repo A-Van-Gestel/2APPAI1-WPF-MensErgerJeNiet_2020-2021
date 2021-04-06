@@ -24,7 +24,7 @@
 
     <Grid DataContext="{StaticResource AdminColorsViewModel}">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="632" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 

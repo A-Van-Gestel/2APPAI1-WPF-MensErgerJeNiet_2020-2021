@@ -54,20 +54,20 @@ namespace MensErgerJeNiet.ViewModel
 
         private void AdminPlayersView()
         {
-            //PageNavigationService pageNavigationService = new PageNavigationService();
-            //pageNavigationService.Navigate("AdminPlayersView");
+            PageNavigationService pageNavigationService = new PageNavigationService();
+            pageNavigationService.Navigate("AdminPlayersView");
         }
 
         private void AdminPositionsView()
         {
-            //PageNavigationService pageNavigationService = new PageNavigationService();
-            //pageNavigationService.Navigate("AdminPositionsView");
+            PageNavigationService pageNavigationService = new PageNavigationService();
+            pageNavigationService.Navigate("AdminPositionsView");
         }
 
         private void AdminPlayerHistoriesView()
         {
-            //PageNavigationService pageNavigationService = new PageNavigationService();
-            //pageNavigationService.Navigate("AdminPlayerHistoriesView");
+            PageNavigationService pageNavigationService = new PageNavigationService();
+            pageNavigationService.Navigate("AdminPlayerHistoriesView");
         }
     }
 }

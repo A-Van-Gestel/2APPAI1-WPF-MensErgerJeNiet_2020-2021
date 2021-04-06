@@ -83,6 +83,9 @@
     <Compile Include="Model\PositionDataService.cs" />
     <Compile Include="ViewModel\AdminColorsViewModel.cs" />
     <Compile Include="ViewModel\AdminGamesViewModel.cs" />
+    <Compile Include="ViewModel\AdminPlayerHistoriesViewModel.cs" />
+    <Compile Include="ViewModel\AdminPlayersViewModel.cs" />
+    <Compile Include="ViewModel\AdminPositionsViewModel.cs" />
     <Compile Include="ViewModel\AdminViewModel.cs" />
     <Compile Include="ViewModel\BaseCommand.cs" />
     <Compile Include="ViewModel\BaseViewModel.cs" />
@@ -100,6 +103,15 @@
     </Compile>
     <Compile Include="View\AdminGamesView.xaml.cs">
       <DependentUpon>AdminGamesView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\AdminPlayerHistoriesView.xaml.cs">
+      <DependentUpon>AdminPlayerHistoriesView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\AdminPlayersView.xaml.cs">
+      <DependentUpon>AdminPlayersView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\AdminPositionsView.xaml.cs">
+      <DependentUpon>AdminPositionsView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\AdminView.xaml.cs">
       <DependentUpon>AdminView.xaml</DependentUpon>
@@ -127,6 +139,18 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\AdminGamesView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\AdminPlayerHistoriesView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\AdminPlayersView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\AdminPositionsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

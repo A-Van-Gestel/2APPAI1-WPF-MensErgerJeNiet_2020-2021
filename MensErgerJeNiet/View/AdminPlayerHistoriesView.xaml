@@ -1,0 +1,117 @@
+﻿<Page
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:MensErgerJeNiet.View"
+      xmlns:viewmodel="clr-namespace:MensErgerJeNiet.ViewModel"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:converters="clr-namespace:MensErgerJeNiet.Converters"
+      x:Class="MensErgerJeNiet.View.AdminPlayerHistoriesView"
+      mc:Ignorable="d" 
+      d:DesignHeight="681" d:DesignWidth="1280"
+      Title="AdminPlayerHistoriesView">
+
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Style/styles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <viewmodel:AdminPlayerHistoriesViewModel x:Key="AdminPlayerHistoriesViewModel" />
+        </ResourceDictionary>
+    </Page.Resources>
+
+    <Grid DataContext="{StaticResource AdminPlayerHistoriesViewModel}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="750" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <ListView Grid.Column="0" 
+                  ItemsSource="{Binding PlayerHistories}" 
+                  SelectionMode="Single" 
+                  SelectedItem="{Binding CurrentPlayerHistory}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Width="NaN" 
+                                    Header="PlayerID"  
+                                    DisplayMemberBinding="{Binding PlayerID}" />
+                    <GridViewColumn Width="NaN" 
+                                    Header="ColorID"
+                                    DisplayMemberBinding="{Binding ColorID}" />
+                    <GridViewColumn Width="NaN" 
+                                    Header="CountTime"
+                                    DisplayMemberBinding="{Binding CountTime}" />
+                    <GridViewColumn Width="NaN" 
+                                    Header="CountSixes"
+                                    DisplayMemberBinding="{Binding CountSixes}" />
+                    <GridViewColumn Width="NaN" 
+                                    Header="CountTurns"
+                                    DisplayMemberBinding="{Binding CountTurns}" />
+                    <GridViewColumn Width="NaN" 
+                                    Header="isTurn"
+                                    DisplayMemberBinding="{Binding IsTurn}" />
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <StackPanel Grid.Row="1" Grid.Column="1">
+            <!-- PlayerID -->
+            <TextBlock Style="{StaticResource  MaterialDesignSubtitle2TextBlock}" Margin="10,10,10,3" >PlayerID:</TextBlock>
+            <TextBox Margin="10,5,10,10" 
+                     Text="{Binding CurrentPlayerHistory.PlayerID}" 
+                     materialDesign:HintAssist.Hint="PlayerID"
+                     MaxLength="50"
+                     ToolTip="PlayerID" />
+
+            <!-- ColorID -->
+            <TextBlock Style="{StaticResource  MaterialDesignSubtitle2TextBlock}" Margin="10,10,10,3" >ColorID:</TextBlock>
+            <TextBox Margin="10,5,10,10" 
+                     Text="{Binding CurrentPlayerHistory.ColorID}" 
+                     materialDesign:HintAssist.Hint="ColorID"
+                     MaxLength="50"
+                     ToolTip="ColorID" />
+
+            <!-- CountTime -->
+            <TextBlock Style="{StaticResource  MaterialDesignSubtitle2TextBlock}" Margin="10,10,10,3" >CountTime:</TextBlock>
+            <TextBox Margin="10,5,10,10" 
+                     Text="{Binding CurrentPlayerHistory.CountTime}" 
+                     materialDesign:HintAssist.Hint="CountTime"
+                     MaxLength="50"
+                     ToolTip="CountTime" />
+
+            <!-- CountSixes -->
+            <TextBlock Style="{StaticResource  MaterialDesignSubtitle2TextBlock}" Margin="10,10,10,3" >CountSixes:</TextBlock>
+            <TextBox Margin="10,5,10,10" 
+                     Text="{Binding CurrentPlayerHistory.CountSixes}" 
+                     materialDesign:HintAssist.Hint="CountSixes"
+                     MaxLength="50"
+                     ToolTip="CountSixes" />
+
+            <!-- CountTurns -->
+            <TextBlock Style="{StaticResource  MaterialDesignSubtitle2TextBlock}" Margin="10,10,10,3" >CountTurns:</TextBlock>
+            <TextBox Margin="10,5,10,10" 
+                     Text="{Binding CurrentPlayerHistory.CountTurns}" 
+                     materialDesign:HintAssist.Hint="CountTurns"
+                     MaxLength="50"
+                     ToolTip="CountTurns" />
+
+            <!-- isTurn -->
+            <TextBlock Style="{StaticResource  MaterialDesignSubtitle2TextBlock}" Margin="10,10,10,3" >isTurn:</TextBlock>
+            <TextBox Margin="10,5,10,10" 
+                     Text="{Binding CurrentPlayerHistory.IsTurn}" 
+                     materialDesign:HintAssist.Hint="isTurn"
+                     MaxLength="50"
+                     ToolTip="isTurn" />
+
+            <Button Margin="10,20,10,10" Content="Wijzigen"
+                    Command="{Binding WijzigenCommand}" />
+            <Button Margin="10,0,10,10" Content="Verwijderen"
+                    Command="{Binding VerwijderenCommand}" />
+            <Button Margin="10,0,10,10" Content="Toevoegen"
+                    Command="{Binding ToevoegenCommand}" />
+
+            <Button Margin="0,50,0,0" Command="{Binding GotoAdminViewCommand}" Content="Terug" />
+        </StackPanel>
+    </Grid>
+</Page>

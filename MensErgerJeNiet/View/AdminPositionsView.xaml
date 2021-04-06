@@ -7,39 +7,45 @@
       xmlns:viewmodel="clr-namespace:MensErgerJeNiet.ViewModel"
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       xmlns:converters="clr-namespace:MensErgerJeNiet.Converters"
-      x:Class="MensErgerJeNiet.View.AdminGamesView"
+      x:Class="MensErgerJeNiet.View.AdminPositionsView"
       mc:Ignorable="d" 
       d:DesignHeight="681" d:DesignWidth="1280"
-      Title="AdminGamesView">
+      Title="AdminPositionsView">
 
     <Page.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Style/styles.xaml"/>
             </ResourceDictionary.MergedDictionaries>
-            <viewmodel:AdminGamesViewModel x:Key="AdminGamesViewModel" />
+            <viewmodel:AdminPositionsViewModel x:Key="AdminPositionsViewModel" />
         </ResourceDictionary>
     </Page.Resources>
 
-    <Grid DataContext="{StaticResource AdminGamesViewModel}">
+    <Grid DataContext="{StaticResource AdminPositionsViewModel}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="632" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
         <ListView Grid.Column="0" 
-                  ItemsSource="{Binding Games}" 
+                  ItemsSource="{Binding Positions}" 
                   SelectionMode="Single" 
-                  SelectedItem="{Binding CurrentGame}">
+                  SelectedItem="{Binding CurrentPosition}">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Width="250" 
+                    <GridViewColumn Width="NaN" 
                                     Header="PlayerHistoryID"  
                                     DisplayMemberBinding="{Binding PlayerHistoryID}" />
                     <GridViewColumn Width="NaN" 
-                                    Header="Date"
-                                    DisplayMemberBinding="{Binding Date}" />
-                    <GridViewColumn Width="150" 
+                                    Header="Pion"
+                                    DisplayMemberBinding="{Binding Pion}" />
+                    <GridViewColumn Width="NaN" 
+                                    Header="Coordinate"
+                                    DisplayMemberBinding="{Binding Coordinate}" />
+                    <GridViewColumn Width="NaN" 
+                                    Header="isHome"
+                                    DisplayMemberBinding="{Binding IsHome}" />
+                    <GridViewColumn Width="NaN" 
                                     Header="isActive"
                                     DisplayMemberBinding="{Binding IsActive}" />
                 </GridView>
@@ -50,23 +56,39 @@
             <!-- PlayerHistoryID -->
             <TextBlock Style="{StaticResource  MaterialDesignSubtitle2TextBlock}" Margin="10,10,10,3" >PlayerHistoryID:</TextBlock>
             <TextBox Margin="10,5,10,10" 
-                     Text="{Binding CurrentGame.PlayerHistoryID}" 
+                     Text="{Binding CurrentPosition.PlayerHistoryID}" 
                      materialDesign:HintAssist.Hint="PlayerHistoryID"
                      MaxLength="50"
                      ToolTip="PlayerHistoryID" />
 
-            <!-- Date -->
-            <TextBlock Style="{StaticResource  MaterialDesignSubtitle2TextBlock}" Margin="10,10,10,3" >Date:</TextBlock>
+            <!-- Pion -->
+            <TextBlock Style="{StaticResource  MaterialDesignSubtitle2TextBlock}" Margin="10,10,10,3" >Pion:</TextBlock>
             <TextBox Margin="10,5,10,10" 
-                     Text="{Binding CurrentGame.Date}" 
-                     materialDesign:HintAssist.Hint="Date"
+                     Text="{Binding CurrentPosition.Pion}" 
+                     materialDesign:HintAssist.Hint="Pion"
                      MaxLength="50"
-                     ToolTip="Date" />
+                     ToolTip="Pion" />
+
+            <!-- Coordinate -->
+            <TextBlock Style="{StaticResource  MaterialDesignSubtitle2TextBlock}" Margin="10,10,10,3" >Coordinate:</TextBlock>
+            <TextBox Margin="10,5,10,10" 
+                     Text="{Binding CurrentPosition.Coordinate}" 
+                     materialDesign:HintAssist.Hint="Coordinate"
+                     MaxLength="50"
+                     ToolTip="Coordinate" />
+
+            <!-- IsHome -->
+            <TextBlock Style="{StaticResource  MaterialDesignSubtitle2TextBlock}" Margin="10,10,10,3" >IsHome:</TextBlock>
+            <TextBox Margin="10,5,10,10" 
+                     Text="{Binding CurrentPosition.IsHome}" 
+                     materialDesign:HintAssist.Hint="IsHome"
+                     MaxLength="50"
+                     ToolTip="IsHome" />
 
             <!-- IsActive -->
             <TextBlock Style="{StaticResource  MaterialDesignSubtitle2TextBlock}" Margin="10,10,10,3" >IsActive:</TextBlock>
             <TextBox Margin="10,5,10,10" 
-                     Text="{Binding CurrentGame.IsActive}" 
+                     Text="{Binding CurrentPosition.IsActive}" 
                      materialDesign:HintAssist.Hint="IsActive"
                      MaxLength="50"
                      ToolTip="IsActive" />
