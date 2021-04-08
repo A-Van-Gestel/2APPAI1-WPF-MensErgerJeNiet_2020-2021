@@ -9,6 +9,8 @@
         private int countSixes;
         private int countTurns;
         private bool isTurn;
+        private Player player;
+        private Color color;
 
 
         public PlayerHistory() { }
@@ -52,6 +54,20 @@
             }
         }
 
+        public Player Player
+        {
+            get
+            {
+                return player;
+            }
+
+            set
+            {
+                player = value;
+                NotifyPropertyChanged();
+            }
+        }
+
         public int ColorID
         {
             get
@@ -62,6 +78,20 @@
             set
             {
                 colorID = value;
+                NotifyPropertyChanged();
+            }
+        }
+
+        public Color Color
+        {
+            get
+            {
+                return color;
+            }
+
+            set
+            {
+                color = value;
                 NotifyPropertyChanged();
             }
         }
@@ -120,6 +150,11 @@
                 isTurn = value;
                 NotifyPropertyChanged();
             }
+        }
+
+        public override string ToString()
+        {
+            return ID.ToString();
         }
 
     }

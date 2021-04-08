@@ -1,6 +1,7 @@
 ﻿using MensErgerJeNiet.Model;
 using System;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Windows.Input;
 
 namespace MensErgerJeNiet.ViewModel
@@ -67,6 +68,20 @@ namespace MensErgerJeNiet.ViewModel
                new PositionDataService();
 
             Positions = new ObservableCollection<Position>(contactDS.GetPosition());
+
+            //PlayerHistories inlezen
+            PlayerHistoryDataService playerHistoryDataService = new PlayerHistoryDataService();
+            PlayerHistories = playerHistoryDataService.GetPlayerHistories();
+
+            foreach (Position position in Positions)
+            {
+                //Relatie
+                if (position.PlayerHistoryID > 0)
+                {
+                    SelectedPlayerHistory = PlayerHistories.FirstOrDefault(ph => ph.ID == position.PlayerHistoryID);
+                }
+            }
+
         }
 
         public void WijzigenPosition()
@@ -85,7 +100,7 @@ namespace MensErgerJeNiet.ViewModel
         public void ToevoegenPosition()
         {
             PositionDataService contactDS = new PositionDataService();
-            contactDS.InsertPosition(new Position(playerHistoryID: 1, pion: "Pion 1", coordinate: "1", isHome: true, isActive: false));
+            contactDS.InsertPosition(new Position(playerHistoryID: 1, pion: 1, coordinate: 1, isHome: true, isActive: false));
 
             //Refresh
             LeesPosition();
@@ -102,6 +117,36 @@ namespace MensErgerJeNiet.ViewModel
 
                 //Refresh
                 LeesPosition();
+            }
+        }
+
+        private ObservableCollection<PlayerHistory> playerHistories;
+        public ObservableCollection<PlayerHistory> PlayerHistories
+        {
+            get
+            {
+                return playerHistories;
+            }
+
+            set
+            {
+                playerHistories = value;
+                NotifyPropertyChanged();
+            }
+        }
+
+        private PlayerHistory selectedPlayerHistory { get; set; }
+        public PlayerHistory SelectedPlayerHistory
+        {
+            get
+            {
+                return selectedPlayerHistory;
+            }
+
+            set
+            {
+                selectedPlayerHistory = value;
+                NotifyPropertyChanged();
             }
         }
 

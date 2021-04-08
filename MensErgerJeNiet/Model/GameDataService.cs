@@ -3,6 +3,7 @@ using System.Data;
 using System.Data.SqlClient;
 using Dapper;
 using System.Configuration;
+using System.Collections.ObjectModel;
 
 namespace MensErgerJeNiet.Model
 {
@@ -20,7 +21,7 @@ namespace MensErgerJeNiet.Model
         private static IDbConnection db = new SqlConnection(connectionString);
 
         // Get All Games in a List
-        public List<Game> GetGame()
+        public ObservableCollection<Game> GetGame()
         {
             // Stap 2 Dapper
             // Uitschrijven SQL statement & bewaren in een string. 
@@ -29,11 +30,11 @@ namespace MensErgerJeNiet.Model
             // Stap 3 Dapper
             // Uitvoeren SQL statement op db instance 
             // Type casten van het generieke return type naar een collectie van contactpersonen
-            return (List<Game>)db.Query<Game>(sql);
+            return new ObservableCollection<Game>((List<Game>)db.Query<Game>(sql));
         }
 
         // Get a Game by ID
-        public List<Game> GetGameByID(int id)
+        public Game GetGameByID(int id)
         {
             // Stap 2 Dapper
             // Uitschrijven SQL statement & bewaren in een string. 
@@ -42,7 +43,7 @@ namespace MensErgerJeNiet.Model
             // Stap 3 Dapper
             // Uitvoeren SQL statement op db instance 
             // Type casten van het generieke return type naar een collectie van colors
-            return (List<Game>)db.Query<Game>(sql, id);
+            return (Game)db.Query<Game>(sql, id);
         }
 
         // Update a Game

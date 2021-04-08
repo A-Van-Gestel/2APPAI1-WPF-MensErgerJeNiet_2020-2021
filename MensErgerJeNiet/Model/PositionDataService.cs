@@ -3,6 +3,7 @@ using System.Data;
 using System.Data.SqlClient;
 using Dapper;
 using System.Configuration;
+using System.Collections.ObjectModel;
 
 namespace MensErgerJeNiet.Model
 {
@@ -20,29 +21,36 @@ namespace MensErgerJeNiet.Model
         private static IDbConnection db = new SqlConnection(connectionString);
 
         // Get All Positions in a List
-        public List<Position> GetPosition()
+        public ObservableCollection<Position> GetPosition()
         {
-            // Stap 2 Dapper
-            // Uitschrijven SQL statement & bewaren in een string. 
-            string sql = "Select * from Position order by PlayerHistoryID";
+            //// Stap 2 Dapper
+            //// Uitschrijven SQL statement & bewaren in een string. 
+            string sql = "Select * from Position pos INNER JOIN PlayerHistory ph ON pos.PlayerHistoryID = ph.Id";
 
-            // Stap 3 Dapper
-            // Uitvoeren SQL statement op db instance 
-            // Type casten van het generieke return type naar een collectie van contactpersonen
-            return (List<Position>)db.Query<Position>(sql);
+            //// Stap 3 Dapper
+            //// Uitvoeren SQL statement op db instance 
+            //// Type casten van het generieke return type naar een collectie van positions
+            var positions = db.Query<Position, PlayerHistory, Position>(sql, (position, playerHistory) =>
+            {
+                position.PlayerHistory = playerHistory;
+                return position;
+            },
+            splitOn: "Id");
+
+            return new ObservableCollection<Position>((List<Position>)positions);
         }
 
         // Get a Position by ID
-        public List<Position> GetPositionByID(int id)
+        public Position GetPositionByID(int id)
         {
             // Stap 2 Dapper
             // Uitschrijven SQL statement & bewaren in een string. 
-            string sql = "Select * from Position order by PlayerHistoryID where id = @id";
+            string sql = "Select * from Position where id = @id";
 
             // Stap 3 Dapper
             // Uitvoeren SQL statement op db instance 
-            // Type casten van het generieke return type naar een collectie van colors
-            return (List<Position>)db.Query<Position>(sql, id);
+            // Type casten van het generieke return type naar een collectie van positions
+            return (Position)db.Query<Position>(sql, id);
         }
 
         // Update a Position

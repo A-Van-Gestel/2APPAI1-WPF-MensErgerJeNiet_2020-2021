@@ -3,6 +3,7 @@ using System.Data;
 using System.Data.SqlClient;
 using Dapper;
 using System.Configuration;
+using System.Collections.ObjectModel;
 
 namespace MensErgerJeNiet.Model
 {
@@ -20,7 +21,7 @@ namespace MensErgerJeNiet.Model
         private static IDbConnection db = new SqlConnection(connectionString);
 
         // Get All Colors in a List
-        public List<Color> GetColor()
+        public ObservableCollection<Color> GetColor()
         {
             // Stap 2 Dapper
             // Uitschrijven SQL statement & bewaren in een string. 
@@ -29,11 +30,11 @@ namespace MensErgerJeNiet.Model
             // Stap 3 Dapper
             // Uitvoeren SQL statement op db instance 
             // Type casten van het generieke return type naar een collectie van colors
-            return (List<Color>)db.Query<Color>(sql);
+            return new ObservableCollection<Color>((List<Color>)db.Query<Color>(sql));
         }
 
         // Get a Color by ID
-        public List<Color> GetColorByID(int id)
+        public Color GetColorByID(int id)
         {
             // Stap 2 Dapper
             // Uitschrijven SQL statement & bewaren in een string. 
@@ -42,7 +43,7 @@ namespace MensErgerJeNiet.Model
             // Stap 3 Dapper
             // Uitvoeren SQL statement op db instance 
             // Type casten van het generieke return type naar een collectie van colors
-            return (List<Color>)db.Query<Color>(sql, id);
+            return (Color)db.Query<Color>(sql, id);
         }
 
         // Update a Color

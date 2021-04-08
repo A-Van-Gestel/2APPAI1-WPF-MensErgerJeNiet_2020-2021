@@ -66,7 +66,7 @@ namespace MensErgerJeNiet.ViewModel
             PlayerHistoryDataService contactDS =
                new PlayerHistoryDataService();
 
-            PlayerHistories = new ObservableCollection<PlayerHistory>(contactDS.GetPlayerHistory());
+            PlayerHistories = new ObservableCollection<PlayerHistory>(contactDS.GetPlayerHistories());
         }
 
         public void WijzigenPlayerHistory()

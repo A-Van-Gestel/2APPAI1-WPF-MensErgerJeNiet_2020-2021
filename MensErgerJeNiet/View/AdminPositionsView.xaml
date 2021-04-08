@@ -33,9 +33,12 @@
                   SelectedItem="{Binding CurrentPosition}">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Width="NaN" 
+                    <!--<GridViewColumn Width="NaN" 
                                     Header="PlayerHistoryID"  
-                                    DisplayMemberBinding="{Binding PlayerHistoryID}" />
+                                    DisplayMemberBinding="{Binding PlayerHistoryID}" />-->
+                    <GridViewColumn Width="NaN" 
+                                    Header="PlayerHistory"
+                                    DisplayMemberBinding="{Binding PlayerHistory}" />
                     <GridViewColumn Width="NaN" 
                                     Header="Pion"
                                     DisplayMemberBinding="{Binding Pion}" />
@@ -55,11 +58,13 @@
         <StackPanel Grid.Row="1" Grid.Column="1">
             <!-- PlayerHistoryID -->
             <TextBlock Style="{StaticResource  MaterialDesignSubtitle2TextBlock}" Margin="10,10,10,3" >PlayerHistoryID:</TextBlock>
-            <TextBox Margin="10,5,10,10" 
-                     Text="{Binding CurrentPosition.PlayerHistoryID}" 
-                     materialDesign:HintAssist.Hint="PlayerHistoryID"
-                     MaxLength="50"
-                     ToolTip="PlayerHistoryID" />
+            <ComboBox Margin="10,5,10,10" 
+                      ItemsSource="{Binding PlayerHistories}" 
+                      SelectedValuePath="ID" 
+                      SelectedValue="{Binding CurrentPosition.PlayerHistory.ID}"
+                      SelectedItem="{Binding CurrentPosition.PlayerHistory}" 
+                      materialDesign:ComboBoxAssist.ShowSelectedItem="True"
+                      materialDesign:HintAssist.Hint="PlayerHistory"/>
 
             <!-- Pion -->
             <TextBlock Style="{StaticResource  MaterialDesignSubtitle2TextBlock}" Margin="10,10,10,3" >Pion:</TextBlock>

@@ -4,15 +4,16 @@
     {
         private int id;
         private int playerHistoryID;
-        private string pion;
-        private string coordinate;
+        private int pion;
+        private int coordinate;
         private bool isHome;
         private bool isActive;
+        private PlayerHistory playerHistory;
 
 
         public Position() { }
 
-        public Position(int playerHistoryID, string pion, string coordinate, bool isHome, bool isActive)
+        public Position(int playerHistoryID, int pion, int coordinate, bool isHome, bool isActive)
         {
             PlayerHistoryID = playerHistoryID;
             Pion = pion;
@@ -50,7 +51,18 @@
             }
         }
 
-        public string Pion
+        public PlayerHistory PlayerHistory
+        {
+            get { return playerHistory; }
+            set
+            {
+                playerHistory = value;
+                playerHistoryID = value.ID;
+                NotifyPropertyChanged();
+            }
+        }
+
+        public int Pion
         {
             get
             {
@@ -64,7 +76,7 @@
             }
         }
 
-        public string Coordinate
+        public int Coordinate
         {
             get
             {
@@ -104,6 +116,11 @@
                 isActive = value;
                 NotifyPropertyChanged();
             }
+        }
+
+        public override string ToString()
+        {
+            return ID.ToString();
         }
 
     }

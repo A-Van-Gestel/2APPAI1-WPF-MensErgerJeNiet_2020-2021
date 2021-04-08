@@ -3,6 +3,7 @@ using System.Data;
 using System.Data.SqlClient;
 using Dapper;
 using System.Configuration;
+using System.Collections.ObjectModel;
 
 namespace MensErgerJeNiet.Model
 {
@@ -19,8 +20,8 @@ namespace MensErgerJeNiet.Model
         // Dit betekent dat de connectie met de database automatisch geopend wordt.
         private static IDbConnection db = new SqlConnection(connectionString);
 
-        // Get All PlayerHistorys in a List
-        public List<PlayerHistory> GetPlayerHistory()
+        // Get All playerHistories in a List
+        public ObservableCollection<PlayerHistory> GetPlayerHistories()
         {
             // Stap 2 Dapper
             // Uitschrijven SQL statement & bewaren in een string. 
@@ -29,11 +30,11 @@ namespace MensErgerJeNiet.Model
             // Stap 3 Dapper
             // Uitvoeren SQL statement op db instance 
             // Type casten van het generieke return type naar een collectie van contactpersonen
-            return (List<PlayerHistory>)db.Query<PlayerHistory>(sql);
+            return new ObservableCollection<PlayerHistory>((List<PlayerHistory>)db.Query<PlayerHistory>(sql));
         }
 
         // Get a PlayerHistory by ID
-        public List<PlayerHistory> GetPlayerHistoryByID(int id)
+        public PlayerHistory GetPlayerHistoriesByID(int id)
         {
             // Stap 2 Dapper
             // Uitschrijven SQL statement & bewaren in een string. 
@@ -42,7 +43,7 @@ namespace MensErgerJeNiet.Model
             // Stap 3 Dapper
             // Uitvoeren SQL statement op db instance 
             // Type casten van het generieke return type naar een collectie van colors
-            return (List<PlayerHistory>)db.Query<PlayerHistory>(sql, id);
+            return (PlayerHistory)db.Query<PlayerHistory>(sql, id);
         }
 
         // Update a PlayerHistory

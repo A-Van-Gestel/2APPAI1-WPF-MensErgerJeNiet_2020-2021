@@ -8,6 +8,7 @@ namespace MensErgerJeNiet.Model
         private int playerHistoryID;
         private DateTime date;
         private bool isActive;
+        private PlayerHistory playerHistory;
 
 
         public Game() { }
@@ -48,6 +49,16 @@ namespace MensErgerJeNiet.Model
             }
         }
 
+        public PlayerHistory PlayerHistory
+        {
+            get { return playerHistory; }
+            set
+            {
+                playerHistory = value;
+                NotifyPropertyChanged();
+            }
+        }
+
         public DateTime Date
         {
             get
@@ -76,5 +87,10 @@ namespace MensErgerJeNiet.Model
             }
         }
 
+        public override string ToString()
+        {
+            return ID.ToString();
+        }
+        
     }
 }
