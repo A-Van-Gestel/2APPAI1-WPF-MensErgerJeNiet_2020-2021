@@ -65,6 +65,6 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Button Grid.Row="4" Command="{Binding GotoHomeViewCommand}" >Terug</Button>
+        <Button Grid.Row="4" Command="{Binding GotoHomeViewCommand}" >Back</Button>
     </Grid>
 </Page>

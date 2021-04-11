@@ -8,7 +8,7 @@ namespace MensErgerJeNiet.ViewModel
     {
         public AdminPlayersViewModel()
         {
-            LeesPlayer();
+            ReadPlayer();
             KoppelenCommands();
         }
 
@@ -48,18 +48,18 @@ namespace MensErgerJeNiet.ViewModel
 
         private void KoppelenCommands()
         {
-            WijzigenCommand = new BaseCommand(WijzigenPlayer);
-            VerwijderenCommand = new BaseCommand(VerwijderenPlayer);
-            ToevoegenCommand = new BaseCommand(ToevoegenPlayer);
+            UpdateCommand = new BaseCommand(UpdatePlayer);
+            DeleteCommand = new BaseCommand(DeletePlayer);
+            AddCommand = new BaseCommand(AddPlayer);
             GotoAdminViewCommand = new BaseCommand(AdminView);
         }
 
-        public ICommand VerwijderenCommand { get; set; }
-        public ICommand WijzigenCommand { get; set; }
-        public ICommand ToevoegenCommand { get; set; }
+        public ICommand DeleteCommand { get; set; }
+        public ICommand UpdateCommand { get; set; }
+        public ICommand AddCommand { get; set; }
         public ICommand GotoAdminViewCommand { get; set; }
 
-        private void LeesPlayer()
+        private void ReadPlayer()
         {
             //instantiëren dataservice
             PlayerDataService contactDS =
@@ -68,7 +68,7 @@ namespace MensErgerJeNiet.ViewModel
             Players = new ObservableCollection<Player>(contactDS.GetPlayers());
         }
 
-        public void WijzigenPlayer()
+        public void UpdatePlayer()
         {
             if (CurrentPlayer != null)
             {
@@ -77,11 +77,11 @@ namespace MensErgerJeNiet.ViewModel
                 contactDS.UpdatePlayer(CurrentPlayer);
 
                 //Refresh
-                LeesPlayer();
+                ReadPlayer();
             }
         }
 
-        public void ToevoegenPlayer()
+        public void AddPlayer()
         {
             PlayerDataService contactDS = new PlayerDataService();
             if (CurrentPlayer != null)
@@ -94,11 +94,11 @@ namespace MensErgerJeNiet.ViewModel
             }
             
             //Refresh
-            LeesPlayer();
+            ReadPlayer();
         }
 
 
-        public void VerwijderenPlayer()
+        public void DeletePlayer()
         {
             if (CurrentPlayer != null)
             {
@@ -107,7 +107,7 @@ namespace MensErgerJeNiet.ViewModel
                 contactDS.DeletePlayer(CurrentPlayer);
 
                 //Refresh
-                LeesPlayer();
+                ReadPlayer();
             }
         }
 

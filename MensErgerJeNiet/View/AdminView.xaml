@@ -42,6 +42,6 @@
         <Button Grid.Row="4" Command="{Binding GotoAdminPlayersViewCommand}" >Players</Button>
         <Button Grid.Row="5" Command="{Binding GotoAdminPositionsViewCommand}" >Positions</Button>
         <Button Grid.Row="6" Command="{Binding GotoAdminPlayerHistoriesViewCommand}" >PlayerHistories</Button>
-        <Button Grid.Row="8" Command="{Binding GotoHomeViewCommand}" >Terug</Button>
+        <Button Grid.Row="8" Command="{Binding GotoHomeViewCommand}" >Back</Button>
     </Grid>
 </Page>

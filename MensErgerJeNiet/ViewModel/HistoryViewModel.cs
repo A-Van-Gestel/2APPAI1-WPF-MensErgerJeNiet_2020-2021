@@ -17,7 +17,7 @@ namespace MensErgerJeNiet.ViewModel
 
         public HistoryViewModel()
         {
-            LeesPlayerHistory();
+            ReadPlayerHistory();
             KoppelenCommands();
         }
 
@@ -60,7 +60,7 @@ namespace MensErgerJeNiet.ViewModel
             }
         }
 
-        private void LeesPlayerHistory()
+        private void ReadPlayerHistory()
         {
             //instantiëren dataservice
             PlayerHistoryDataService contactDS =

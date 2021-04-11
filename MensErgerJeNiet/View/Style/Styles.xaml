@@ -57,7 +57,7 @@
     <Style  BasedOn="{StaticResource MaterialDesignTextBox}" TargetType="{x:Type TextBox}" x:Key="PlayerSelectionInputName">
         <Setter Property="HorizontalAlignment" Value="Left" />
         <Setter Property="VerticalAlignment" Value="Center" />
-        <Setter Property="FontSize" Value="25" />
+        <Setter Property="FontSize" Value="20" />
         <Setter Property="FontWeight" Value="Normal" />
         <Setter Property="Height" Value="40" />
         <Setter Property="Width" Value="620" />
@@ -68,7 +68,7 @@
         <Setter Property="HorizontalAlignment" Value="Left" />
         <Setter Property="VerticalAlignment" Value="Center" />
         <Setter Property="FontWeight" Value="Normal" />
-        <Setter Property="FontSize" Value="25" />
+        <Setter Property="FontSize" Value="20" />
         <Setter Property="Height" Value="40" />
         <Setter Property="Width" Value="200" />
     </Style>

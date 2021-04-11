@@ -10,7 +10,7 @@ namespace MensErgerJeNiet.ViewModel
     {
         public AdminPositionsViewModel()
         {
-            LeesPosition();
+            ReadPosition();
             KoppelenCommands();
         }
 
@@ -50,18 +50,18 @@ namespace MensErgerJeNiet.ViewModel
 
         private void KoppelenCommands()
         {
-            WijzigenCommand = new BaseCommand(WijzigenPosition);
-            VerwijderenCommand = new BaseCommand(VerwijderenPosition);
-            ToevoegenCommand = new BaseCommand(ToevoegenPosition);
+            UpdateCommand = new BaseCommand(UpdatePosition);
+            DeleteCommand = new BaseCommand(DeletePosition);
+            AddCommand = new BaseCommand(AddPosition);
             GotoAdminViewCommand = new BaseCommand(AdminView);
         }
 
-        public ICommand VerwijderenCommand { get; set; }
-        public ICommand WijzigenCommand { get; set; }
-        public ICommand ToevoegenCommand { get; set; }
+        public ICommand DeleteCommand { get; set; }
+        public ICommand UpdateCommand { get; set; }
+        public ICommand AddCommand { get; set; }
         public ICommand GotoAdminViewCommand { get; set; }
 
-        private void LeesPosition()
+        private void ReadPosition()
         {
             //instantiëren dataservice
             PositionDataService contactDS =
@@ -84,7 +84,7 @@ namespace MensErgerJeNiet.ViewModel
 
         }
 
-        public void WijzigenPosition()
+        public void UpdatePosition()
         {
             if (CurrentPosition != null)
             {
@@ -93,11 +93,11 @@ namespace MensErgerJeNiet.ViewModel
                 contactDS.UpdatePosition(CurrentPosition);
 
                 //Refresh
-                LeesPosition();
+                ReadPosition();
             }
         }
 
-        public void ToevoegenPosition()
+        public void AddPosition()
         {
             PositionDataService contactDS = new PositionDataService();
             if (CurrentPosition != null)
@@ -110,11 +110,11 @@ namespace MensErgerJeNiet.ViewModel
             }
 
             //Refresh
-            LeesPosition();
+            ReadPosition();
         }
 
 
-        public void VerwijderenPosition()
+        public void DeletePosition()
         {
             if (CurrentPosition != null)
             {
@@ -123,7 +123,7 @@ namespace MensErgerJeNiet.ViewModel
                 contactDS.DeletePosition(CurrentPosition);
 
                 //Refresh
-                LeesPosition();
+                ReadPosition();
             }
         }
 

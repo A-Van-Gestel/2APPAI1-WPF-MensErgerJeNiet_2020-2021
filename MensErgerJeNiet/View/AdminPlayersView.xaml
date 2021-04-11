@@ -50,14 +50,14 @@
                      ToolTip="Player Name" />
             
 
-            <Button Margin="10,50,10,10" Content="Wijzigen"
-                    Command="{Binding WijzigenCommand}" />
-            <Button Margin="10,0,10,10" Content="Verwijderen"
-                    Command="{Binding VerwijderenCommand}" />
-            <Button Margin="10,0,10,10" Content="Toevoegen"
-                    Command="{Binding ToevoegenCommand}" />
+            <Button Margin="10,50,10,10" Content="Update"
+                    Command="{Binding UpdateCommand}" />
+            <Button Margin="10,0,10,10" Content="Delete"
+                    Command="{Binding DeleteCommand}" />
+            <Button Margin="10,0,10,10" Content="Add"
+                    Command="{Binding AddCommand}" />
 
-            <Button Margin="0,100,0,0" Command="{Binding GotoAdminViewCommand}" Content="Terug" />
+            <Button Margin="0,100,0,0" Command="{Binding GotoAdminViewCommand}" Content="Back" />
         </StackPanel>
     </Grid>
 </Page>

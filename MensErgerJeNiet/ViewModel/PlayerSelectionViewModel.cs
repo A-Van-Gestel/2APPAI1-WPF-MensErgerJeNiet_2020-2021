@@ -187,7 +187,7 @@ namespace MensErgerJeNiet.ViewModel
 
         public PlayerSelectionViewModel()
         {
-            LeesColors();
+            ReadColors();
             KoppelenCommands();
         }
 
@@ -198,7 +198,7 @@ namespace MensErgerJeNiet.ViewModel
             AddPlayerCommand = new BaseCommand(AddPlayer);
     }
 
-        private void LeesColors()
+        private void ReadColors()
         {
             //instantiëren dataservice
             ColorDataService contactDS =

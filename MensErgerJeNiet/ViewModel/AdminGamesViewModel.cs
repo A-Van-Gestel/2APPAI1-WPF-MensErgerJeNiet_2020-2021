@@ -10,7 +10,7 @@ namespace MensErgerJeNiet.ViewModel
     {
         public AdminGamesViewModel()
         {
-            LeesGame();
+            ReadGame();
             KoppelenCommands();
         }
 
@@ -50,18 +50,18 @@ namespace MensErgerJeNiet.ViewModel
 
         private void KoppelenCommands()
         {
-            WijzigenCommand = new BaseCommand(WijzigenGame);
-            VerwijderenCommand = new BaseCommand(VerwijderenGame);
-            ToevoegenCommand = new BaseCommand(ToevoegenGame);
+            UpdateCommand = new BaseCommand(UpdateGame);
+            DeleteCommand = new BaseCommand(DeleteGame);
+            AddCommand = new BaseCommand(AddGame);
             GotoAdminViewCommand = new BaseCommand(AdminView);
         }
 
-        public ICommand VerwijderenCommand { get; set; }
-        public ICommand WijzigenCommand { get; set; }
-        public ICommand ToevoegenCommand { get; set; }
+        public ICommand DeleteCommand { get; set; }
+        public ICommand UpdateCommand { get; set; }
+        public ICommand AddCommand { get; set; }
         public ICommand GotoAdminViewCommand { get; set; }
 
-        private void LeesGame()
+        private void ReadGame()
         {
             //instantiëren dataservice
             GameDataService contactDS =
@@ -70,7 +70,7 @@ namespace MensErgerJeNiet.ViewModel
             Games = new ObservableCollection<Game>(contactDS.GetGames());
         }
 
-        public void WijzigenGame()
+        public void UpdateGame()
         {
             if (CurrentGame != null)
             {
@@ -79,11 +79,11 @@ namespace MensErgerJeNiet.ViewModel
                 contactDS.UpdateGame(CurrentGame);
 
                 //Refresh
-                LeesGame();
+                ReadGame();
             }
         }
 
-        public void ToevoegenGame()
+        public void AddGame()
         {
             GameDataService contactDS = new GameDataService();
             if (CurrentGame != null)
@@ -96,11 +96,11 @@ namespace MensErgerJeNiet.ViewModel
             }
                 
             //Refresh
-            LeesGame();
+            ReadGame();
         }
 
 
-        public void VerwijderenGame()
+        public void DeleteGame()
         {
             if (CurrentGame != null)
             {
@@ -109,7 +109,7 @@ namespace MensErgerJeNiet.ViewModel
                 contactDS.DeleteGame(CurrentGame);
 
                 //Refresh
-                LeesGame();
+                ReadGame();
             }
         }
 

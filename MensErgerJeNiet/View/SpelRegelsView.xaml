@@ -46,6 +46,6 @@
             </TextBlock>
         </ScrollViewer>
 
-        <Button Grid.Row="3" Command="{Binding GotoHomeViewCommand}" >Terug</Button>
+        <Button Grid.Row="3" Command="{Binding GotoHomeViewCommand}" >Back</Button>
     </Grid>
 </Page>

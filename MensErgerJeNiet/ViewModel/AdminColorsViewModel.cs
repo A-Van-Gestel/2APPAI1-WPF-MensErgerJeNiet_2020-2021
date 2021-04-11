@@ -8,7 +8,7 @@ namespace MensErgerJeNiet.ViewModel
     {
         public AdminColorsViewModel()
         {
-            LeesColors();
+            ReadColors();
             KoppelenCommands();
         }
 
@@ -48,18 +48,18 @@ namespace MensErgerJeNiet.ViewModel
 
         private void KoppelenCommands()
         {
-            WijzigenCommand = new BaseCommand(WijzigenColor);
-            VerwijderenCommand = new BaseCommand(VerwijderenColor);
-            ToevoegenCommand = new BaseCommand(ToevoegenColor);
+            UpdateCommand = new BaseCommand(UpdateColor);
+            DeleteCommand = new BaseCommand(DeleteColor);
+            AddCommand = new BaseCommand(AddColor);
             GotoAdminViewCommand = new BaseCommand(AdminView);
         }
 
-        public ICommand VerwijderenCommand { get; set; }
-        public ICommand WijzigenCommand { get; set; }
-        public ICommand ToevoegenCommand { get; set; }
+        public ICommand DeleteCommand { get; set; }
+        public ICommand UpdateCommand { get; set; }
+        public ICommand AddCommand { get; set; }
         public ICommand GotoAdminViewCommand { get; set; }
 
-        private void LeesColors()
+        private void ReadColors()
         {
             //instantiëren dataservice
             ColorDataService contactDS =
@@ -68,7 +68,7 @@ namespace MensErgerJeNiet.ViewModel
             Colors = new ObservableCollection<Color>(contactDS.GetColors());
         }
 
-        public void WijzigenColor()
+        public void UpdateColor()
         {
             if (CurrentColor != null)
             {
@@ -77,11 +77,11 @@ namespace MensErgerJeNiet.ViewModel
                 contactDS.UpdateColor(CurrentColor);
 
                 //Refresh
-                LeesColors();
+                ReadColors();
             }
         }
 
-        public void ToevoegenColor()
+        public void AddColor()
         {
             ColorDataService contactDS = new ColorDataService();
             if (CurrentColor != null)
@@ -96,11 +96,11 @@ namespace MensErgerJeNiet.ViewModel
             CurrentColor = new Color();
 
             //Refresh
-            LeesColors();
+            ReadColors();
         }
 
 
-        public void VerwijderenColor()
+        public void DeleteColor()
         {
             if (CurrentColor != null)
             {
@@ -109,7 +109,7 @@ namespace MensErgerJeNiet.ViewModel
                 contactDS.DeleteColor(CurrentColor);
 
                 //Refresh
-                LeesColors();
+                ReadColors();
             }
         }
 

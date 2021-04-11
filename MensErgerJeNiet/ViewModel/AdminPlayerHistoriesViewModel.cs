@@ -10,7 +10,7 @@ namespace MensErgerJeNiet.ViewModel
     {
         public AdminPlayerHistoriesViewModel()
         {
-            LeesPlayerHistory();
+            ReadPlayerHistory();
             KoppelenCommands();
         }
 
@@ -50,18 +50,18 @@ namespace MensErgerJeNiet.ViewModel
 
         private void KoppelenCommands()
         {
-            WijzigenCommand = new BaseCommand(WijzigenPlayerHistory);
-            VerwijderenCommand = new BaseCommand(VerwijderenPlayerHistory);
-            ToevoegenCommand = new BaseCommand(ToevoegenPlayerHistory);
+            UpdateCommand = new BaseCommand(UpdatePlayerHistory);
+            DeleteCommand = new BaseCommand(DeletePlayerHistory);
+            AddCommand = new BaseCommand(AddPlayerHistory);
             GotoAdminViewCommand = new BaseCommand(AdminView);
         }
 
-        public ICommand VerwijderenCommand { get; set; }
-        public ICommand WijzigenCommand { get; set; }
-        public ICommand ToevoegenCommand { get; set; }
+        public ICommand DeleteCommand { get; set; }
+        public ICommand UpdateCommand { get; set; }
+        public ICommand AddCommand { get; set; }
         public ICommand GotoAdminViewCommand { get; set; }
 
-        private void LeesPlayerHistory()
+        private void ReadPlayerHistory()
         {
             //instantiëren dataservice
             PlayerHistoryDataService contactDS =
@@ -109,7 +109,7 @@ namespace MensErgerJeNiet.ViewModel
 
         }
 
-        public void WijzigenPlayerHistory()
+        public void UpdatePlayerHistory()
         {
             if (CurrentPlayerHistory != null)
             {
@@ -118,11 +118,11 @@ namespace MensErgerJeNiet.ViewModel
                 contactDS.UpdatePlayerHistory(CurrentPlayerHistory);
 
                 //Refresh
-                LeesPlayerHistory();
+                ReadPlayerHistory();
             }
         }
 
-        public void ToevoegenPlayerHistory()
+        public void AddPlayerHistory()
         {
             PlayerHistoryDataService contactDS = new PlayerHistoryDataService();
             if (CurrentPlayerHistory != null)
@@ -136,11 +136,11 @@ namespace MensErgerJeNiet.ViewModel
 
 
             //Refresh
-            LeesPlayerHistory();
+            ReadPlayerHistory();
         }
 
 
-        public void VerwijderenPlayerHistory()
+        public void DeletePlayerHistory()
         {
             if (CurrentPlayerHistory != null)
             {
@@ -149,7 +149,7 @@ namespace MensErgerJeNiet.ViewModel
                 contactDS.DeletePlayerHistory(CurrentPlayerHistory);
 
                 //Refresh
-                LeesPlayerHistory();
+                ReadPlayerHistory();
             }
         }
 

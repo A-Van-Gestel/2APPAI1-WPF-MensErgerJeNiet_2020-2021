@@ -81,7 +81,16 @@
                       SelectedValue="{Binding CurrentPlayerHistory.Color.ID}"
                       SelectedItem="{Binding CurrentPlayerHistory.Color}" 
                       materialDesign:ComboBoxAssist.ShowSelectedItem="True"
-                      materialDesign:HintAssist.Hint="Color"/>
+                      materialDesign:HintAssist.Hint="Color">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <Rectangle Fill="{Binding Code}" Width="16" Height="16" Margin="0,2,5,2" />
+                            <TextBlock Text="{Binding Name}" />
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
 
             <!-- ColorID -->
             <TextBlock Style="{StaticResource  MaterialDesignSubtitle2TextBlock}" Margin="10,10,10,3" >GameID:</TextBlock>
@@ -152,17 +161,17 @@
                 </Grid.RowDefinitions>
 
                 <Button Grid.Row="0" Grid.Column="0"
-                    Content="Wijzigen"
-                    Command="{Binding WijzigenCommand}" />
+                    Content="Update"
+                    Command="{Binding UpdateCommand}" />
                 <Button Grid.Row="0" Grid.Column="1"
-                    Content="Verwijderen"
-                    Command="{Binding VerwijderenCommand}" />
+                    Content="Delete"
+                    Command="{Binding DeleteCommand}" />
                 <Button Grid.Row="0" Grid.Column="2"
-                    Content="Toevoegen"
-                    Command="{Binding ToevoegenCommand}" />
+                    Content="Add"
+                    Command="{Binding AddCommand}" />
 
                 <Button Grid.Row="1" Grid.Column="1"
-                    Command="{Binding GotoAdminViewCommand}" Content="Terug" />
+                    Command="{Binding GotoAdminViewCommand}" Content="Back" />
             </Grid>
         </StackPanel>
     </Grid>
