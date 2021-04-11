@@ -5,6 +5,8 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:MensErgerJeNiet.View"
       xmlns:viewmodel="clr-namespace:MensErgerJeNiet.ViewModel"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:converters="clr-namespace:MensErgerJeNiet.Converters"
       mc:Ignorable="d" 
       d:DesignHeight="681" d:DesignWidth="1280"
       Title="PlayerSelection">
@@ -45,27 +47,59 @@
         <TextBlock Grid.Row="0" Grid.Column="1" Style="{StaticResource GameTitle}" >Mens erger je niet!</TextBlock>
         
         <!-- Title -->
-        <TextBlock Grid.Row="1" Grid.Column="1" Style="{StaticResource Title}">Spelers</TextBlock>
+        <TextBlock Grid.Row="1" Grid.Column="1" Style="{StaticResource Title}">Players</TextBlock>
         
         <!-- Players -->
-        <TextBlock Grid.Row="2" Grid.Column="1" Style="{StaticResource PlayerSelectionLabel}">Naam</TextBlock>
-        <TextBlock Grid.Row="2" Grid.Column="2" Style="{StaticResource PlayerSelectionLabel}">Kleur</TextBlock>
+        <TextBlock Grid.Row="2" Grid.Column="1" Style="{StaticResource PlayerSelectionLabel}">Name</TextBlock>
+        <TextBlock Grid.Row="2" Grid.Column="2" Style="{StaticResource PlayerSelectionLabel}">Color</TextBlock>
 
-        <TextBlock Grid.Row="3" Grid.Column="0" Style="{StaticResource PlayerSelectionPlayer}">Speler 1</TextBlock>
-        <TextBox Grid.Row="3" Grid.Column="1" Style="{StaticResource PlayerSelectionInputName}"></TextBox>
-        <ComboBox Grid.Row="3" Grid.Column="3" Style="{StaticResource PlayerSelectionInputKleur}" ></ComboBox>
+        <TextBlock Grid.Row="3" Grid.Column="0" Style="{StaticResource PlayerSelectionPlayer}">Player 1</TextBlock>
+        <TextBox Grid.Row="3" Grid.Column="1" Style="{StaticResource PlayerSelectionInputName}"
+                 Text="{Binding Player1.Name}"
+                 materialDesign:HintAssist.Hint="Player name" />
+        <ComboBox   Grid.Row="3" Grid.Column="3" Style="{StaticResource PlayerSelectionInputKleur}"
+                    ItemsSource="{Binding Colors}" 
+                    SelectedValuePath="ID" 
+                    SelectedValue="{Binding ColorPlayer1.Color.ID}"
+                    SelectedItem="{Binding ColorPlayer1.Color}" 
+                    materialDesign:ComboBoxAssist.ShowSelectedItem="True"
+                    materialDesign:HintAssist.Hint="Color"/>
 
-        <TextBlock Grid.Row="4" Grid.Column="0" Style="{StaticResource PlayerSelectionPlayer}">Speler 2</TextBlock>
-        <TextBox Grid.Row="4" Grid.Column="1" Style="{StaticResource PlayerSelectionInputName}"></TextBox>
-        <ComboBox Grid.Row="4" Grid.Column="3" Style="{StaticResource PlayerSelectionInputKleur}" ></ComboBox>
+        <TextBlock Grid.Row="4" Grid.Column="0" Style="{StaticResource PlayerSelectionPlayer}">Player 2</TextBlock>
+        <TextBox Grid.Row="4" Grid.Column="1" Style="{StaticResource PlayerSelectionInputName}"
+                 Text="{Binding Player2.Name}"
+                 materialDesign:HintAssist.Hint="Player name" />
+        <ComboBox   Grid.Row="4" Grid.Column="3" Style="{StaticResource PlayerSelectionInputKleur}"
+                    ItemsSource="{Binding Colors}" 
+                    SelectedValuePath="ID" 
+                    SelectedValue="{Binding ColorPlayer2.Color.ID}"
+                    SelectedItem="{Binding ColorPlayer2.Color}" 
+                    materialDesign:ComboBoxAssist.ShowSelectedItem="True"
+                    materialDesign:HintAssist.Hint="Color"/>
 
-        <TextBlock Grid.Row="5" Grid.Column="0" Style="{StaticResource PlayerSelectionPlayer}">Speler 3</TextBlock>
-        <TextBox Grid.Row="5" Grid.Column="1" Style="{StaticResource PlayerSelectionInputName}"></TextBox>
-        <ComboBox Grid.Row="5" Grid.Column="3" Style="{StaticResource PlayerSelectionInputKleur}" ></ComboBox>
+        <TextBlock Grid.Row="5" Grid.Column="0" Style="{StaticResource PlayerSelectionPlayer}">Player 3</TextBlock>
+        <TextBox Grid.Row="5" Grid.Column="1" Style="{StaticResource PlayerSelectionInputName}"
+                 Text="{Binding Player3.Name}"
+                 materialDesign:HintAssist.Hint="Player name" />
+        <ComboBox   Grid.Row="5" Grid.Column="3" Style="{StaticResource PlayerSelectionInputKleur}"
+                    ItemsSource="{Binding Colors}" 
+                    SelectedValuePath="ID" 
+                    SelectedValue="{Binding ColorPlayer3.Color.ID}"
+                    SelectedItem="{Binding ColorPlayer3.Color}" 
+                    materialDesign:ComboBoxAssist.ShowSelectedItem="True"
+                    materialDesign:HintAssist.Hint="Color"/>
 
-        <TextBlock Grid.Row="6" Grid.Column="0" Style="{StaticResource PlayerSelectionPlayer}">Speler 4</TextBlock>
-        <TextBox Grid.Row="6" Grid.Column="1" Style="{StaticResource PlayerSelectionInputName}"></TextBox>
-        <ComboBox Grid.Row="6" Grid.Column="3" Style="{StaticResource PlayerSelectionInputKleur}" ></ComboBox>
+        <TextBlock Grid.Row="6" Grid.Column="0" Style="{StaticResource PlayerSelectionPlayer}">Player 4</TextBlock>
+        <TextBox Grid.Row="6" Grid.Column="1" Style="{StaticResource PlayerSelectionInputName}"
+                 Text="{Binding Player4.Name}"
+                 materialDesign:HintAssist.Hint="Player name" />
+        <ComboBox   Grid.Row="6" Grid.Column="3" Style="{StaticResource PlayerSelectionInputKleur}"
+                    ItemsSource="{Binding Colors}" 
+                    SelectedValuePath="ID" 
+                    SelectedValue="{Binding ColorPlayer4.Color.ID}"
+                    SelectedItem="{Binding ColorPlayer4.Color}" 
+                    materialDesign:ComboBoxAssist.ShowSelectedItem="True"
+                    materialDesign:HintAssist.Hint="Color"/>
 
         <!-- Buttons -->
         <Button Grid.Row="7" Grid.Column="1" HorizontalAlignment="Left" Command="{Binding GotoHomeViewCommand}" >Terug</Button>

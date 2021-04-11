@@ -5,6 +5,8 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:MensErgerJeNiet.View"
       xmlns:viewmodel="clr-namespace:MensErgerJeNiet.ViewModel"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:converters="clr-namespace:MensErgerJeNiet.Converters"
       mc:Ignorable="d" 
       d:DesignHeight="681" d:DesignWidth="1280"
       Title="SpelRegels">

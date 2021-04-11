@@ -33,9 +33,6 @@
                   SelectedItem="{Binding CurrentGame}" >
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Width="250" 
-                                    Header="PlayerHistory"
-                                    DisplayMemberBinding="{Binding PlayerHistory}" />
                     <GridViewColumn Width="NaN" 
                                     Header="Date"
                                     DisplayMemberBinding="{Binding Path=Date, StringFormat={}{0:MM/dd/yyyy}}" />
@@ -47,21 +44,6 @@
         </ListView>
 
         <StackPanel Grid.Row="1" Grid.Column="1">
-            <!-- PlayerHistoryID -->
-            <TextBlock Style="{StaticResource  MaterialDesignSubtitle2TextBlock}" Margin="10,10,10,3" >PlayerHistoryID:</TextBlock>
-            <!--<TextBox Margin="10,5,10,10" 
-                     Text="{Binding CurrentGame.PlayerHistoryID}" 
-                     materialDesign:HintAssist.Hint="PlayerHistoryID"
-                     MaxLength="50"
-                     ToolTip="PlayerHistoryID" />-->
-            <ComboBox Margin="10,5,10,10" 
-                      ItemsSource="{Binding PlayerHistories}" 
-                      SelectedValuePath="ID" 
-                      SelectedValue="{Binding CurrentGame.PlayerHistory.ID}"
-                      SelectedItem="{Binding CurrentGame.PlayerHistory}" 
-                      materialDesign:ComboBoxAssist.ShowSelectedItem="True"
-                      materialDesign:HintAssist.Hint="PlayerHistory"/>
-
             <!-- Date -->
             <TextBlock Style="{StaticResource  MaterialDesignSubtitle2TextBlock}" Margin="10,10,10,3" >Date:</TextBlock>
             <DatePicker Margin="10,5,10,10"

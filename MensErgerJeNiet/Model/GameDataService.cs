@@ -21,23 +21,16 @@ namespace MensErgerJeNiet.Model
         private static IDbConnection db = new SqlConnection(connectionString);
 
         // Get All Games in a List
-        public ObservableCollection<Game> GetGame()
+        public ObservableCollection<Game> GetGames()
         {
             // Stap 2 Dapper
             // Uitschrijven SQL statement & bewaren in een string. 
-            string sql = "Select * from Game g INNER JOIN PlayerHistory ph ON g.PlayerHistoryID = ph.Id order by Date";
+            string sql = "Select * from Game order by Date";
 
             // Stap 3 Dapper
             // Uitvoeren SQL statement op db instance 
-            // Type casten van het generieke return type naar een collectie van games
-            var games = db.Query<Game, PlayerHistory, Game>(sql, (game, playerHistory) =>
-            {
-                game.PlayerHistory = playerHistory;
-                return game;
-            },
-            splitOn: "Id");
-
-            return new ObservableCollection<Game>((List<Game>)games);
+            // Type casten van het generieke return type naar een collectie van players
+            return new ObservableCollection<Game>((List<Game>)db.Query<Game>(sql));
         }
 
         // Get a Game by ID
@@ -57,12 +50,11 @@ namespace MensErgerJeNiet.Model
         public void UpdateGame(Game game)
         {
             // SQL statement update 
-            string sql = "Update Game set playerHistoryID = @playerHistoryID, date = @date, isActive = @isActive where id = @id";
+            string sql = "Update Game set date = @date, isActive = @isActive where id = @id";
 
             // Uitvoeren SQL statement en doorgeven parametercollectie
             db.Execute(sql, new
             {
-                game.PlayerHistoryID,
                 game.Date,
                 game.IsActive,
                 game.ID
@@ -73,12 +65,11 @@ namespace MensErgerJeNiet.Model
         public void InsertGame(Game game)
         {
             // SQL statement insert
-            string sql = "Insert into Game (playerHistoryID, date, isActive) values (@playerHistoryID, @date, @isActive)";
+            string sql = "Insert into Game (date, isActive) values (@date, @isActive)";
 
             // Uitvoeren SQL statement en doorgeven parametercollectie
             db.Execute(sql, new
             {
-                game.PlayerHistoryID,
                 game.Date,
                 game.IsActive
             });

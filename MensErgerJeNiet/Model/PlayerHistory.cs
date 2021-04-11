@@ -5,32 +5,39 @@
         private int id;
         private int playerID;
         private int colorID;
+        private int gameID;
         private int countTime;
         private int countSixes;
         private int countTurns;
         private bool isTurn;
+        private bool isWinner;
         private Player player;
         private Color color;
+        private Game game;
 
 
         public PlayerHistory() 
         {
             PlayerID = 1;
             ColorID = 1;
+            GameID = 1;
             CountTime = 0;
             CountSixes = 0;
             CountTurns = 0;
             IsTurn = false;
+            IsWinner = false;
         }
 
-        public PlayerHistory(int playerID, int colorID, int countTime, int countSixes, int countTurns, bool isTurn)
+        public PlayerHistory(int playerID, int colorID, int gameID, int countTime, int countSixes, int countTurns, bool isTurn, bool isWinner)
         {
             PlayerID = playerID;
             ColorID = colorID;
+            GameID = gameID;
             CountTime = countTime;
             CountSixes = countSixes;
             CountTurns = countTurns;
             IsTurn = isTurn;
+            IsWinner = isWinner;
         }
 
 
@@ -106,6 +113,35 @@
             }
         }
 
+        public int GameID
+        {
+            get
+            {
+                return gameID;
+            }
+
+            set
+            {
+                gameID = value;
+                NotifyPropertyChanged();
+            }
+        }
+
+        public Game Game
+        {
+            get
+            {
+                return game;
+            }
+
+            set
+            {
+                game = value;
+                gameID = value.ID;
+                NotifyPropertyChanged();
+            }
+        }
+
         public int CountTime
         {
             get
@@ -162,9 +198,30 @@
             }
         }
 
+        public bool IsWinner
+        {
+            get
+            {
+                return isWinner;
+            }
+
+            set
+            {
+                isWinner = value;
+                NotifyPropertyChanged();
+            }
+        }
+
         public override string ToString()
         {
-            return ID.ToString();
+            if (Player != null & Color != null)
+            {
+                return ID.ToString() + " ( Player: " + Player.Name + " | Color: " + Color.Name + ")";
+            }
+            else
+            {
+                return ID.ToString();
+            }
         }
 
     }

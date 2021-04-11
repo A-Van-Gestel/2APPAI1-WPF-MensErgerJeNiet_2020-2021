@@ -25,15 +25,37 @@ namespace MensErgerJeNiet.Model
         {
             // Stap 2 Dapper
             // Uitschrijven SQL statement & bewaren in een string. 
-            string sql = "Select * from PlayerHistory ph INNER JOIN Player pl ON ph.PlayerID = pl.Id INNER JOIN Color c ON ph.ColorID = c.Id";
+            string sql = "Select * from PlayerHistory ph INNER JOIN Player pl ON ph.PlayerID = pl.Id INNER JOIN Color c ON ph.ColorID = c.Id INNER JOIN Game g ON ph.GameID = g.Id";
 
             //// Stap 3 Dapper
             //// Uitvoeren SQL statement op db instance 
             //// Type casten van het generieke return type naar een collectie van playerHistories
-            var playerHistories = db.Query<PlayerHistory, Player, Color, PlayerHistory>(sql, (playerHistory, player, color) =>
+            var playerHistories = db.Query<PlayerHistory, Player, Color, Game, PlayerHistory>(sql, (playerHistory, player, color, game) =>
             {
                 playerHistory.Player = player;
                 playerHistory.Color = color;
+                playerHistory.Game = game;
+                return playerHistory;
+            },
+            splitOn: "Id");
+
+            return new ObservableCollection<PlayerHistory>((List<PlayerHistory>)playerHistories);
+        }
+
+        public ObservableCollection<PlayerHistory> GetPlayerHistoriesFromWinners()
+        {
+            // Stap 2 Dapper
+            // Uitschrijven SQL statement & bewaren in een string. 
+            string sql = "Select * from PlayerHistory ph INNER JOIN Player pl ON ph.PlayerID = pl.Id INNER JOIN Color c ON ph.ColorID = c.Id INNER JOIN Game g ON ph.GameID = g.Id where isWinner = 1";
+
+            //// Stap 3 Dapper
+            //// Uitvoeren SQL statement op db instance 
+            //// Type casten van het generieke return type naar een collectie van playerHistories
+            var playerHistories = db.Query<PlayerHistory, Player, Color, Game, PlayerHistory>(sql, (playerHistory, player, color, game) =>
+            {
+                playerHistory.Player = player;
+                playerHistory.Color = color;
+                playerHistory.Game = game;
                 return playerHistory;
             },
             splitOn: "Id");

@@ -67,20 +67,7 @@ namespace MensErgerJeNiet.ViewModel
             GameDataService contactDS =
                new GameDataService();
 
-            Games = new ObservableCollection<Game>(contactDS.GetGame());
-
-            //PlayerHistories inlezen
-            PlayerHistoryDataService playerHistoryDataService = new PlayerHistoryDataService();
-            PlayerHistories = playerHistoryDataService.GetPlayerHistories();
-
-            foreach (Game game in Games)
-            {
-                //Relatie
-                if (game.PlayerHistoryID > 0)
-                {
-                    SelectedPlayerHistory = PlayerHistories.FirstOrDefault(ph => ph.ID == game.PlayerHistoryID);
-                }
-            }
+            Games = new ObservableCollection<Game>(contactDS.GetGames());
         }
 
         public void WijzigenGame()
@@ -126,35 +113,6 @@ namespace MensErgerJeNiet.ViewModel
             }
         }
 
-        private ObservableCollection<PlayerHistory> playerHistories;
-        public ObservableCollection<PlayerHistory> PlayerHistories
-        {
-            get
-            {
-                return playerHistories;
-            }
-
-            set
-            {
-                playerHistories = value;
-                NotifyPropertyChanged();
-            }
-        }
-
-        private PlayerHistory selectedPlayerHistory { get; set; }
-        public PlayerHistory SelectedPlayerHistory
-        {
-            get
-            {
-                return selectedPlayerHistory;
-            }
-
-            set
-            {
-                selectedPlayerHistory = value;
-                NotifyPropertyChanged();
-            }
-        }
 
         private void AdminView()
         {

@@ -8,7 +8,7 @@ namespace MensErgerJeNiet.ViewModel
     {
         public AdminColorsViewModel()
         {
-            LeesColor();
+            LeesColors();
             KoppelenCommands();
         }
 
@@ -59,7 +59,7 @@ namespace MensErgerJeNiet.ViewModel
         public ICommand ToevoegenCommand { get; set; }
         public ICommand GotoAdminViewCommand { get; set; }
 
-        private void LeesColor()
+        private void LeesColors()
         {
             //instantiëren dataservice
             ColorDataService contactDS =
@@ -77,7 +77,7 @@ namespace MensErgerJeNiet.ViewModel
                 contactDS.UpdateColor(CurrentColor);
 
                 //Refresh
-                LeesColor();
+                LeesColors();
             }
         }
 
@@ -92,9 +92,11 @@ namespace MensErgerJeNiet.ViewModel
             {
                 contactDS.InsertColor(new Color());
             }
-                
+
+            CurrentColor = new Color();
+
             //Refresh
-            LeesColor();
+            LeesColors();
         }
 
 
@@ -107,7 +109,7 @@ namespace MensErgerJeNiet.ViewModel
                 contactDS.DeleteColor(CurrentColor);
 
                 //Refresh
-                LeesColor();
+                LeesColors();
             }
         }
 

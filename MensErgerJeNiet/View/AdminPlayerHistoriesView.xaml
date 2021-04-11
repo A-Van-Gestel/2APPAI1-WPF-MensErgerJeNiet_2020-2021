@@ -23,7 +23,7 @@
 
     <Grid DataContext="{StaticResource AdminPlayerHistoriesViewModel}">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="750" />
+            <ColumnDefinition Width="850" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
@@ -40,17 +40,23 @@
                                     Header="Color"
                                     DisplayMemberBinding="{Binding Color}" />
                     <GridViewColumn Width="NaN" 
-                                    Header="CountTime"
+                                    Header="Game"
+                                    DisplayMemberBinding="{Binding Game}" />
+                    <GridViewColumn Width="NaN" 
+                                    Header="#Time"
                                     DisplayMemberBinding="{Binding CountTime}" />
                     <GridViewColumn Width="NaN" 
-                                    Header="CountSixes"
+                                    Header="#Sixes"
                                     DisplayMemberBinding="{Binding CountSixes}" />
                     <GridViewColumn Width="NaN" 
-                                    Header="CountTurns"
+                                    Header="#Turns"
                                     DisplayMemberBinding="{Binding CountTurns}" />
                     <GridViewColumn Width="NaN" 
                                     Header="isTurn"
                                     DisplayMemberBinding="{Binding IsTurn}" />
+                    <GridViewColumn Width="NaN" 
+                                    Header="isWinner"
+                                    DisplayMemberBinding="{Binding IsWinner}" />
                 </GridView>
             </ListView.View>
         </ListView>
@@ -77,30 +83,40 @@
                       materialDesign:ComboBoxAssist.ShowSelectedItem="True"
                       materialDesign:HintAssist.Hint="Color"/>
 
+            <!-- ColorID -->
+            <TextBlock Style="{StaticResource  MaterialDesignSubtitle2TextBlock}" Margin="10,10,10,3" >GameID:</TextBlock>
+            <ComboBox Margin="10,5,10,10" 
+                      ItemsSource="{Binding Games}" 
+                      SelectedValuePath="ID" 
+                      SelectedValue="{Binding CurrentPlayerHistory.Game.ID}"
+                      SelectedItem="{Binding CurrentPlayerHistory.Game}" 
+                      materialDesign:ComboBoxAssist.ShowSelectedItem="True"
+                      materialDesign:HintAssist.Hint="Game"/>
+
 
             <!-- CountTime -->
-            <TextBlock Style="{StaticResource  MaterialDesignSubtitle2TextBlock}" Margin="10,10,10,3" >CountTime:</TextBlock>
+            <TextBlock Style="{StaticResource  MaterialDesignSubtitle2TextBlock}" Margin="10,10,10,3" >#Time:</TextBlock>
             <TextBox Margin="10,5,10,10" 
                      Text="{Binding CurrentPlayerHistory.CountTime}" 
-                     materialDesign:HintAssist.Hint="CountTime"
+                     materialDesign:HintAssist.Hint="#Time"
                      MaxLength="50"
-                     ToolTip="CountTime" />
+                     ToolTip="#Time" />
 
             <!-- CountSixes -->
-            <TextBlock Style="{StaticResource  MaterialDesignSubtitle2TextBlock}" Margin="10,10,10,3" >CountSixes:</TextBlock>
+            <TextBlock Style="{StaticResource  MaterialDesignSubtitle2TextBlock}" Margin="10,10,10,3" >#Sixes:</TextBlock>
             <TextBox Margin="10,5,10,10" 
                      Text="{Binding CurrentPlayerHistory.CountSixes}" 
-                     materialDesign:HintAssist.Hint="CountSixes"
+                     materialDesign:HintAssist.Hint="#Sixes"
                      MaxLength="50"
-                     ToolTip="CountSixes" />
+                     ToolTip="#Sixes" />
 
             <!-- CountTurns -->
-            <TextBlock Style="{StaticResource  MaterialDesignSubtitle2TextBlock}" Margin="10,10,10,3" >CountTurns:</TextBlock>
+            <TextBlock Style="{StaticResource  MaterialDesignSubtitle2TextBlock}" Margin="10,10,10,3" >#Turns:</TextBlock>
             <TextBox Margin="10,5,10,10" 
                      Text="{Binding CurrentPlayerHistory.CountTurns}" 
-                     materialDesign:HintAssist.Hint="CountTurns"
+                     materialDesign:HintAssist.Hint="#Turns"
                      MaxLength="50"
-                     ToolTip="CountTurns" />
+                     ToolTip="#Turns" />
 
             <!-- isTurn -->
             <TextBlock Style="{StaticResource  MaterialDesignSubtitle2TextBlock}" Margin="10,10,10,3" >isTurn:</TextBlock>
@@ -113,14 +129,41 @@
                 <ComboBoxItem Tag="False">False</ComboBoxItem>
             </ComboBox>
 
-            <Button Margin="10,20,10,10" Content="Wijzigen"
+            <!-- isWinner -->
+            <TextBlock Style="{StaticResource  MaterialDesignSubtitle2TextBlock}" Margin="10,10,10,3" >isTurn:</TextBlock>
+            <ComboBox Margin="10,5,10,10" 
+                      SelectedValuePath="Tag" 
+                      SelectedValue="{Binding Path=CurrentPlayerHistory.IsWinner, Mode=TwoWay}" 
+                      materialDesign:ComboBoxAssist.ShowSelectedItem="True"
+                      materialDesign:HintAssist.Hint="IsTurn">
+                <ComboBoxItem Tag="True">True</ComboBoxItem>
+                <ComboBoxItem Tag="False">False</ComboBoxItem>
+            </ComboBox>
+
+            <Grid Margin="10,5,10,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50" />
+                    <RowDefinition Height="50" />
+                </Grid.RowDefinitions>
+
+                <Button Grid.Row="0" Grid.Column="0"
+                    Content="Wijzigen"
                     Command="{Binding WijzigenCommand}" />
-            <Button Margin="10,0,10,10" Content="Verwijderen"
+                <Button Grid.Row="0" Grid.Column="1"
+                    Content="Verwijderen"
                     Command="{Binding VerwijderenCommand}" />
-            <Button Margin="10,0,10,10" Content="Toevoegen"
+                <Button Grid.Row="0" Grid.Column="2"
+                    Content="Toevoegen"
                     Command="{Binding ToevoegenCommand}" />
 
-            <Button Margin="0,50,0,0" Command="{Binding GotoAdminViewCommand}" Content="Terug" />
+                <Button Grid.Row="1" Grid.Column="1"
+                    Command="{Binding GotoAdminViewCommand}" Content="Terug" />
+            </Grid>
         </StackPanel>
     </Grid>
 </Page>

@@ -5,6 +5,8 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:MensErgerJeNiet.View"
       xmlns:viewmodel="clr-namespace:MensErgerJeNiet.ViewModel"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:converters="clr-namespace:MensErgerJeNiet.Converters"
       mc:Ignorable="d" 
       d:DesignHeight="681" d:DesignWidth="1280"
       Title="HistoryView">
@@ -21,6 +23,48 @@
 
 
     <Grid DataContext="{StaticResource HistoryViewModel}">
-        <Button Command="{Binding GotoHomeViewCommand}" >Terug</Button>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="125" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="453" />
+            <RowDefinition Height="53" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <TextBlock Grid.Row="0" Style="{StaticResource GameTitle}" >Mens erger je niet!</TextBlock>
+        <TextBlock Grid.Row="1" Style="{StaticResource Title}">Historiek</TextBlock>
+        <ListView Grid.Row="2" 
+                  Margin="200,0"
+                  ItemsSource="{Binding PlayerHistories}" 
+                  SelectionMode="Single" 
+                  SelectedItem="{Binding CurrentPlayerHistory}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Width="NaN" 
+                                    Header="Game"  
+                                    DisplayMemberBinding="{Binding Game, StringFormat=Game {0:#}}" />
+                    <GridViewColumn Width="NaN" 
+                                    Header="Winner"  
+                                    DisplayMemberBinding="{Binding Player.Name}" />
+                    <GridViewColumn Width="NaN" 
+                                    Header="Color"
+                                    DisplayMemberBinding="{Binding Color}" />
+                    <GridViewColumn Width="NaN" 
+                                    Header="#Sixes"
+                                    DisplayMemberBinding="{Binding CountSixes}" />
+                    <GridViewColumn Width="NaN" 
+                                    Header="#Turns"
+                                    DisplayMemberBinding="{Binding CountTurns}" />
+                    <GridViewColumn Width="NaN" 
+                                    Header="#Time"
+                                    DisplayMemberBinding="{Binding CountTime}" />
+                    <GridViewColumn Width="NaN" 
+                                    Header="Date"
+                                    DisplayMemberBinding="{Binding Path=Game.Date, StringFormat={}{0:MM/dd/yyyy}}" />
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Button Grid.Row="4" Command="{Binding GotoHomeViewCommand}" >Terug</Button>
     </Grid>
 </Page>

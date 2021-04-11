@@ -1,4 +1,6 @@
-﻿namespace MensErgerJeNiet.Model
+﻿using System;
+
+namespace MensErgerJeNiet.Model
 {
     class Color : BaseModel
     {
@@ -9,8 +11,11 @@
 
         public Color() 
         {
-            Name = "New color";
-            Code = "#000000";
+            var random = new Random();
+            var randomColor = $"#{random.Next(0x1000000):X6}";
+
+            Name = $"New color ({randomColor})";
+            Code = randomColor;
         }
 
         public Color(string name, string code)

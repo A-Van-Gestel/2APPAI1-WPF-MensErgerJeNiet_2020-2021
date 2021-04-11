@@ -80,6 +80,10 @@ namespace MensErgerJeNiet.ViewModel
             ColorDataService colorDataService = new ColorDataService();
             Colors = colorDataService.GetColors();
 
+            //Games inlezen
+            GameDataService gameDataService = new GameDataService();
+            Games = gameDataService.GetGames();
+
             foreach (PlayerHistory playerHistory in PlayerHistories)
             {
                 //Relatie Players
@@ -92,6 +96,12 @@ namespace MensErgerJeNiet.ViewModel
                 if (playerHistory.ColorID > 0)
                 {
                     SelectedColor = Colors.FirstOrDefault(c => c.ID == playerHistory.ColorID);
+                }
+
+                //Relatie Games
+                if (playerHistory.GameID > 0)
+                {
+                    SelectedGame = Games.FirstOrDefault(g => g.ID == playerHistory.GameID);
                 }
             }
 
@@ -199,6 +209,36 @@ namespace MensErgerJeNiet.ViewModel
             set
             {
                 selectedColor = value;
+                NotifyPropertyChanged();
+            }
+        }
+
+        private ObservableCollection<Game> games;
+        public ObservableCollection<Game> Games
+        {
+            get
+            {
+                return games;
+            }
+
+            set
+            {
+                games = value;
+                NotifyPropertyChanged();
+            }
+        }
+
+        private Game selectedGame { get; set; }
+        public Game SelectedGame
+        {
+            get
+            {
+                return selectedGame;
+            }
+
+            set
+            {
+                selectedGame = value;
                 NotifyPropertyChanged();
             }
         }

@@ -5,6 +5,8 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:MensErgerJeNiet.View"
       xmlns:viewmodel="clr-namespace:MensErgerJeNiet.ViewModel"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:converters="clr-namespace:MensErgerJeNiet.Converters"
       mc:Ignorable="d" 
       d:DesignHeight="681" d:DesignWidth="1280"
       Title="Home">
@@ -31,9 +33,9 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
         <TextBlock Grid.Row="0" Style="{StaticResource GameTitle}" >Mens erger je niet!</TextBlock>
-        <Button Grid.Row="1" Command="{Binding GotoPlayerSelectionViewCommand}" >Speel</Button>
-        <Button Grid.Row="2" Command="{Binding GotoHistoryViewCommand}" >Historiek</Button>
-        <Button Grid.Row="3" Command="{Binding GotoSpelRegelsViewCommand}" >Spelregels</Button>
+        <Button Grid.Row="1" Command="{Binding GotoPlayerSelectionViewCommand}" >Play</Button>
+        <Button Grid.Row="2" Command="{Binding GotoHistoryViewCommand}" >History</Button>
+        <Button Grid.Row="3" Command="{Binding GotoSpelRegelsViewCommand}" >Playing rules</Button>
         <Button Grid.Row="4" Command="{Binding GotoAdminViewCommand}" >Admin Tools</Button>
     </Grid>
 </Page>
