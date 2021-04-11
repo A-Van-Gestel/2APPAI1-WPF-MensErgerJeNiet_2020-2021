@@ -65,7 +65,7 @@ namespace MensErgerJeNiet.ViewModel
             ColorDataService contactDS =
                new ColorDataService();
 
-            Colors = new ObservableCollection<Color>(contactDS.GetColor());
+            Colors = new ObservableCollection<Color>(contactDS.GetColors());
         }
 
         public void WijzigenColor()
@@ -84,8 +84,15 @@ namespace MensErgerJeNiet.ViewModel
         public void ToevoegenColor()
         {
             ColorDataService contactDS = new ColorDataService();
-            contactDS.InsertColor(new Color("New Color", "#000000"));
-
+            if (CurrentColor != null)
+            {
+                contactDS.InsertColor(CurrentColor);
+            }
+            else
+            {
+                contactDS.InsertColor(new Color());
+            }
+                
             //Refresh
             LeesColor();
         }

@@ -34,11 +34,11 @@
             <ListView.View>
                 <GridView>
                     <GridViewColumn Width="NaN" 
-                                    Header="PlayerID"  
-                                    DisplayMemberBinding="{Binding PlayerID}" />
+                                    Header="Player"  
+                                    DisplayMemberBinding="{Binding Player}" />
                     <GridViewColumn Width="NaN" 
-                                    Header="ColorID"
-                                    DisplayMemberBinding="{Binding ColorID}" />
+                                    Header="Color"
+                                    DisplayMemberBinding="{Binding Color}" />
                     <GridViewColumn Width="NaN" 
                                     Header="CountTime"
                                     DisplayMemberBinding="{Binding CountTime}" />
@@ -58,19 +58,25 @@
         <StackPanel Grid.Row="1" Grid.Column="1">
             <!-- PlayerID -->
             <TextBlock Style="{StaticResource  MaterialDesignSubtitle2TextBlock}" Margin="10,10,10,3" >PlayerID:</TextBlock>
-            <TextBox Margin="10,5,10,10" 
-                     Text="{Binding CurrentPlayerHistory.PlayerID}" 
-                     materialDesign:HintAssist.Hint="PlayerID"
-                     MaxLength="50"
-                     ToolTip="PlayerID" />
+            <ComboBox Margin="10,5,10,10" 
+                      ItemsSource="{Binding Players}" 
+                      SelectedValuePath="ID" 
+                      SelectedValue="{Binding CurrentPlayerHistory.Player.ID}"
+                      SelectedItem="{Binding CurrentPlayerHistory.Player}" 
+                      materialDesign:ComboBoxAssist.ShowSelectedItem="True"
+                      materialDesign:HintAssist.Hint="Player"/>
+
 
             <!-- ColorID -->
             <TextBlock Style="{StaticResource  MaterialDesignSubtitle2TextBlock}" Margin="10,10,10,3" >ColorID:</TextBlock>
-            <TextBox Margin="10,5,10,10" 
-                     Text="{Binding CurrentPlayerHistory.ColorID}" 
-                     materialDesign:HintAssist.Hint="ColorID"
-                     MaxLength="50"
-                     ToolTip="ColorID" />
+            <ComboBox Margin="10,5,10,10" 
+                      ItemsSource="{Binding Colors}" 
+                      SelectedValuePath="ID" 
+                      SelectedValue="{Binding CurrentPlayerHistory.Color.ID}"
+                      SelectedItem="{Binding CurrentPlayerHistory.Color}" 
+                      materialDesign:ComboBoxAssist.ShowSelectedItem="True"
+                      materialDesign:HintAssist.Hint="Color"/>
+
 
             <!-- CountTime -->
             <TextBlock Style="{StaticResource  MaterialDesignSubtitle2TextBlock}" Margin="10,10,10,3" >CountTime:</TextBlock>
@@ -98,11 +104,14 @@
 
             <!-- isTurn -->
             <TextBlock Style="{StaticResource  MaterialDesignSubtitle2TextBlock}" Margin="10,10,10,3" >isTurn:</TextBlock>
-            <TextBox Margin="10,5,10,10" 
-                     Text="{Binding CurrentPlayerHistory.IsTurn}" 
-                     materialDesign:HintAssist.Hint="isTurn"
-                     MaxLength="50"
-                     ToolTip="isTurn" />
+            <ComboBox Margin="10,5,10,10" 
+                      SelectedValuePath="Tag" 
+                      SelectedValue="{Binding Path=CurrentPlayerHistory.IsTurn, Mode=TwoWay}" 
+                      materialDesign:ComboBoxAssist.ShowSelectedItem="True"
+                      materialDesign:HintAssist.Hint="IsTurn">
+                <ComboBoxItem Tag="True">True</ComboBoxItem>
+                <ComboBoxItem Tag="False">False</ComboBoxItem>
+            </ComboBox>
 
             <Button Margin="10,20,10,10" Content="Wijzigen"
                     Command="{Binding WijzigenCommand}" />

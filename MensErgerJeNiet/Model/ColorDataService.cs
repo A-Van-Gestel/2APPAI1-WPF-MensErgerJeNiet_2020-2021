@@ -21,7 +21,7 @@ namespace MensErgerJeNiet.Model
         private static IDbConnection db = new SqlConnection(connectionString);
 
         // Get All Colors in a List
-        public ObservableCollection<Color> GetColor()
+        public ObservableCollection<Color> GetColors()
         {
             // Stap 2 Dapper
             // Uitschrijven SQL statement & bewaren in een string. 

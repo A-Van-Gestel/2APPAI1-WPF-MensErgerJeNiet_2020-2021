@@ -100,7 +100,14 @@ namespace MensErgerJeNiet.ViewModel
         public void ToevoegenPosition()
         {
             PositionDataService contactDS = new PositionDataService();
-            contactDS.InsertPosition(new Position(playerHistoryID: 1, pion: 1, coordinate: 1, isHome: true, isActive: false));
+            if (CurrentPosition != null)
+            {
+                contactDS.InsertPosition(CurrentPosition);
+            }
+            else
+            {
+                contactDS.InsertPosition(new Position());
+            }
 
             //Refresh
             LeesPosition();

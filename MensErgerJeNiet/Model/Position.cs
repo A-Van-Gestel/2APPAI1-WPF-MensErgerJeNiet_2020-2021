@@ -11,7 +11,14 @@
         private PlayerHistory playerHistory;
 
 
-        public Position() { }
+        public Position() 
+        {
+            PlayerHistoryID = 1;
+            Pion = 1;
+            Coordinate = 1;
+            IsHome = true;
+            IsActive = false;
+        }
 
         public Position(int playerHistoryID, int pion, int coordinate, bool isHome, bool isActive)
         {

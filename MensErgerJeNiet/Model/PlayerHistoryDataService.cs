@@ -25,12 +25,20 @@ namespace MensErgerJeNiet.Model
         {
             // Stap 2 Dapper
             // Uitschrijven SQL statement & bewaren in een string. 
-            string sql = "Select * from PlayerHistory order by PlayerID";
+            string sql = "Select * from PlayerHistory ph INNER JOIN Player pl ON ph.PlayerID = pl.Id INNER JOIN Color c ON ph.ColorID = c.Id";
 
-            // Stap 3 Dapper
-            // Uitvoeren SQL statement op db instance 
-            // Type casten van het generieke return type naar een collectie van contactpersonen
-            return new ObservableCollection<PlayerHistory>((List<PlayerHistory>)db.Query<PlayerHistory>(sql));
+            //// Stap 3 Dapper
+            //// Uitvoeren SQL statement op db instance 
+            //// Type casten van het generieke return type naar een collectie van playerHistories
+            var playerHistories = db.Query<PlayerHistory, Player, Color, PlayerHistory>(sql, (playerHistory, player, color) =>
+            {
+                playerHistory.Player = player;
+                playerHistory.Color = color;
+                return playerHistory;
+            },
+            splitOn: "Id");
+
+            return new ObservableCollection<PlayerHistory>((List<PlayerHistory>)playerHistories);
         }
 
         // Get a PlayerHistory by ID

@@ -44,7 +44,7 @@
                                     Header="Preview">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <Rectangle Height="20" Width="100" Fill="{Binding Code}"/>
+                                <Rectangle Height="20" Width="100" Fill="{Binding Code}" Stroke="#0F000000"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                         

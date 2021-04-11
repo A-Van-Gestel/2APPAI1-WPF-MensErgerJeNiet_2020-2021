@@ -84,19 +84,25 @@
 
             <!-- IsHome -->
             <TextBlock Style="{StaticResource  MaterialDesignSubtitle2TextBlock}" Margin="10,10,10,3" >IsHome:</TextBlock>
-            <TextBox Margin="10,5,10,10" 
-                     Text="{Binding CurrentPosition.IsHome}" 
-                     materialDesign:HintAssist.Hint="IsHome"
-                     MaxLength="50"
-                     ToolTip="IsHome" />
+            <ComboBox Margin="10,5,10,10" 
+                      SelectedValuePath="Tag" 
+                      SelectedValue="{Binding Path=CurrentPosition.IsHome, Mode=TwoWay}" 
+                      materialDesign:ComboBoxAssist.ShowSelectedItem="True"
+                      materialDesign:HintAssist.Hint="IsHome">
+                <ComboBoxItem Tag="True">True</ComboBoxItem>
+                <ComboBoxItem Tag="False">False</ComboBoxItem>
+            </ComboBox>
 
             <!-- IsActive -->
             <TextBlock Style="{StaticResource  MaterialDesignSubtitle2TextBlock}" Margin="10,10,10,3" >IsActive:</TextBlock>
-            <TextBox Margin="10,5,10,10" 
-                     Text="{Binding CurrentPosition.IsActive}" 
-                     materialDesign:HintAssist.Hint="IsActive"
-                     MaxLength="50"
-                     ToolTip="IsActive" />
+            <ComboBox Margin="10,5,10,10" 
+                      SelectedValuePath="Tag" 
+                      SelectedValue="{Binding Path=CurrentPosition.IsActive, Mode=TwoWay}" 
+                      materialDesign:ComboBoxAssist.ShowSelectedItem="True"
+                      materialDesign:HintAssist.Hint="IsActive">
+                <ComboBoxItem Tag="True">True</ComboBoxItem>
+                <ComboBoxItem Tag="False">False</ComboBoxItem>
+            </ComboBox>
 
             <Button Margin="10,50,10,10" Content="Wijzigen"
                     Command="{Binding WijzigenCommand}" />

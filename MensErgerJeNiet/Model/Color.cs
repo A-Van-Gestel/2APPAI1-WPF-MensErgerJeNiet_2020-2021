@@ -7,7 +7,11 @@
         private string code;
 
 
-        public Color() { }
+        public Color() 
+        {
+            Name = "New color";
+            Code = "#000000";
+        }
 
         public Color(string name, string code)
         {

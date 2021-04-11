@@ -30,15 +30,15 @@
         <ListView Grid.Column="0" 
                   ItemsSource="{Binding Games}" 
                   SelectionMode="Single" 
-                  SelectedItem="{Binding CurrentGame}">
+                  SelectedItem="{Binding CurrentGame}" >
             <ListView.View>
                 <GridView>
                     <GridViewColumn Width="250" 
-                                    Header="PlayerHistoryID"  
-                                    DisplayMemberBinding="{Binding PlayerHistoryID}" />
+                                    Header="PlayerHistory"
+                                    DisplayMemberBinding="{Binding PlayerHistory}" />
                     <GridViewColumn Width="NaN" 
                                     Header="Date"
-                                    DisplayMemberBinding="{Binding Date}" />
+                                    DisplayMemberBinding="{Binding Path=Date, StringFormat={}{0:MM/dd/yyyy}}" />
                     <GridViewColumn Width="150" 
                                     Header="isActive"
                                     DisplayMemberBinding="{Binding IsActive}" />
@@ -49,27 +49,35 @@
         <StackPanel Grid.Row="1" Grid.Column="1">
             <!-- PlayerHistoryID -->
             <TextBlock Style="{StaticResource  MaterialDesignSubtitle2TextBlock}" Margin="10,10,10,3" >PlayerHistoryID:</TextBlock>
-            <TextBox Margin="10,5,10,10" 
+            <!--<TextBox Margin="10,5,10,10" 
                      Text="{Binding CurrentGame.PlayerHistoryID}" 
                      materialDesign:HintAssist.Hint="PlayerHistoryID"
                      MaxLength="50"
-                     ToolTip="PlayerHistoryID" />
+                     ToolTip="PlayerHistoryID" />-->
+            <ComboBox Margin="10,5,10,10" 
+                      ItemsSource="{Binding PlayerHistories}" 
+                      SelectedValuePath="ID" 
+                      SelectedValue="{Binding CurrentGame.PlayerHistory.ID}"
+                      SelectedItem="{Binding CurrentGame.PlayerHistory}" 
+                      materialDesign:ComboBoxAssist.ShowSelectedItem="True"
+                      materialDesign:HintAssist.Hint="PlayerHistory"/>
 
             <!-- Date -->
             <TextBlock Style="{StaticResource  MaterialDesignSubtitle2TextBlock}" Margin="10,10,10,3" >Date:</TextBlock>
-            <TextBox Margin="10,5,10,10" 
-                     Text="{Binding CurrentGame.Date}" 
-                     materialDesign:HintAssist.Hint="Date"
-                     MaxLength="50"
-                     ToolTip="Date" />
+            <DatePicker Margin="10,5,10,10"
+                        SelectedDate="{Binding Path=CurrentGame.Date, StringFormat={}{0:MM/dd/yyyy}}" 
+                        ToolTip="Date" />
 
             <!-- IsActive -->
             <TextBlock Style="{StaticResource  MaterialDesignSubtitle2TextBlock}" Margin="10,10,10,3" >IsActive:</TextBlock>
-            <TextBox Margin="10,5,10,10" 
-                     Text="{Binding CurrentGame.IsActive}" 
-                     materialDesign:HintAssist.Hint="IsActive"
-                     MaxLength="50"
-                     ToolTip="IsActive" />
+            <ComboBox Margin="10,5,10,10" 
+                      SelectedValuePath="Tag" 
+                      SelectedValue="{Binding Path=CurrentGame.IsActive, Mode=TwoWay}" 
+                      materialDesign:ComboBoxAssist.ShowSelectedItem="True"
+                      materialDesign:HintAssist.Hint="IsActive">
+                <ComboBoxItem Tag="True">True</ComboBoxItem>
+                <ComboBoxItem Tag="False">False</ComboBoxItem>
+            </ComboBox>
 
             <Button Margin="10,50,10,10" Content="Wijzigen"
                     Command="{Binding WijzigenCommand}" />

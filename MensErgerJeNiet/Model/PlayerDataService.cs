@@ -21,7 +21,7 @@ namespace MensErgerJeNiet.Model
         private static IDbConnection db = new SqlConnection(connectionString);
 
         // Get All Players in a List
-        public ObservableCollection<Player> GetPlayer()
+        public ObservableCollection<Player> GetPlayers()
         {
             // Stap 2 Dapper
             // Uitschrijven SQL statement & bewaren in een string. 

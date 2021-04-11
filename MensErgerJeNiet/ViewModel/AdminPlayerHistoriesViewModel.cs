@@ -1,6 +1,7 @@
 ﻿using MensErgerJeNiet.Model;
 using System;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Windows.Input;
 
 namespace MensErgerJeNiet.ViewModel
@@ -67,6 +68,35 @@ namespace MensErgerJeNiet.ViewModel
                new PlayerHistoryDataService();
 
             PlayerHistories = new ObservableCollection<PlayerHistory>(contactDS.GetPlayerHistories());
+
+
+
+
+            //Players inlezen
+            PlayerDataService playerDataService = new PlayerDataService();
+            Players = playerDataService.GetPlayers();
+
+            //Colors inlezen
+            ColorDataService colorDataService = new ColorDataService();
+            Colors = colorDataService.GetColors();
+
+            foreach (PlayerHistory playerHistory in PlayerHistories)
+            {
+                //Relatie Players
+                if (playerHistory.PlayerID > 0)
+                {
+                    SelectedPlayer = Players.FirstOrDefault(pl => pl.ID == playerHistory.PlayerID);
+                }
+
+                //Relatie Colors
+                if (playerHistory.ColorID > 0)
+                {
+                    SelectedColor = Colors.FirstOrDefault(c => c.ID == playerHistory.ColorID);
+                }
+            }
+
+
+
         }
 
         public void WijzigenPlayerHistory()
@@ -85,7 +115,15 @@ namespace MensErgerJeNiet.ViewModel
         public void ToevoegenPlayerHistory()
         {
             PlayerHistoryDataService contactDS = new PlayerHistoryDataService();
-            contactDS.InsertPlayerHistory(new PlayerHistory(playerID: 1, colorID: 1, countTime: 0, countSixes: 0, countTurns: 0, isTurn: false));
+            if (CurrentPlayerHistory != null)
+            {
+                contactDS.InsertPlayerHistory(CurrentPlayerHistory);
+            }
+            else
+            {
+                contactDS.InsertPlayerHistory(new PlayerHistory());
+            }
+
 
             //Refresh
             LeesPlayerHistory();
@@ -102,6 +140,66 @@ namespace MensErgerJeNiet.ViewModel
 
                 //Refresh
                 LeesPlayerHistory();
+            }
+        }
+
+        private ObservableCollection<Player> players;
+        public ObservableCollection<Player> Players
+        {
+            get
+            {
+                return players;
+            }
+
+            set
+            {
+                players = value;
+                NotifyPropertyChanged();
+            }
+        }
+
+        private Player selectedPlayer { get; set; }
+        public Player SelectedPlayer
+        {
+            get
+            {
+                return selectedPlayer;
+            }
+
+            set
+            {
+                selectedPlayer = value;
+                NotifyPropertyChanged();
+            }
+        }
+
+        private ObservableCollection<Color> colors;
+        public ObservableCollection<Color> Colors
+        {
+            get
+            {
+                return colors;
+            }
+
+            set
+            {
+                colors = value;
+                NotifyPropertyChanged();
+            }
+        }
+
+        private Color selectedColor { get; set; }
+        public Color SelectedColor
+        {
+            get
+            {
+                return selectedColor;
+            }
+
+            set
+            {
+                selectedColor = value;
+                NotifyPropertyChanged();
             }
         }
 

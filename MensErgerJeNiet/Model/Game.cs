@@ -11,7 +11,12 @@ namespace MensErgerJeNiet.Model
         private PlayerHistory playerHistory;
 
 
-        public Game() { }
+        public Game() 
+        {
+            PlayerHistoryID = 1;
+            Date = DateTime.Now;
+            IsActive = true;
+        }
 
         public Game(int playerHistoryID, DateTime date, bool isActive)
         {
@@ -55,6 +60,7 @@ namespace MensErgerJeNiet.Model
             set
             {
                 playerHistory = value;
+                playerHistoryID = value.ID;
                 NotifyPropertyChanged();
             }
         }

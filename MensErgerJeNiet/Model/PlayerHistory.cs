@@ -13,7 +13,15 @@
         private Color color;
 
 
-        public PlayerHistory() { }
+        public PlayerHistory() 
+        {
+            PlayerID = 1;
+            ColorID = 1;
+            CountTime = 0;
+            CountSixes = 0;
+            CountTurns = 0;
+            IsTurn = false;
+        }
 
         public PlayerHistory(int playerID, int colorID, int countTime, int countSixes, int countTurns, bool isTurn)
         {
@@ -64,6 +72,7 @@
             set
             {
                 player = value;
+                playerID = value.ID;
                 NotifyPropertyChanged();
             }
         }
@@ -92,6 +101,7 @@
             set
             {
                 color = value;
+                colorID = value.ID;
                 NotifyPropertyChanged();
             }
         }

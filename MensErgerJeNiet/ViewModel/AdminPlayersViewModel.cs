@@ -65,7 +65,7 @@ namespace MensErgerJeNiet.ViewModel
             PlayerDataService contactDS =
                new PlayerDataService();
 
-            Players = new ObservableCollection<Player>(contactDS.GetPlayer());
+            Players = new ObservableCollection<Player>(contactDS.GetPlayers());
         }
 
         public void WijzigenPlayer()
@@ -84,8 +84,15 @@ namespace MensErgerJeNiet.ViewModel
         public void ToevoegenPlayer()
         {
             PlayerDataService contactDS = new PlayerDataService();
-            contactDS.InsertPlayer(new Player("New Player"));
-
+            if (CurrentPlayer != null)
+            {
+                contactDS.InsertPlayer(CurrentPlayer);
+            }
+            else
+            {
+                contactDS.InsertPlayer(new Player());
+            }
+            
             //Refresh
             LeesPlayer();
         }
