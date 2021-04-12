@@ -72,13 +72,14 @@ namespace MensErgerJeNiet.Model
         }
 
         // Insert a Position
-        public void InsertPosition(Position position)
+        public int InsertPosition(Position position)
         {
             // SQL statement insert
-            string sql = "Insert into Position (playerHistoryID, pion, coordinate, isHome, isActive) values (@playerHistoryID, @pion, @coordinate, @isHome, @isActive)";
+            string sql = "Insert into Position (playerHistoryID, pion, coordinate, isHome, isActive) values (@playerHistoryID, @pion, @coordinate, @isHome, @isActive);" +
+                         "SELECT CAST(SCOPE_IDENTITY() as int)";
 
             // Uitvoeren SQL statement en doorgeven parametercollectie
-            db.Execute(sql, new
+            var id = db.QuerySingle<int>(sql, new
             {
                 position.PlayerHistoryID,
                 position.Pion,
@@ -86,6 +87,7 @@ namespace MensErgerJeNiet.Model
                 position.IsHome,
                 position.IsActive,
             });
+            return id;
         }
 
         // Delete a Position

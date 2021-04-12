@@ -61,16 +61,15 @@ namespace MensErgerJeNiet.Model
         }
 
         // Insert a Player
-        public void InsertPlayer(Player player)
+        public int InsertPlayer(Player player)
         {
             // SQL statement insert
-            string sql = "Insert into Player (name) values (@name)";
+            string sql = "Insert into Player (name) values (@name);" +
+                         "SELECT CAST(SCOPE_IDENTITY() as int)";
 
             // Uitvoeren SQL statement en doorgeven parametercollectie
-            db.Execute(sql, new
-            {
-                player.Name,
-            });
+            var id = db.QuerySingle<int>(sql, new { player.Name });
+            return id;
         }
 
         // Delete a Player

@@ -34,6 +34,15 @@
         <Setter Property="FontSize" Value="55" />
     </Style>
 
+    <!-- ErrorMessage TextBlock -->
+    <Style  BasedOn="{StaticResource MaterialDesignTextBlock}" TargetType="{x:Type TextBlock}" x:Key="ErrorMessage">
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="VerticalAlignment" Value="Bottom" />
+        <Setter Property="FontSize" Value="18" />
+        <Setter Property="FontWeight" Value="Bold" />
+        <Setter Property="Foreground" Value="Red" />
+    </Style>
+
 
     <!-- ##### PlayerSelection ##### -->
     <!-- PlayerSelectionPlayer TextBlock -->

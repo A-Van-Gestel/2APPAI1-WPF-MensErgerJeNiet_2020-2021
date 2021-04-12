@@ -62,17 +62,19 @@ namespace MensErgerJeNiet.Model
         }
 
         // Insert a Color
-        public void InsertColor(Color color)
+        public int InsertColor(Color color)
         {
             // SQL statement insert
-            string sql = "Insert into Color (name, code) values (@name, @code)";
+            string sql = "Insert into Color (name, code) values (@name, @code);" +
+                         "SELECT CAST(SCOPE_IDENTITY() as int)";
 
             // Uitvoeren SQL statement en doorgeven parametercollectie
-            db.Execute(sql, new
+            var id = db.QuerySingle<int>(sql, new
             {
                 color.Name,
                 color.Code
             });
+            return id;
         }
 
         // Delete a Color

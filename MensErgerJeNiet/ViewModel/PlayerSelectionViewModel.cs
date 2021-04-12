@@ -17,6 +17,25 @@ namespace MensErgerJeNiet.ViewModel
         public ICommand PlayCommand { get; set; }
 
 
+        private string errorMessage;
+        public string ErrorMessage
+        {
+            get
+            {
+                if (errorMessage == null)
+                {
+                    errorMessage = "";
+                }
+                return errorMessage;
+            }
+
+            set
+            {
+                errorMessage = value;
+                NotifyPropertyChanged();
+            }
+        }
+
         private ObservableCollection<Color> colors;
         public ObservableCollection<Color> Colors
         {
@@ -195,7 +214,6 @@ namespace MensErgerJeNiet.ViewModel
         {
             GotoHomeViewCommand = new BaseCommand(HomeView);
             PlayCommand = new BaseCommand(Play);
-            AddPlayerCommand = new BaseCommand(AddPlayer);
     }
 
         private void ReadColors()
@@ -207,26 +225,127 @@ namespace MensErgerJeNiet.ViewModel
             Colors = new ObservableCollection<Color>(contactDS.GetColors());
         }
 
-        public void AddPlayer()
+        // ----- Game Creation -----
+        private int player1ID;
+        private int player2ID;
+        private int player3ID;
+        private int player4ID;
+        private int gameID;
+        private int playerHistory1ID;
+        private int playerHistory2ID;
+        private int playerHistory3ID;
+        private int playerHistory4ID;
+
+        private void AddPlayers()
         {
             PlayerDataService contactDS = new PlayerDataService();
             if (Player1 != null)
             {
-                contactDS.InsertPlayer(Player1);
+                player1ID = contactDS.InsertPlayer(Player1);
             }
             if (Player2 != null)
             {
-                contactDS.InsertPlayer(Player2);
+                player2ID = contactDS.InsertPlayer(Player2);
             }
             if (Player3 != null)
             {
-                contactDS.InsertPlayer(Player3);
+                player3ID = contactDS.InsertPlayer(Player3);
             }
             if (Player4 != null)
             {
-                contactDS.InsertPlayer(Player4);
+                player4ID = contactDS.InsertPlayer(Player4);
             }
         }
+
+
+        private void AddGame()
+        {
+            GameDataService contactDS = new GameDataService();
+
+            gameID = contactDS.InsertGame(new Game());
+        }
+
+
+        private void AddPlayerHistories()
+        {
+            if (gameID != 0)
+            {
+                PlayerHistoryDataService contactDS = new PlayerHistoryDataService();
+                // Player 1
+                if (player1ID != 0)
+                {
+                    playerHistory1ID = contactDS.InsertPlayerHistory(new PlayerHistory(playerID: player1ID,
+                                                colorID: ColorPlayer1.ID,
+                                                gameID: gameID,
+                                                countTime: new TimeSpan(),
+                                                countSixes: 0,
+                                                countTurns: 0,
+                                                isTurn: true,
+                                                isWinner: false));
+                }
+
+                // Player 2
+                if (player2ID != 0)
+                {
+                    playerHistory2ID = contactDS.InsertPlayerHistory(new PlayerHistory(playerID: player2ID,
+                                                colorID: ColorPlayer2.ID,
+                                                gameID: gameID,
+                                                countTime: new TimeSpan(),
+                                                countSixes: 0,
+                                                countTurns: 0,
+                                                isTurn: false,
+                                                isWinner: false));
+                }
+                // Player 3
+                if (player3ID != 0)
+                {
+                    playerHistory3ID = contactDS.InsertPlayerHistory(new PlayerHistory(playerID: player3ID,
+                                                colorID: ColorPlayer3.ID,
+                                                gameID: gameID,
+                                                countTime: new TimeSpan(),
+                                                countSixes: 0,
+                                                countTurns: 0,
+                                                isTurn: false,
+                                                isWinner: false));
+                }
+                // Player 4
+                if (player4ID != 0)
+                {
+                    playerHistory4ID = contactDS.InsertPlayerHistory(new PlayerHistory(playerID: player4ID,
+                                                colorID: ColorPlayer4.ID,
+                                                gameID: gameID,
+                                                countTime: new TimeSpan(),
+                                                countSixes: 0,
+                                                countTurns: 0,
+                                                isTurn: false,
+                                                isWinner: false));
+                }
+            }
+        }
+
+
+        private void AddPositions()
+        {
+            PositionDataService contactDS = new PositionDataService();
+
+            if (playerHistory1ID != 0 & playerHistory2ID != 0 & playerHistory3ID != 0 & playerHistory4ID != 0)
+            {
+                List<int> playerHistoryIDs = new List<int>() { playerHistory1ID, playerHistory2ID, playerHistory3ID, playerHistory4ID };
+
+                foreach (var playerHistoryID in playerHistoryIDs)
+                {
+                    for (int i = 1; i <= 4; i++)
+                    {
+                        contactDS.InsertPosition(new Position(playerHistoryID: playerHistoryID,
+                                                   pion: i,
+                                                   coordinate: 1,
+                                                   isHome: false,
+                                                   isActive: false));
+                    }
+                }
+            }
+        }
+
 
         // ----- Commands -----
         private void HomeView()
@@ -237,8 +356,40 @@ namespace MensErgerJeNiet.ViewModel
 
         private void Play()
         {
-            PageNavigationService pageNavigationService = new PageNavigationService();
-            pageNavigationService.Navigate("PlayView");
+            if (Player1.Name != "" & Player2.Name != "" & Player3.Name != "" & Player4.Name != "")
+            {
+                if (ColorPlayer1.ID != 0 & ColorPlayer2.ID != 0 & ColorPlayer3.ID != 0 & ColorPlayer4.ID != 0)
+                {
+                    if (ColorPlayer1.ID != ColorPlayer2.ID &
+                        ColorPlayer1.ID != ColorPlayer3.ID &
+                        ColorPlayer1.ID != ColorPlayer4.ID &
+                        ColorPlayer2.ID != ColorPlayer3.ID &
+                        ColorPlayer2.ID != ColorPlayer4.ID &
+                        ColorPlayer3.ID != ColorPlayer4.ID )
+                    {
+                        ErrorMessage = "";
+                        AddPlayers();
+                        AddGame();
+                        AddPlayerHistories();
+                        AddPositions();
+
+                        PageNavigationService pageNavigationService = new PageNavigationService();
+                        pageNavigationService.Navigate("PlayView");
+                    }
+                    else
+                    {
+                        ErrorMessage = "All players need have a different color!";
+                    }
+                }
+                else
+                {
+                    ErrorMessage = "All players need to pick a color!";
+                }
+            }
+            else
+            {
+                ErrorMessage = "All players need to have a name!";
+            }
         }
     }
 }

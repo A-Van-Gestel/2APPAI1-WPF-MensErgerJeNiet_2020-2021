@@ -73,44 +73,50 @@ namespace MensErgerJeNiet.Model
             // Stap 3 Dapper
             // Uitvoeren SQL statement op db instance 
             // Type casten van het generieke return type naar een collectie van colors
-            return (PlayerHistory)db.Query<PlayerHistory>(sql, id);
+            return (PlayerHistory)db.QuerySingle<PlayerHistory>(sql, id);
         }
 
         // Update a PlayerHistory
         public void UpdatePlayerHistory(PlayerHistory playerHistory)
         {
             // SQL statement update 
-            string sql = "Update PlayerHistory set playerID = @playerID, colorID = @colorID, countTime = @countTime, countSixes = @countSixes, countTurns = @countTurns, isTurn = @isTurn where id = @id";
+            string sql = "Update PlayerHistory set playerID = @playerID, colorID = @colorID, gameID = @gameID, countTime = @countTime, countSixes = @countSixes, countTurns = @countTurns, isTurn = @isTurn, isWinner = @isWinner where id = @id";
 
             // Uitvoeren SQL statement en doorgeven parametercollectie
             db.Execute(sql, new
             {
                 playerHistory.PlayerID,
                 playerHistory.ColorID,
+                playerHistory.GameID,
                 playerHistory.CountTime,
                 playerHistory.CountSixes,
                 playerHistory.CountTurns,
                 playerHistory.IsTurn,
+                playerHistory.IsWinner,
                 playerHistory.ID
             });
         }
 
         // Insert a PlayerHistory
-        public void InsertPlayerHistory(PlayerHistory playerHistory)
+        public int InsertPlayerHistory(PlayerHistory playerHistory)
         {
             // SQL statement insert
-            string sql = "Insert into PlayerHistory (playerID, colorID, countTime, countSixes, countTurns, isTurn) values (@playerID, @colorID, @countTime, @countSixes, @countTurns, @isTurn)";
+            string sql = "Insert into PlayerHistory (playerID, colorID, gameID, countTime, countSixes, countTurns, isTurn, isWinner) values (@playerID, @colorID, @gameID, @countTime, @countSixes, @countTurns, @isTurn, @isWinner);" +
+                         "SELECT CAST(SCOPE_IDENTITY() as int)";
 
             // Uitvoeren SQL statement en doorgeven parametercollectie
-            db.Execute(sql, new
+            var id = db.QuerySingle<int>(sql, new
             {
                 playerHistory.PlayerID,
                 playerHistory.ColorID,
+                playerHistory.GameID,
                 playerHistory.CountTime,
                 playerHistory.CountSixes,
                 playerHistory.CountTurns,
                 playerHistory.IsTurn,
+                playerHistory.IsWinner,
             });
+            return id;
         }
 
         // Delete a PlayerHistory

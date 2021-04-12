@@ -43,7 +43,21 @@ namespace MensErgerJeNiet.Model
             // Stap 3 Dapper
             // Uitvoeren SQL statement op db instance 
             // Type casten van het generieke return type naar een collectie van colors
-            return (Game)db.Query<Game>(sql, id);
+            return (Game)db.QuerySingle<Game>(sql, id);
+        }
+
+        // Get the ID of the latest Game
+        public int GetIDfromLatestGame()
+        {
+            // Stap 2 Dapper
+            // Uitschrijven SQL statement & bewaren in een string. 
+            string sql = "Select * from Game;" + "SELECT CAST(SCOPE_IDENTITY() as int)"; ;
+
+            // Stap 3 Dapper
+            // Uitvoeren SQL statement op db instance 
+            // Type casten van het generieke return type naar een collectie van colors
+            var id = db.QuerySingle<int>(sql);
+            return id;
         }
 
         // Update a Game
@@ -62,17 +76,15 @@ namespace MensErgerJeNiet.Model
         }
 
         // Insert a Game
-        public void InsertGame(Game game)
+        public int InsertGame(Game game)
         {
             // SQL statement insert
-            string sql = "Insert into Game (date, isActive) values (@date, @isActive)";
+            string sql = "Insert into Game (date, isActive) values (@date, @isActive);" +
+                         "SELECT CAST(SCOPE_IDENTITY() as int)";
 
             // Uitvoeren SQL statement en doorgeven parametercollectie
-            db.Execute(sql, new
-            {
-                game.Date,
-                game.IsActive
-            });
+            var id = db.QuerySingle<int>(sql, new { game.Date, game.IsActive });
+            return id;
         }
 
         // Delete a Game
