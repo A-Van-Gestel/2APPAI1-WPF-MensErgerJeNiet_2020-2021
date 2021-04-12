@@ -1,4 +1,6 @@
-﻿namespace MensErgerJeNiet.Model
+﻿using System;
+
+namespace MensErgerJeNiet.Model
 {
     class PlayerHistory : BaseModel
     {
@@ -6,7 +8,7 @@
         private int playerID;
         private int colorID;
         private int gameID;
-        private int countTime;
+        private TimeSpan countTime;
         private int countSixes;
         private int countTurns;
         private bool isTurn;
@@ -21,14 +23,14 @@
             PlayerID = 1;
             ColorID = 1;
             GameID = 1;
-            CountTime = 0;
+            CountTime = TimeSpan.FromSeconds(0);
             CountSixes = 0;
             CountTurns = 0;
             IsTurn = false;
             IsWinner = false;
         }
 
-        public PlayerHistory(int playerID, int colorID, int gameID, int countTime, int countSixes, int countTurns, bool isTurn, bool isWinner)
+        public PlayerHistory(int playerID, int colorID, int gameID, TimeSpan countTime, int countSixes, int countTurns, bool isTurn, bool isWinner)
         {
             PlayerID = playerID;
             ColorID = colorID;
@@ -142,7 +144,7 @@
             }
         }
 
-        public int CountTime
+        public TimeSpan CountTime
         {
             get
             {

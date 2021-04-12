@@ -106,17 +106,26 @@
             <!-- CountTime -->
             <TextBlock Style="{StaticResource  MaterialDesignSubtitle2TextBlock}" Margin="10,10,10,3" >#Time:</TextBlock>
             <TextBox Margin="10,5,10,10" 
-                     Text="{Binding CurrentPlayerHistory.CountTime}" 
-                     materialDesign:HintAssist.Hint="#Time"
-                     MaxLength="50"
-                     ToolTip="#Time" />
+                     Text="{Binding CurrentPlayerHistory.CountTime, StringFormat=\{0:hh\\:mm\\:ss\}}" 
+                     materialDesign:HintAssist.Hint="hh:mm:ss"
+                     MaxLength="8"
+                     ToolTip="#Time (hh:mm:ss)" />
+            <!--<materialDesign:TimePicker
+                Margin="10,5,10,10" 
+                SelectedTime="{Binding CurrentPlayerHistory.CountTime}"
+                SelectedTimeFormat="Short"
+                Is24Hours="True"
+                WithSeconds="True"
+                materialDesign:HintAssist.Hint="#Time"
+                ToolTip="#Time"/>-->
+
 
             <!-- CountSixes -->
             <TextBlock Style="{StaticResource  MaterialDesignSubtitle2TextBlock}" Margin="10,10,10,3" >#Sixes:</TextBlock>
             <TextBox Margin="10,5,10,10" 
                      Text="{Binding CurrentPlayerHistory.CountSixes}" 
                      materialDesign:HintAssist.Hint="#Sixes"
-                     MaxLength="50"
+                     MaxLength="10"
                      ToolTip="#Sixes" />
 
             <!-- CountTurns -->
@@ -124,7 +133,7 @@
             <TextBox Margin="10,5,10,10" 
                      Text="{Binding CurrentPlayerHistory.CountTurns}" 
                      materialDesign:HintAssist.Hint="#Turns"
-                     MaxLength="50"
+                     MaxLength="10"
                      ToolTip="#Turns" />
 
             <!-- isTurn -->
