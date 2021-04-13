@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MensErgerJeNiet.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,12 +10,28 @@ namespace MensErgerJeNiet.ViewModel
 {
     class PlayViewModel : BaseViewModel
     {
+        private Board board;
+        public Board Board
+        {
+            get
+            {
+                return board;
+            }
+            set
+            {
+                board = value;
+                NotifyPropertyChanged();
+            }
+        }
+
+
         // ----- ICommands -----
         public ICommand GotoHomeViewCommand { get; set; }
 
 
         public PlayViewModel()
         {
+            Board = new Board();
             KoppelenCommands();
         }
 
