@@ -1,4 +1,4 @@
-﻿<Page
+﻿<Page x:Class="MensErgerJeNiet.View.AdminPositionsView"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -6,22 +6,12 @@
       xmlns:local="clr-namespace:MensErgerJeNiet.View"
       xmlns:viewmodel="clr-namespace:MensErgerJeNiet.ViewModel"
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-      xmlns:converters="clr-namespace:MensErgerJeNiet.Converters"
-      x:Class="MensErgerJeNiet.View.AdminPositionsView"
+      DataContext="{Binding Source={StaticResource ViewModelLocator},  Path=AdminPositionsViewModel}"
       mc:Ignorable="d" 
       d:DesignHeight="681" d:DesignWidth="1280"
       Title="AdminPositionsView">
 
-    <Page.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="Style/styles.xaml"/>
-            </ResourceDictionary.MergedDictionaries>
-            <viewmodel:AdminPositionsViewModel x:Key="AdminPositionsViewModel" />
-        </ResourceDictionary>
-    </Page.Resources>
-
-    <Grid DataContext="{StaticResource AdminPositionsViewModel}">
+    <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="632" />
             <ColumnDefinition Width="*" />
@@ -57,7 +47,7 @@
 
         <StackPanel Grid.Row="1" Grid.Column="1">
             <!-- PlayerHistoryID -->
-            <TextBlock Style="{StaticResource  MaterialDesignSubtitle2TextBlock}" Margin="10,10,10,3" >PlayerHistoryID:</TextBlock>
+            <TextBlock Style="{StaticResource  MaterialDesignSubtitle2TextBlock}" Margin="10,10,10,3" >PlayerHistory:</TextBlock>
             <ComboBox Margin="10,5,10,10" 
                       ItemsSource="{Binding PlayerHistories}" 
                       SelectedValuePath="ID" 
@@ -71,7 +61,7 @@
             <TextBox Margin="10,5,10,10" 
                      Text="{Binding CurrentPosition.Pion}" 
                      materialDesign:HintAssist.Hint="Pion"
-                     MaxLength="50"
+                     MaxLength="1"
                      ToolTip="Pion" />
 
             <!-- Coordinate -->
@@ -79,7 +69,7 @@
             <TextBox Margin="10,5,10,10" 
                      Text="{Binding CurrentPosition.Coordinate}" 
                      materialDesign:HintAssist.Hint="Coordinate"
-                     MaxLength="50"
+                     MaxLength="3"
                      ToolTip="Coordinate" />
 
             <!-- IsHome -->

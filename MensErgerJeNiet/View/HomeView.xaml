@@ -6,21 +6,12 @@
       xmlns:local="clr-namespace:MensErgerJeNiet.View"
       xmlns:viewmodel="clr-namespace:MensErgerJeNiet.ViewModel"
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-      xmlns:converters="clr-namespace:MensErgerJeNiet.Converters"
+      DataContext="{Binding Source={StaticResource ViewModelLocator},  Path=HomeViewModel}"
       mc:Ignorable="d" 
       d:DesignHeight="681" d:DesignWidth="1280"
       Title="Home">
 
-    <Page.Resources>
-        <ResourceDictionary>
-            <viewmodel:HomeViewModel x:Key="HomeViewModel" />
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="Style/styles.xaml"/>
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
-    </Page.Resources>
-
-    <Grid DataContext="{StaticResource HomeViewModel}">
+    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="275" />
             <RowDefinition Height="53" />

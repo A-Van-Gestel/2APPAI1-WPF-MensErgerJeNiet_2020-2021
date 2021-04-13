@@ -1,4 +1,4 @@
-﻿<Page
+﻿<Page x:Class="MensErgerJeNiet.View.AdminPlayersView"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -6,22 +6,12 @@
       xmlns:local="clr-namespace:MensErgerJeNiet.View"
       xmlns:viewmodel="clr-namespace:MensErgerJeNiet.ViewModel"
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-      xmlns:converters="clr-namespace:MensErgerJeNiet.Converters"
-      x:Class="MensErgerJeNiet.View.AdminPlayersView"
+      DataContext="{Binding Source={StaticResource ViewModelLocator},  Path=AdminPlayersViewModel}"
       mc:Ignorable="d" 
       d:DesignHeight="681" d:DesignWidth="1280"
       Title="AdminPlayersView">
 
-    <Page.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="Style/styles.xaml"/>
-            </ResourceDictionary.MergedDictionaries>
-            <viewmodel:AdminPlayersViewModel x:Key="AdminPlayersViewModel" />
-        </ResourceDictionary>
-    </Page.Resources>
-
-    <Grid DataContext="{StaticResource AdminPlayersViewModel}">
+    <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="632" />
             <ColumnDefinition Width="*" />

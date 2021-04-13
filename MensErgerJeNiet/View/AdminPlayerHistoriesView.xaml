@@ -1,4 +1,4 @@
-﻿<Page
+﻿<Page x:Class="MensErgerJeNiet.View.AdminPlayerHistoriesView"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -6,22 +6,12 @@
       xmlns:local="clr-namespace:MensErgerJeNiet.View"
       xmlns:viewmodel="clr-namespace:MensErgerJeNiet.ViewModel"
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-      xmlns:converters="clr-namespace:MensErgerJeNiet.Converters"
-      x:Class="MensErgerJeNiet.View.AdminPlayerHistoriesView"
+      DataContext="{Binding Source={StaticResource ViewModelLocator},  Path=AdminPlayerHistoriesViewModel}"
       mc:Ignorable="d" 
       d:DesignHeight="681" d:DesignWidth="1280"
       Title="AdminPlayerHistoriesView">
 
-    <Page.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="Style/styles.xaml"/>
-            </ResourceDictionary.MergedDictionaries>
-            <viewmodel:AdminPlayerHistoriesViewModel x:Key="AdminPlayerHistoriesViewModel" />
-        </ResourceDictionary>
-    </Page.Resources>
-
-    <Grid DataContext="{StaticResource AdminPlayerHistoriesViewModel}">
+    <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="850" />
             <ColumnDefinition Width="*" />
@@ -63,7 +53,7 @@
 
         <StackPanel Grid.Row="1" Grid.Column="1">
             <!-- PlayerID -->
-            <TextBlock Style="{StaticResource  MaterialDesignSubtitle2TextBlock}" Margin="10,10,10,3" >PlayerID:</TextBlock>
+            <TextBlock Style="{StaticResource  MaterialDesignSubtitle2TextBlock}" Margin="10,10,10,3" >Player:</TextBlock>
             <ComboBox Margin="10,5,10,10" 
                       ItemsSource="{Binding Players}" 
                       SelectedValuePath="ID" 
@@ -74,7 +64,7 @@
 
 
             <!-- ColorID -->
-            <TextBlock Style="{StaticResource  MaterialDesignSubtitle2TextBlock}" Margin="10,10,10,3" >ColorID:</TextBlock>
+            <TextBlock Style="{StaticResource  MaterialDesignSubtitle2TextBlock}" Margin="10,10,10,3" >Color:</TextBlock>
             <ComboBox Margin="10,5,10,10" 
                       ItemsSource="{Binding Colors}" 
                       SelectedValuePath="ID" 
@@ -93,7 +83,7 @@
             </ComboBox>
 
             <!-- ColorID -->
-            <TextBlock Style="{StaticResource  MaterialDesignSubtitle2TextBlock}" Margin="10,10,10,3" >GameID:</TextBlock>
+            <TextBlock Style="{StaticResource  MaterialDesignSubtitle2TextBlock}" Margin="10,10,10,3" >Game:</TextBlock>
             <ComboBox Margin="10,5,10,10" 
                       ItemsSource="{Binding Games}" 
                       SelectedValuePath="ID" 
