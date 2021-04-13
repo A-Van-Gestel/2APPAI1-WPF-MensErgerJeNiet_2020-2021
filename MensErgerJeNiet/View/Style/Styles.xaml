@@ -84,7 +84,7 @@
     
     
     <!-- ##### PlayView ##### -->
-    <!-- PlayViewLabelLeft TextBlock -->
+    <!-- PlayViewLabel TextBlock -->
     <Style  BasedOn="{StaticResource MaterialDesignTextBlock}" TargetType="{x:Type TextBlock}" x:Key="PlayViewLabel">
         <Setter Property="HorizontalAlignment" Value="Right" />
         <Setter Property="VerticalAlignment" Value="Center" />
@@ -93,10 +93,33 @@
         <Setter Property="Margin" Value="0,0,10,0" />
     </Style>
 
-    <!-- PlayViewValueLeft TextBlock -->
+    <!-- PlayViewValue TextBlock -->
     <Style  BasedOn="{StaticResource MaterialDesignTextBlock}" TargetType="{x:Type TextBlock}" x:Key="PlayViewValue">
         <Setter Property="HorizontalAlignment" Value="Left" />
         <Setter Property="VerticalAlignment" Value="Center" />
         <Setter Property="FontSize" Value="18" />
+    </Style>
+
+    <!-- PionField Border -->
+    <Style  TargetType="{x:Type Border}" x:Key="PionField">
+        <Setter Property="Margin" Value="5" />
+        <Setter Property="CornerRadius" Value="50" />
+        <Setter Property="BorderBrush" Value="Black" />
+        <Setter Property="BorderThickness" Value="1" />
+    </Style>
+
+    <!-- Pion Border -->
+    <Style  TargetType="{x:Type Border}" x:Key="Pion">
+        <Setter Property="Margin" Value="5" />
+        <Setter Property="CornerRadius" Value="50" />
+        <Setter Property="BorderBrush" Value="Black" />
+        <Setter Property="BorderThickness" Value="1" />
+    </Style>
+
+    <!-- PionText TextBlock -->
+    <Style  BasedOn="{StaticResource MaterialDesignTextBlock}" TargetType="{x:Type TextBlock}" x:Key="PionText">
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <!--<Setter Property="FontSize" Value="18" />-->
     </Style>
 </ResourceDictionary>

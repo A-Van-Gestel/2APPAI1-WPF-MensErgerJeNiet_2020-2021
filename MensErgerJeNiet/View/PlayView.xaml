@@ -179,8 +179,6 @@
         
         <!-- Center Panel -->
         <materialDesign:Card Grid.Column="1"
-                Background="Beige"
-                Foreground="{DynamicResource MaterialDesignLightForeground}"
                 Padding="0"
                 UniformCornerRadius="10">
             <Grid Grid.Column="1">
@@ -218,107 +216,612 @@
                     </Grid.RowDefinitions>
                     <!-- GAME START -->
                     <!-- Red -->
-                    <Ellipse Grid.Column="0" Grid.Row="0" Stroke="Black" Fill="Red" Margin="5"/>
-                    <Ellipse Grid.Column="1" Grid.Row="0" Stroke="Black" Fill="Red" Margin="5"/>
-                    <Ellipse Grid.Column="0" Grid.Row="1" Stroke="Black" Fill="Red" Margin="5"/>
-                    <Ellipse Grid.Column="1" Grid.Row="1" Stroke="Black" Fill="Red" Margin="5"/>
+                    <Border Grid.Column="0" Grid.Row="0" Style="{StaticResource PionField}"
+                            Background="Red" >
+                        <Border Style="{StaticResource Pion}"
+                                Background="Turquoise"
+                                Visibility="Visible" >
+                            <TextBlock Style="{StaticResource PionText}">Test</TextBlock>
+                        </Border>
+                    </Border>
+                    <Border Grid.Column="1" Grid.Row="0" Style="{StaticResource PionField}"
+                            Background="Red" >
+                        <Border Style="{StaticResource Pion}"
+                                Background="Turquoise"
+                                Visibility="Visible" >
+                            <TextBlock Style="{StaticResource PionText}">Test</TextBlock>
+                        </Border>
+                    </Border>
+                    <Border Grid.Column="0" Grid.Row="1" Style="{StaticResource PionField}"
+                            Background="Red" >
+                        <Border Style="{StaticResource Pion}"
+                                Background="Turquoise"
+                                Visibility="Visible" >
+                            <TextBlock Style="{StaticResource PionText}">Test</TextBlock>
+                        </Border>
+                    </Border>
+                    <Border Grid.Column="1" Grid.Row="1" Style="{StaticResource PionField}"
+                            Background="Red" >
+                        <Border Style="{StaticResource Pion}"
+                                Background="Turquoise"
+                                Visibility="Visible" >
+                            <TextBlock Style="{StaticResource PionText}">Test</TextBlock>
+                        </Border>
+                    </Border>
 
                     <!-- Blue -->
-                    <Ellipse Grid.Column="9" Grid.Row="0" Stroke="Black" Fill="Blue" Margin="5"/>
-                    <Ellipse Grid.Column="10" Grid.Row="0" Stroke="Black" Fill="Blue" Margin="5"/>
-                    <Ellipse Grid.Column="9" Grid.Row="1" Stroke="Black" Fill="Blue" Margin="5"/>
-                    <Ellipse Grid.Column="10" Grid.Row="1" Stroke="Black" Fill="Blue" Margin="5"/>
+                    <Border Grid.Column="9" Grid.Row="0" Style="{StaticResource PionField}"
+                            Background="Blue" >
+                        <Border Style="{StaticResource Pion}"
+                                    Background="Turquoise"
+                                    Visibility="Visible" >
+                            <TextBlock Style="{StaticResource PionText}">Test</TextBlock>
+                        </Border>
+                    </Border>
+                    <Border Grid.Column="10" Grid.Row="0" Style="{StaticResource PionField}"
+                            Background="Blue" >
+                        <Border Style="{StaticResource Pion}"
+                                    Background="Turquoise"
+                                    Visibility="Visible" >
+                            <TextBlock Style="{StaticResource PionText}">Test</TextBlock>
+                        </Border>
+                    </Border>
+                    <Border Grid.Column="9" Grid.Row="1" Style="{StaticResource PionField}"
+                            Background="Blue" >
+                        <Border Style="{StaticResource Pion}"
+                                    Background="Turquoise"
+                                    Visibility="Visible" >
+                            <TextBlock Style="{StaticResource PionText}">Test</TextBlock>
+                        </Border>
+                    </Border>
+                    <Border Grid.Column="10" Grid.Row="1" Style="{StaticResource PionField}"
+                            Background="Blue" >
+                        <Border Style="{StaticResource Pion}"
+                                    Background="Turquoise"
+                                    Visibility="Visible" >
+                            <TextBlock Style="{StaticResource PionText}">Test</TextBlock>
+                        </Border>
+                    </Border>
+
 
                     <!-- Green -->
-                    <Ellipse Grid.Column="0" Grid.Row="9" Stroke="Black" Fill="Green" Margin="5"/>
-                    <Ellipse Grid.Column="1" Grid.Row="9" Stroke="Black" Fill="Green" Margin="5"/>
-                    <Ellipse Grid.Column="0" Grid.Row="10" Stroke="Black" Fill="Green" Margin="5"/>
-                    <Ellipse Grid.Column="1" Grid.Row="10" Stroke="Black" Fill="Green" Margin="5"/>
+                    <Border Grid.Column="0" Grid.Row="9" Style="{StaticResource PionField}"
+                            Background="Green" >
+                        <Border Style="{StaticResource Pion}"
+                                    Background="Turquoise"
+                                    Visibility="Visible" >
+                            <TextBlock Style="{StaticResource PionText}">Test</TextBlock>
+                        </Border>
+                    </Border>
+                    <Border Grid.Column="1" Grid.Row="9" Style="{StaticResource PionField}"
+                            Background="Green" >
+                        <Border Style="{StaticResource Pion}"
+                                    Background="Turquoise"
+                                    Visibility="Visible" >
+                            <TextBlock Style="{StaticResource PionText}">Test</TextBlock>
+                        </Border>
+                    </Border>
+                    <Border Grid.Column="0" Grid.Row="10" Style="{StaticResource PionField}"
+                            Background="Green" >
+                        <Border Style="{StaticResource Pion}"
+                                    Background="Turquoise"
+                                    Visibility="Visible" >
+                            <TextBlock Style="{StaticResource PionText}">Test</TextBlock>
+                        </Border>
+                    </Border>
+                    <Border Grid.Column="1" Grid.Row="10" Style="{StaticResource PionField}"
+                            Background="Green" >
+                        <Border Style="{StaticResource Pion}"
+                                    Background="Turquoise"
+                                    Visibility="Visible" >
+                            <TextBlock Style="{StaticResource PionText}">Test</TextBlock>
+                        </Border>
+                    </Border>
 
                     <!-- Yellow -->
-                    <Ellipse Grid.Column="9" Grid.Row="9" Stroke="Black" Fill="Yellow" Margin="5"/>
-                    <Ellipse Grid.Column="10" Grid.Row="9" Stroke="Black" Fill="Yellow" Margin="5"/>
-                    <Ellipse Grid.Column="9" Grid.Row="10" Stroke="Black" Fill="Yellow" Margin="5"/>
-                    <Ellipse Grid.Column="10" Grid.Row="10" Stroke="Black" Fill="Yellow" Margin="5"/>
+                    <Border Grid.Column="9" Grid.Row="9" Style="{StaticResource PionField}"
+                            Background="Yellow" >
+                        <Border Style="{StaticResource Pion}"
+                                    Background="Turquoise"
+                                    Visibility="Visible" >
+                            <TextBlock Style="{StaticResource PionText}">Test</TextBlock>
+                        </Border>
+                    </Border>
+                    <Border Grid.Column="10" Grid.Row="9" Style="{StaticResource PionField}"
+                            Background="Yellow" >
+                        <Border Style="{StaticResource Pion}"
+                                    Background="Turquoise"
+                                    Visibility="Visible" >
+                            <TextBlock Style="{StaticResource PionText}">Test</TextBlock>
+                        </Border>
+                    </Border>
+                    <Border Grid.Column="9" Grid.Row="10" Style="{StaticResource PionField}"
+                            Background="Yellow" >
+                        <Border Style="{StaticResource Pion}"
+                                    Background="Turquoise"
+                                    Visibility="Visible" >
+                            <TextBlock Style="{StaticResource PionText}">Test</TextBlock>
+                        </Border>
+                    </Border>
+                    <Border Grid.Column="10" Grid.Row="10" Style="{StaticResource PionField}"
+                            Background="Yellow" >
+                        <Border Style="{StaticResource Pion}"
+                                    Background="Turquoise"
+                                    Visibility="Visible" >
+                            <TextBlock Style="{StaticResource PionText}">Test</TextBlock>
+                        </Border>
+                    </Border>
 
 
                     <!-- GAME GRID -->
                     <!-- Red Start -->
-                    <Ellipse Grid.Column="0" Grid.Row="4" Stroke="Black" Fill="#FFE29999" Margin="5"/>
-                    <Ellipse Grid.Column="1" Grid.Row="4" Stroke="Black" Fill="White" Margin="5"/>
-                    <Ellipse Grid.Column="2" Grid.Row="4" Stroke="Black" Fill="White" Margin="5"/>
-                    <Ellipse Grid.Column="3" Grid.Row="4" Stroke="Black" Fill="White" Margin="5"/>
-                    <Ellipse Grid.Column="4" Grid.Row="4" Stroke="Black" Fill="White" Margin="5"/>
-                    <Ellipse Grid.Column="4" Grid.Row="3" Stroke="Black" Fill="White" Margin="5"/>
-                    <Ellipse Grid.Column="4" Grid.Row="2" Stroke="Black" Fill="White" Margin="5"/>
-                    <Ellipse Grid.Column="4" Grid.Row="1" Stroke="Black" Fill="White" Margin="5"/>
-                    <Ellipse Grid.Column="4" Grid.Row="0" Stroke="Black" Fill="White" Margin="5"/>
-                    <Ellipse Grid.Column="5" Grid.Row="0" Stroke="Black" Fill="White" Margin="5"/>
+                    <Border Grid.Column="0" Grid.Row="4" Style="{StaticResource PionField}"
+                            Background="#FFE29999" >
+                        <Border Style="{StaticResource Pion}"
+                                    Background="Turquoise"
+                                    Visibility="Visible" >
+                            <TextBlock Style="{StaticResource PionText}">Test</TextBlock>
+                        </Border>
+                    </Border>
+                    <Border Grid.Column="1" Grid.Row="4" Style="{StaticResource PionField}"
+                            Background="White" >
+                        <Border Style="{StaticResource Pion}"
+                                    Background="Turquoise"
+                                    Visibility="Visible" >
+                            <TextBlock Style="{StaticResource PionText}">Test</TextBlock>
+                        </Border>
+                    </Border>
+                    <Border Grid.Column="2" Grid.Row="4" Style="{StaticResource PionField}"
+                            Background="White" >
+                        <Border Style="{StaticResource Pion}"
+                                    Background="Turquoise"
+                                    Visibility="Visible" >
+                            <TextBlock Style="{StaticResource PionText}">Test</TextBlock>
+                        </Border>
+                    </Border>
+                    <Border Grid.Column="3" Grid.Row="4" Style="{StaticResource PionField}"
+                            Background="White" >
+                        <Border Style="{StaticResource Pion}"
+                                    Background="Turquoise"
+                                    Visibility="Visible" >
+                            <TextBlock Style="{StaticResource PionText}">Test</TextBlock>
+                        </Border>
+                    </Border>
+                    <Border Grid.Column="4" Grid.Row="4" Style="{StaticResource PionField}"
+                            Background="White" >
+                        <Border Style="{StaticResource Pion}"
+                                    Background="Turquoise"
+                                    Visibility="Visible" >
+                            <TextBlock Style="{StaticResource PionText}">Test</TextBlock>
+                        </Border>
+                    </Border>
+                    <Border Grid.Column="4" Grid.Row="3" Style="{StaticResource PionField}"
+                            Background="White" >
+                        <Border Style="{StaticResource Pion}"
+                                    Background="Turquoise"
+                                    Visibility="Visible" >
+                            <TextBlock Style="{StaticResource PionText}">Test</TextBlock>
+                        </Border>
+                    </Border>
+                    <Border Grid.Column="4" Grid.Row="2" Style="{StaticResource PionField}"
+                            Background="White" >
+                        <Border Style="{StaticResource Pion}"
+                                    Background="Turquoise"
+                                    Visibility="Visible" >
+                            <TextBlock Style="{StaticResource PionText}">Test</TextBlock>
+                        </Border>
+                    </Border>
+                    <Border Grid.Column="4" Grid.Row="1" Style="{StaticResource PionField}"
+                            Background="White" >
+                        <Border Style="{StaticResource Pion}"
+                                    Background="Turquoise"
+                                    Visibility="Visible" >
+                            <TextBlock Style="{StaticResource PionText}">Test</TextBlock>
+                        </Border>
+                    </Border>
+                    <Border Grid.Column="4" Grid.Row="0" Style="{StaticResource PionField}"
+                            Background="White" >
+                        <Border Style="{StaticResource Pion}"
+                                    Background="Turquoise"
+                                    Visibility="Visible" >
+                            <TextBlock Style="{StaticResource PionText}">Test</TextBlock>
+                        </Border>
+                    </Border>
+                    <Border Grid.Column="5" Grid.Row="0" Style="{StaticResource PionField}"
+                            Background="White" >
+                        <Border Style="{StaticResource Pion}"
+                                    Background="Turquoise"
+                                    Visibility="Visible" >
+                            <TextBlock Style="{StaticResource PionText}">Test</TextBlock>
+                        </Border>
+                    </Border>
 
                     <!-- Blue Start -->
-                    <Ellipse Grid.Column="6" Grid.Row="0" Stroke="Black" Fill="#FF3A91E8" Margin="5"/>
-                    <Ellipse Grid.Column="6" Grid.Row="1" Stroke="Black" Fill="White" Margin="5"/>
-                    <Ellipse Grid.Column="6" Grid.Row="2" Stroke="Black" Fill="White" Margin="5"/>
-                    <Ellipse Grid.Column="6" Grid.Row="3" Stroke="Black" Fill="White" Margin="5"/>
-                    <Ellipse Grid.Column="6" Grid.Row="4" Stroke="Black" Fill="White" Margin="5"/>
-                    <Ellipse Grid.Column="7" Grid.Row="4" Stroke="Black" Fill="White" Margin="5"/>
-                    <Ellipse Grid.Column="8" Grid.Row="4" Stroke="Black" Fill="White" Margin="5"/>
-                    <Ellipse Grid.Column="9" Grid.Row="4" Stroke="Black" Fill="White" Margin="5"/>
-                    <Ellipse Grid.Column="10" Grid.Row="4" Stroke="Black" Fill="White" Margin="5"/>
-                    <Ellipse Grid.Column="10" Grid.Row="5" Stroke="Black" Fill="White" Margin="5"/>
+                    <Border Grid.Column="6" Grid.Row="0" Style="{StaticResource PionField}"
+                            Background="#FF3A91E8" >
+                        <Border Style="{StaticResource Pion}"
+                                    Background="Turquoise"
+                                    Visibility="Visible" >
+                            <TextBlock Style="{StaticResource PionText}">Test</TextBlock>
+                        </Border>
+                    </Border>
+                    <Border Grid.Column="6" Grid.Row="1" Style="{StaticResource PionField}"
+                            Background="White" >
+                        <Border Style="{StaticResource Pion}"
+                                    Background="Turquoise"
+                                    Visibility="Visible" >
+                            <TextBlock Style="{StaticResource PionText}">Test</TextBlock>
+                        </Border>
+                    </Border>
+                    <Border Grid.Column="6" Grid.Row="2" Style="{StaticResource PionField}"
+                            Background="White" >
+                        <Border Style="{StaticResource Pion}"
+                                    Background="Turquoise"
+                                    Visibility="Visible" >
+                            <TextBlock Style="{StaticResource PionText}">Test</TextBlock>
+                        </Border>
+                    </Border>
+                    <Border Grid.Column="6" Grid.Row="3" Style="{StaticResource PionField}"
+                            Background="White" >
+                        <Border Style="{StaticResource Pion}"
+                                    Background="Turquoise"
+                                    Visibility="Visible" >
+                            <TextBlock Style="{StaticResource PionText}">Test</TextBlock>
+                        </Border>
+                    </Border>
+                    <Border Grid.Column="6" Grid.Row="4" Style="{StaticResource PionField}"
+                            Background="White" >
+                        <Border Style="{StaticResource Pion}"
+                                    Background="Turquoise"
+                                    Visibility="Visible" >
+                            <TextBlock Style="{StaticResource PionText}">Test</TextBlock>
+                        </Border>
+                    </Border>
+                    <Border Grid.Column="7" Grid.Row="4" Style="{StaticResource PionField}"
+                            Background="White" >
+                        <Border Style="{StaticResource Pion}"
+                                    Background="Turquoise"
+                                    Visibility="Visible" >
+                            <TextBlock Style="{StaticResource PionText}">Test</TextBlock>
+                        </Border>
+                    </Border>
+                    <Border Grid.Column="8" Grid.Row="4" Style="{StaticResource PionField}"
+                            Background="White" >
+                        <Border Style="{StaticResource Pion}"
+                                    Background="Turquoise"
+                                    Visibility="Visible" >
+                            <TextBlock Style="{StaticResource PionText}">Test</TextBlock>
+                        </Border>
+                    </Border>
+                    <Border Grid.Column="9" Grid.Row="4" Style="{StaticResource PionField}"
+                            Background="White" >
+                        <Border Style="{StaticResource Pion}"
+                                    Background="Turquoise"
+                                    Visibility="Visible" >
+                            <TextBlock Style="{StaticResource PionText}">Test</TextBlock>
+                        </Border>
+                    </Border>
+                    <Border Grid.Column="10" Grid.Row="4" Style="{StaticResource PionField}"
+                            Background="White" >
+                        <Border Style="{StaticResource Pion}"
+                                    Background="Turquoise"
+                                    Visibility="Visible" >
+                            <TextBlock Style="{StaticResource PionText}">Test</TextBlock>
+                        </Border>
+                    </Border>
+                    <Border Grid.Column="10" Grid.Row="5" Style="{StaticResource PionField}"
+                            Background="White" >
+                        <Border Style="{StaticResource Pion}"
+                                    Background="Turquoise"
+                                    Visibility="Visible" >
+                            <TextBlock Style="{StaticResource PionText}">Test</TextBlock>
+                        </Border>
+                    </Border>
 
                     <!-- Green Start -->
-                    <Ellipse Grid.Column="10" Grid.Row="6" Stroke="Black" Fill="#FF8EC928" Margin="5"/>
-                    <Ellipse Grid.Column="9" Grid.Row="6" Stroke="Black" Fill="White" Margin="5"/>
-                    <Ellipse Grid.Column="8" Grid.Row="6" Stroke="Black" Fill="White" Margin="5"/>
-                    <Ellipse Grid.Column="7" Grid.Row="6" Stroke="Black" Fill="White" Margin="5"/>
-                    <Ellipse Grid.Column="6" Grid.Row="6" Stroke="Black" Fill="White" Margin="5"/>
-                    <Ellipse Grid.Column="6" Grid.Row="7" Stroke="Black" Fill="White" Margin="5"/>
-                    <Ellipse Grid.Column="6" Grid.Row="8" Stroke="Black" Fill="White" Margin="5"/>
-                    <Ellipse Grid.Column="6" Grid.Row="9" Stroke="Black" Fill="White" Margin="5"/>
-                    <Ellipse Grid.Column="6" Grid.Row="10" Stroke="Black" Fill="White" Margin="5"/>
-                    <Ellipse Grid.Column="5" Grid.Row="10" Stroke="Black" Fill="White" Margin="5"/>
+                    <Border Grid.Column="10" Grid.Row="6" Style="{StaticResource PionField}"
+                            Background="#FF8EC928" >
+                        <Border Style="{StaticResource Pion}"
+                                    Background="Turquoise"
+                                    Visibility="Visible" >
+                            <TextBlock Style="{StaticResource PionText}">Test</TextBlock>
+                        </Border>
+                    </Border>
+                    <Border Grid.Column="9" Grid.Row="6" Style="{StaticResource PionField}"
+                            Background="White" >
+                        <Border Style="{StaticResource Pion}"
+                                    Background="Turquoise"
+                                    Visibility="Visible" >
+                            <TextBlock Style="{StaticResource PionText}">Test</TextBlock>
+                        </Border>
+                    </Border>
+                    <Border Grid.Column="8" Grid.Row="6" Style="{StaticResource PionField}"
+                            Background="White" >
+                        <Border Style="{StaticResource Pion}"
+                                    Background="Turquoise"
+                                    Visibility="Visible" >
+                            <TextBlock Style="{StaticResource PionText}">Test</TextBlock>
+                        </Border>
+                    </Border>
+                    <Border Grid.Column="7" Grid.Row="6" Style="{StaticResource PionField}"
+                            Background="White" >
+                        <Border Style="{StaticResource Pion}"
+                                    Background="Turquoise"
+                                    Visibility="Visible" >
+                            <TextBlock Style="{StaticResource PionText}">Test</TextBlock>
+                        </Border>
+                    </Border>
+                    <Border Grid.Column="6" Grid.Row="6" Style="{StaticResource PionField}"
+                            Background="White" >
+                        <Border Style="{StaticResource Pion}"
+                                    Background="Turquoise"
+                                    Visibility="Visible" >
+                            <TextBlock Style="{StaticResource PionText}">Test</TextBlock>
+                        </Border>
+                    </Border>
+                    <Border Grid.Column="6" Grid.Row="7" Style="{StaticResource PionField}"
+                            Background="White" >
+                        <Border Style="{StaticResource Pion}"
+                                    Background="Turquoise"
+                                    Visibility="Visible" >
+                            <TextBlock Style="{StaticResource PionText}">Test</TextBlock>
+                        </Border>
+                    </Border>
+                    <Border Grid.Column="6" Grid.Row="8" Style="{StaticResource PionField}"
+                            Background="White" >
+                        <Border Style="{StaticResource Pion}"
+                                    Background="Turquoise"
+                                    Visibility="Visible" >
+                            <TextBlock Style="{StaticResource PionText}">Test</TextBlock>
+                        </Border>
+                    </Border>
+                    <Border Grid.Column="6" Grid.Row="9" Style="{StaticResource PionField}"
+                            Background="White" >
+                        <Border Style="{StaticResource Pion}"
+                                    Background="Turquoise"
+                                    Visibility="Visible" >
+                            <TextBlock Style="{StaticResource PionText}">Test</TextBlock>
+                        </Border>
+                    </Border>
+                    <Border Grid.Column="6" Grid.Row="10" Style="{StaticResource PionField}"
+                            Background="White" >
+                        <Border Style="{StaticResource Pion}"
+                                    Background="Turquoise"
+                                    Visibility="Visible" >
+                            <TextBlock Style="{StaticResource PionText}">Test</TextBlock>
+                        </Border>
+                    </Border>
+                    <Border Grid.Column="5" Grid.Row="10" Style="{StaticResource PionField}"
+                            Background="White" >
+                        <Border Style="{StaticResource Pion}"
+                                    Background="Turquoise"
+                                    Visibility="Visible" >
+                            <TextBlock Style="{StaticResource PionText}">Test</TextBlock>
+                        </Border>
+                    </Border>
 
                     <!-- Yellow Start -->
-                    <Ellipse Grid.Column="4" Grid.Row="10" Stroke="Black" Fill="#FFC9C928" Margin="5"/>
-                    <Ellipse Grid.Column="4" Grid.Row="9" Stroke="Black" Fill="White" Margin="5"/>
-                    <Ellipse Grid.Column="4" Grid.Row="8" Stroke="Black" Fill="White" Margin="5"/>
-                    <Ellipse Grid.Column="4" Grid.Row="7" Stroke="Black" Fill="White" Margin="5"/>
-                    <Ellipse Grid.Column="4" Grid.Row="6" Stroke="Black" Fill="White" Margin="5"/>
-                    <Ellipse Grid.Column="3" Grid.Row="6" Stroke="Black" Fill="White" Margin="5"/>
-                    <Ellipse Grid.Column="2" Grid.Row="6" Stroke="Black" Fill="White" Margin="5"/>
-                    <Ellipse Grid.Column="1" Grid.Row="6" Stroke="Black" Fill="White" Margin="5"/>
-                    <Ellipse Grid.Column="0" Grid.Row="6" Stroke="Black" Fill="White" Margin="5"/>
-                    <Ellipse Grid.Column="0" Grid.Row="5" Stroke="Black" Fill="White" Margin="5"/>
+                    <Border Grid.Column="4" Grid.Row="10" Style="{StaticResource PionField}"
+                            Background="#FFC9C928" >
+                        <Border Style="{StaticResource Pion}"
+                                    Background="Turquoise"
+                                    Visibility="Visible" >
+                            <TextBlock Style="{StaticResource PionText}">Test</TextBlock>
+                        </Border>
+                    </Border>
+                    <Border Grid.Column="4" Grid.Row="9" Style="{StaticResource PionField}"
+                            Background="White" >
+                        <Border Style="{StaticResource Pion}"
+                                    Background="Turquoise"
+                                    Visibility="Visible" >
+                            <TextBlock Style="{StaticResource PionText}">Test</TextBlock>
+                        </Border>
+                    </Border>
+                    <Border Grid.Column="4" Grid.Row="8" Style="{StaticResource PionField}"
+                            Background="White" >
+                        <Border Style="{StaticResource Pion}"
+                                    Background="Turquoise"
+                                    Visibility="Visible" >
+                            <TextBlock Style="{StaticResource PionText}">Test</TextBlock>
+                        </Border>
+                    </Border>
+                    <Border Grid.Column="4" Grid.Row="7" Style="{StaticResource PionField}"
+                            Background="White" >
+                        <Border Style="{StaticResource Pion}"
+                                    Background="Turquoise"
+                                    Visibility="Visible" >
+                            <TextBlock Style="{StaticResource PionText}">Test</TextBlock>
+                        </Border>
+                    </Border>
+                    <Border Grid.Column="4" Grid.Row="6" Style="{StaticResource PionField}"
+                            Background="White" >
+                        <Border Style="{StaticResource Pion}"
+                                    Background="Turquoise"
+                                    Visibility="Visible" >
+                            <TextBlock Style="{StaticResource PionText}">Test</TextBlock>
+                        </Border>
+                    </Border>
+                    <Border Grid.Column="3" Grid.Row="6" Style="{StaticResource PionField}"
+                            Background="White" >
+                        <Border Style="{StaticResource Pion}"
+                                    Background="Turquoise"
+                                    Visibility="Visible" >
+                            <TextBlock Style="{StaticResource PionText}">Test</TextBlock>
+                        </Border>
+                    </Border>
+                    <Border Grid.Column="2" Grid.Row="6" Style="{StaticResource PionField}"
+                            Background="White" >
+                        <Border Style="{StaticResource Pion}"
+                                    Background="Turquoise"
+                                    Visibility="Visible" >
+                            <TextBlock Style="{StaticResource PionText}">Test</TextBlock>
+                        </Border>
+                    </Border>
+                    <Border Grid.Column="1" Grid.Row="6" Style="{StaticResource PionField}"
+                            Background="White" >
+                        <Border Style="{StaticResource Pion}"
+                                    Background="Turquoise"
+                                    Visibility="Visible" >
+                            <TextBlock Style="{StaticResource PionText}">Test</TextBlock>
+                        </Border>
+                    </Border>
+                    <Border Grid.Column="0" Grid.Row="6" Style="{StaticResource PionField}"
+                            Background="White" >
+                        <Border Style="{StaticResource Pion}"
+                                    Background="Turquoise"
+                                    Visibility="Visible" >
+                            <TextBlock Style="{StaticResource PionText}">Test</TextBlock>
+                        </Border>
+                    </Border>
+                    <Border Grid.Column="0" Grid.Row="5" Style="{StaticResource PionField}"
+                            Background="White" >
+                        <Border Style="{StaticResource Pion}"
+                                    Background="Turquoise"
+                                    Visibility="Visible" >
+                            <TextBlock Style="{StaticResource PionText}">Test</TextBlock>
+                        </Border>
+                    </Border>
 
                     <!-- GAME HOME -->
                     <!-- Red -->
-                    <Ellipse Grid.Column="1" Grid.Row="5" Stroke="Black" Fill="Red" Margin="5"/>
-                    <Ellipse Grid.Column="2" Grid.Row="5" Stroke="Black" Fill="Red" Margin="5"/>
-                    <Ellipse Grid.Column="3" Grid.Row="5" Stroke="Black" Fill="Red" Margin="5"/>
-                    <Ellipse Grid.Column="4" Grid.Row="5" Stroke="Black" Fill="Red" Margin="5"/>
+                    <Border Grid.Column="1" Grid.Row="5" Style="{StaticResource PionField}"
+                            Background="Red" >
+                        <Border Style="{StaticResource Pion}"
+                                    Background="Turquoise"
+                                    Visibility="Visible" >
+                            <TextBlock Style="{StaticResource PionText}">Test</TextBlock>
+                        </Border>
+                    </Border>
+                    <Border Grid.Column="2" Grid.Row="5" Style="{StaticResource PionField}"
+                            Background="Red" >
+                        <Border Style="{StaticResource Pion}"
+                                    Background="Turquoise"
+                                    Visibility="Visible" >
+                            <TextBlock Style="{StaticResource PionText}">Test</TextBlock>
+                        </Border>
+                    </Border>
+                    <Border Grid.Column="3" Grid.Row="5" Style="{StaticResource PionField}"
+                            Background="Red" >
+                        <Border Style="{StaticResource Pion}"
+                                    Background="Turquoise"
+                                    Visibility="Visible" >
+                            <TextBlock Style="{StaticResource PionText}">Test</TextBlock>
+                        </Border>
+                    </Border>
+                    <Border Grid.Column="4" Grid.Row="5" Style="{StaticResource PionField}"
+                            Background="Red" >
+                        <Border Style="{StaticResource Pion}"
+                                    Background="Turquoise"
+                                    Visibility="Visible" >
+                            <TextBlock Style="{StaticResource PionText}">Test</TextBlock>
+                        </Border>
+                    </Border>
 
                     <!-- Blue -->
-                    <Ellipse Grid.Column="5" Grid.Row="1" Stroke="Black" Fill="Blue" Margin="5"/>
-                    <Ellipse Grid.Column="5" Grid.Row="2" Stroke="Black" Fill="Blue" Margin="5"/>
-                    <Ellipse Grid.Column="5" Grid.Row="3" Stroke="Black" Fill="Blue" Margin="5"/>
-                    <Ellipse Grid.Column="5" Grid.Row="4" Stroke="Black" Fill="Blue" Margin="5"/>
+                    <Border Grid.Column="5" Grid.Row="1" Style="{StaticResource PionField}"
+                            Background="Blue" >
+                        <Border Style="{StaticResource Pion}"
+                                    Background="Turquoise"
+                                    Visibility="Visible" >
+                            <TextBlock Style="{StaticResource PionText}">Test</TextBlock>
+                        </Border>
+                    </Border>
+                    <Border Grid.Column="5" Grid.Row="2" Style="{StaticResource PionField}"
+                            Background="Blue" >
+                        <Border Style="{StaticResource Pion}"
+                                    Background="Turquoise"
+                                    Visibility="Visible" >
+                            <TextBlock Style="{StaticResource PionText}">Test</TextBlock>
+                        </Border>
+                    </Border>
+                    <Border Grid.Column="5" Grid.Row="3" Style="{StaticResource PionField}"
+                            Background="Blue" >
+                        <Border Style="{StaticResource Pion}"
+                                    Background="Turquoise"
+                                    Visibility="Visible" >
+                            <TextBlock Style="{StaticResource PionText}">Test</TextBlock>
+                        </Border>
+                    </Border>
+                    <Border Grid.Column="5" Grid.Row="4" Style="{StaticResource PionField}"
+                            Background="Blue" >
+                        <Border Style="{StaticResource Pion}"
+                                    Background="Turquoise"
+                                    Visibility="Visible" >
+                            <TextBlock Style="{StaticResource PionText}">Test</TextBlock>
+                        </Border>
+                    </Border>
 
                     <!-- Green -->
-                    <Ellipse Grid.Column="9" Grid.Row="5" Stroke="Black" Fill="Green" Margin="5"/>
-                    <Ellipse Grid.Column="8" Grid.Row="5" Stroke="Black" Fill="Green" Margin="5"/>
-                    <Ellipse Grid.Column="7" Grid.Row="5" Stroke="Black" Fill="Green" Margin="5"/>
-                    <Ellipse Grid.Column="6" Grid.Row="5" Stroke="Black" Fill="Green" Margin="5"/>
+                    <Border Grid.Column="9" Grid.Row="5" Style="{StaticResource PionField}"
+                            Background="Green" >
+                        <Border Style="{StaticResource Pion}"
+                                    Background="Turquoise"
+                                    Visibility="Visible" >
+                            <TextBlock Style="{StaticResource PionText}">Test</TextBlock>
+                        </Border>
+                    </Border>
+                    <Border Grid.Column="8" Grid.Row="5" Style="{StaticResource PionField}"
+                            Background="Green" >
+                        <Border Style="{StaticResource Pion}"
+                                    Background="Turquoise"
+                                    Visibility="Visible" >
+                            <TextBlock Style="{StaticResource PionText}">Test</TextBlock>
+                        </Border>
+                    </Border>
+                    <Border Grid.Column="7" Grid.Row="5" Style="{StaticResource PionField}"
+                            Background="Green" >
+                        <Border Style="{StaticResource Pion}"
+                                    Background="Turquoise"
+                                    Visibility="Visible" >
+                            <TextBlock Style="{StaticResource PionText}">Test</TextBlock>
+                        </Border>
+                    </Border>
+                    <Border Grid.Column="6" Grid.Row="5" Style="{StaticResource PionField}"
+                            Background="Green" >
+                        <Border Style="{StaticResource Pion}"
+                                    Background="Turquoise"
+                                    Visibility="Visible" >
+                            <TextBlock Style="{StaticResource PionText}">Test</TextBlock>
+                        </Border>
+                    </Border>
 
                     <!-- Yellow -->
-                    <Ellipse Grid.Column="5" Grid.Row="9" Stroke="Black" Fill="Yellow" Margin="5"/>
-                    <Ellipse Grid.Column="5" Grid.Row="8" Stroke="Black" Fill="Yellow" Margin="5"/>
-                    <Ellipse Grid.Column="5" Grid.Row="7" Stroke="Black" Fill="Yellow" Margin="5"/>
-                    <Ellipse Grid.Column="5" Grid.Row="6" Stroke="Black" Fill="Yellow" Margin="5"/>
+                    <Border Grid.Column="5" Grid.Row="9" Style="{StaticResource PionField}"
+                            Background="Yellow" >
+                        <Border Style="{StaticResource Pion}"
+                                    Background="Turquoise"
+                                    Visibility="Visible" >
+                            <TextBlock Style="{StaticResource PionText}">Test</TextBlock>
+                        </Border>
+                    </Border>
+                    <Border Grid.Column="5" Grid.Row="8" Style="{StaticResource PionField}"
+                            Background="Yellow" >
+                        <Border Style="{StaticResource Pion}"
+                                    Background="Turquoise"
+                                    Visibility="Visible" >
+                            <TextBlock Style="{StaticResource PionText}">Test</TextBlock>
+                        </Border>
+                    </Border>
+                    <Border Grid.Column="5" Grid.Row="7" Style="{StaticResource PionField}"
+                            Background="Yellow" >
+                        <Border Style="{StaticResource Pion}"
+                                    Background="Turquoise"
+                                    Visibility="Visible" >
+                            <TextBlock Style="{StaticResource PionText}">Test</TextBlock>
+                        </Border>
+                    </Border>
+                    <Border Grid.Column="5" Grid.Row="6" Style="{StaticResource PionField}"
+                            Background="Yellow" >
+                        <Border Style="{StaticResource Pion}"
+                                    Background="Turquoise"
+                                    Visibility="Visible" >
+                            <TextBlock Style="{StaticResource PionText}">Test</TextBlock>
+                        </Border>
+                    </Border>
                 </Grid>
 
                 <!-- Pion Buttons -->
-                <Grid Grid.Row="1">
+                <Grid Grid.Row="1" Background="Beige">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
