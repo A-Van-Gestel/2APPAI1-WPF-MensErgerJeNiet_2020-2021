@@ -11,6 +11,7 @@ namespace MensErgerJeNiet.Model
     {
         // Internal list of games for dupe detection
         private ObservableCollection<Game> games;
+        private ObservableCollection<PlayerHistory> playerHistories;
 
         // Ophalen ConnectionString uit App.config
         private static string connectionString =
@@ -117,6 +118,19 @@ namespace MensErgerJeNiet.Model
         // Delete a Game
         public void DeleteGame(Game game)
         {
+            // --- Delete playerHistory linked to it as well ---
+            //playerHistories inlezen
+            PlayerHistoryDataService playerHistoryDataService = new PlayerHistoryDataService();
+            playerHistories = playerHistoryDataService.GetPlayerHistories();
+            foreach (PlayerHistory playerHistory_internal in playerHistories)
+            {
+                if (game.ID == playerHistory_internal.GameID)
+                {
+                    playerHistoryDataService.DeletePlayerHistory(playerHistory_internal);
+                }
+            }
+
+            // --- Then delete the game ---
             // SQL statement delete 
             string sql = "Delete Game where id = @id";
 

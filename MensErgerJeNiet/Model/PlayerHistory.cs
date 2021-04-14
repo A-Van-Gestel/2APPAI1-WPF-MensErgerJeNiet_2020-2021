@@ -81,7 +81,10 @@ namespace MensErgerJeNiet.Model
             set
             {
                 player = value;
-                playerID = value.ID;
+                if (player != null)
+                {
+                    playerID = value.ID;
+                }
                 NotifyPropertyChanged();
             }
         }
@@ -110,7 +113,10 @@ namespace MensErgerJeNiet.Model
             set
             {
                 color = value;
+                if (color != null)
+                {
                 colorID = value.ID;
+                }
                 NotifyPropertyChanged();
             }
         }
@@ -139,7 +145,10 @@ namespace MensErgerJeNiet.Model
             set
             {
                 game = value;
+                if (game != null)
+                {
                 gameID = value.ID;
+                }
                 NotifyPropertyChanged();
             }
         }

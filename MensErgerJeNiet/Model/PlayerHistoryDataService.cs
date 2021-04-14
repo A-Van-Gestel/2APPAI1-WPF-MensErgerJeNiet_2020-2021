@@ -12,6 +12,13 @@ namespace MensErgerJeNiet.Model
         // Internal list of playerHistories for dupe detection
         private ObservableCollection<PlayerHistory> playerHistories;
 
+        // Intenal list of games for deletion prevention
+        private ObservableCollection<Game> games;
+
+        // Intenal lists for deletion
+        private ObservableCollection<Player> players;
+        private ObservableCollection<Position> positions;
+
         // Ophalen ConnectionString uit App.config
         private static string connectionString =
         ConfigurationManager.ConnectionStrings["azure"].ConnectionString;
@@ -161,11 +168,51 @@ namespace MensErgerJeNiet.Model
         // Delete a PlayerHistory
         public void DeletePlayerHistory(PlayerHistory playerHistory)
         {
+            //// --- Usage detection ---
+            ////games inlezen
+            //GameDataService gameDataService = new GameDataService();
+            //games = gameDataService.GetGames();
+            //foreach (Game game_internal in games)
+            //{
+            //    if (playerHistory.GameID == game_internal.ID)
+            //    {
+            //        return;
+            //    }
+            //}
+
+            // --- If no usage, delete positions linked to it, then itself, and finally players linked to it ---
+            // - Delete positions linked to it -
+            //positions inlezen
+            PositionDataService positionDataService = new PositionDataService();
+            positions = positionDataService.GetPositions();
+            foreach (Position position_internal in positions)
+            {
+                if (playerHistory.ID == position_internal.PlayerHistoryID)
+                {
+                    positionDataService.DeletePosition(position_internal);
+                }
+            }
+
+
+            // - Delete itself (PlayerHistory) -
             // SQL statement delete 
             string sql = "Delete PlayerHistory where id = @id";
 
             // Uitvoeren SQL statement en doorgeven parametercollectie
             db.Execute(sql, new { playerHistory.ID });
+
+
+            // - Delete players linked to it -
+            //players inlezen
+            PlayerDataService playerDataService = new PlayerDataService();
+            players = playerDataService.GetPlayers();
+            foreach (Player player_internal in players)
+            {
+                if (playerHistory.PlayerID == player_internal.ID)
+                {
+                    playerDataService.DeletePlayer(player_internal);
+                }
+            }
         }
     }
 }

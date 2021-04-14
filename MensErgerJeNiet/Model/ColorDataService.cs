@@ -11,6 +11,7 @@ namespace MensErgerJeNiet.Model
     {
         // Internal list of colors for dupe detection
         private ObservableCollection<Color> colors;
+        private ObservableCollection<PlayerHistory> playerHistories;
 
         // Ophalen ConnectionString uit App.config
         private static string connectionString =
@@ -107,11 +108,29 @@ namespace MensErgerJeNiet.Model
         // Delete a Color
         public void DeleteColor(Color color)
         {
-            // SQL statement delete 
-            string sql = "Delete Color where id = @id";
+            // --- Minum 4 detection ---
+            colors = GetColors();
+            if (colors.Count > 4)
+            {
+                // --- Usage detection ---
+                //playerHistories inlezen
+                PlayerHistoryDataService playerHistoryDataService = new PlayerHistoryDataService();
+                playerHistories = playerHistoryDataService.GetPlayerHistories();
+                foreach (PlayerHistory playerHistory_internal in playerHistories)
+                {
+                    if (color.ID == playerHistory_internal.ColorID)
+                    {
+                        return;
+                    }
+                }
 
-            // Uitvoeren SQL statement en doorgeven parametercollectie
-            db.Execute(sql, new { color.ID });
+                // --- If no usage, delete ---
+                // SQL statement delete 
+                string sql = "Delete Color where id = @id";
+
+                // Uitvoeren SQL statement en doorgeven parametercollectie
+                db.Execute(sql, new { color.ID });
+            }
         }
     }
 }
