@@ -138,12 +138,12 @@
             </ComboBox>
 
             <!-- isWinner -->
-            <TextBlock Style="{StaticResource  MaterialDesignSubtitle2TextBlock}" Margin="10,10,10,3" >isTurn:</TextBlock>
+            <TextBlock Style="{StaticResource  MaterialDesignSubtitle2TextBlock}" Margin="10,10,10,3" >isWinner:</TextBlock>
             <ComboBox Margin="10,5,10,10" 
                       SelectedValuePath="Tag" 
                       SelectedValue="{Binding Path=CurrentPlayerHistory.IsWinner, Mode=TwoWay}" 
                       materialDesign:ComboBoxAssist.ShowSelectedItem="True"
-                      materialDesign:HintAssist.Hint="IsTurn">
+                      materialDesign:HintAssist.Hint="IsWinner">
                 <ComboBoxItem Tag="True">True</ComboBoxItem>
                 <ComboBoxItem Tag="False">False</ComboBoxItem>
             </ComboBox>

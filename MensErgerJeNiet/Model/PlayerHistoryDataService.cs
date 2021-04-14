@@ -9,6 +9,9 @@ namespace MensErgerJeNiet.Model
 {
     class PlayerHistoryDataService
     {
+        // Internal list of playerHistories for dupe detection
+        private ObservableCollection<PlayerHistory> playerHistories;
+
         // Ophalen ConnectionString uit App.config
         private static string connectionString =
         ConfigurationManager.ConnectionStrings["azure"].ConnectionString;
@@ -79,6 +82,24 @@ namespace MensErgerJeNiet.Model
         // Update a PlayerHistory
         public void UpdatePlayerHistory(PlayerHistory playerHistory)
         {
+            // --- Dupe detection ---
+            playerHistories = GetPlayerHistories();
+            foreach (PlayerHistory playerHistory_internal in playerHistories)
+            {
+                if (playerHistory.PlayerID == playerHistory_internal.PlayerID &
+                    playerHistory.ColorID == playerHistory_internal.ColorID &
+                    playerHistory.GameID == playerHistory_internal.GameID &
+                    playerHistory.CountTime == playerHistory_internal.CountTime &
+                    playerHistory.CountSixes == playerHistory_internal.CountSixes &
+                    playerHistory.CountTurns == playerHistory_internal.CountTurns &
+                    playerHistory.IsTurn == playerHistory_internal.IsTurn &
+                    playerHistory.IsWinner == playerHistory_internal.IsWinner)
+                {
+                    return;
+                }
+            }
+
+            // --- If no dupe, update ---
             // SQL statement update 
             string sql = "Update PlayerHistory set playerID = @playerID, colorID = @colorID, gameID = @gameID, countTime = @countTime, countSixes = @countSixes, countTurns = @countTurns, isTurn = @isTurn, isWinner = @isWinner where id = @id";
 
@@ -100,6 +121,24 @@ namespace MensErgerJeNiet.Model
         // Insert a PlayerHistory
         public int InsertPlayerHistory(PlayerHistory playerHistory)
         {
+            // --- Dupe detection ---
+            playerHistories = GetPlayerHistories();
+            foreach (PlayerHistory playerHistory_internal in playerHistories)
+            {
+                if (playerHistory.PlayerID == playerHistory_internal.PlayerID &
+                    playerHistory.ColorID == playerHistory_internal.ColorID &
+                    playerHistory.GameID == playerHistory_internal.GameID &
+                    playerHistory.CountTime == playerHistory_internal.CountTime &
+                    playerHistory.CountSixes == playerHistory_internal.CountSixes &
+                    playerHistory.CountTurns == playerHistory_internal.CountTurns &
+                    playerHistory.IsTurn == playerHistory_internal.IsTurn &
+                    playerHistory.IsWinner == playerHistory_internal.IsWinner)
+                {
+                    return playerHistory_internal.ID;
+                }
+            }
+
+            // --- If no dupe, instert ---
             // SQL statement insert
             string sql = "Insert into PlayerHistory (playerID, colorID, gameID, countTime, countSixes, countTurns, isTurn, isWinner) values (@playerID, @colorID, @gameID, @countTime, @countSixes, @countTurns, @isTurn, @isWinner);" +
                          "SELECT CAST(SCOPE_IDENTITY() as int)";

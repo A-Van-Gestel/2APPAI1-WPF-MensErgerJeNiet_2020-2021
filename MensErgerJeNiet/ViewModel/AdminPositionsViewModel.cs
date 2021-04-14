@@ -67,7 +67,7 @@ namespace MensErgerJeNiet.ViewModel
             PositionDataService contactDS =
                new PositionDataService();
 
-            Positions = new ObservableCollection<Position>(contactDS.GetPosition());
+            Positions = new ObservableCollection<Position>(contactDS.GetPositions());
 
             //PlayerHistories inlezen
             PlayerHistoryDataService playerHistoryDataService = new PlayerHistoryDataService();

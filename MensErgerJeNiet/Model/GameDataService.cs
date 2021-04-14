@@ -9,6 +9,9 @@ namespace MensErgerJeNiet.Model
 {
     class GameDataService
     {
+        // Internal list of games for dupe detection
+        private ObservableCollection<Game> games;
+
         // Ophalen ConnectionString uit App.config
         private static string connectionString =
         ConfigurationManager.ConnectionStrings["azure"].ConnectionString;
@@ -63,6 +66,18 @@ namespace MensErgerJeNiet.Model
         // Update a Game
         public void UpdateGame(Game game)
         {
+            // --- Dupe detection ---
+            games = GetGames();
+            foreach (Game game_internal in games)
+            {
+                if (game.Date == game_internal.Date &
+                    game.IsActive == game_internal.IsActive)
+                {
+                    return;
+                }
+            }
+
+            // --- If no dupe, update ---
             // SQL statement update 
             string sql = "Update Game set date = @date, isActive = @isActive where id = @id";
 
@@ -78,6 +93,18 @@ namespace MensErgerJeNiet.Model
         // Insert a Game
         public int InsertGame(Game game)
         {
+            // --- Dupe detection ---
+            games = GetGames();
+            foreach (Game game_internal in games)
+            {
+                if (game.Date == game_internal.Date &
+                    game.IsActive == game_internal.IsActive)
+                {
+                    return game_internal.ID;
+                }
+            }
+
+            // --- If no dupe, instert ---
             // SQL statement insert
             string sql = "Insert into Game (date, isActive) values (@date, @isActive);" +
                          "SELECT CAST(SCOPE_IDENTITY() as int)";

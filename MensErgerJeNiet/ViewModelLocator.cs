@@ -9,24 +9,26 @@ namespace MensErgerJeNiet
 {
     class ViewModelLocator
     {
-        private static HomeViewModel homeViewModel = new HomeViewModel();
-        private static SpelRegelsViewModel spelRegelsViewModel = new SpelRegelsViewModel();
-        private static PlayerSelectionViewModel playerSelectionViewModel = new PlayerSelectionViewModel();
-        private static PlayViewModel playViewModel = new PlayViewModel();
-        private static HistoryViewModel historyViewModel = new HistoryViewModel();
-        // --- Admin Tools ---
-        private static AdminViewModel adminViewModel = new AdminViewModel();
-        private static AdminColorsViewModel adminColorsViewModel = new AdminColorsViewModel();
-        private static AdminGamesViewModel adminGamesViewModel = new AdminGamesViewModel();
-        private static AdminPlayersViewModel adminPlayersViewModel = new AdminPlayersViewModel();
-        private static AdminPositionsViewModel adminPositionsViewModel = new AdminPositionsViewModel();
-        private static AdminPlayerHistoriesViewModel adminPlayerHistoriesViewModel = new AdminPlayerHistoriesViewModel();
+        // Resulted in old data getting to the view the 'Read data from database' command is only run at startup.
+
+        //private static HomeViewModel homeViewModel = new HomeViewModel();
+        //private static SpelRegelsViewModel spelRegelsViewModel = new SpelRegelsViewModel();
+        //private static PlayerSelectionViewModel playerSelectionViewModel = new PlayerSelectionViewModel();
+        //private static PlayViewModel playViewModel = new PlayViewModel();
+        //private static HistoryViewModel historyViewModel = new HistoryViewModel();
+        //// --- Admin Tools ---
+        //private static AdminViewModel adminViewModel = new AdminViewModel();
+        //private static AdminColorsViewModel adminColorsViewModel = new AdminColorsViewModel();
+        //private static AdminGamesViewModel adminGamesViewModel = new AdminGamesViewModel();
+        //private static AdminPlayersViewModel adminPlayersViewModel = new AdminPlayersViewModel();
+        //private static AdminPositionsViewModel adminPositionsViewModel = new AdminPositionsViewModel();
+        //private static AdminPlayerHistoriesViewModel adminPlayerHistoriesViewModel = new AdminPlayerHistoriesViewModel();
 
         public static HomeViewModel HomeViewModel
         {
             get
             {
-                return homeViewModel;
+                return new HomeViewModel();
             }
         }
 
@@ -34,7 +36,7 @@ namespace MensErgerJeNiet
         {
             get
             {
-                return spelRegelsViewModel;
+                return new SpelRegelsViewModel();
             }
         }
 
@@ -42,7 +44,7 @@ namespace MensErgerJeNiet
         {
             get
             {
-                return playerSelectionViewModel;
+                return new PlayerSelectionViewModel();
             }
         }
 
@@ -50,7 +52,7 @@ namespace MensErgerJeNiet
         {
             get
             {
-                return playViewModel;
+                return new PlayViewModel();
             }
         }
 
@@ -58,7 +60,7 @@ namespace MensErgerJeNiet
         {
             get
             {
-                return historyViewModel;
+                return new HistoryViewModel();
             }
         }
 
@@ -67,7 +69,7 @@ namespace MensErgerJeNiet
         {
             get
             {
-                return adminViewModel;
+                return new AdminViewModel();
             }
         }
 
@@ -75,7 +77,7 @@ namespace MensErgerJeNiet
         {
             get
             {
-                return adminColorsViewModel;
+                return new AdminColorsViewModel();
             }
         }
 
@@ -83,7 +85,7 @@ namespace MensErgerJeNiet
         {
             get
             {
-                return adminGamesViewModel;
+                return new AdminGamesViewModel();
             }
         }
 
@@ -91,7 +93,7 @@ namespace MensErgerJeNiet
         {
             get
             {
-                return adminPlayersViewModel;
+                return new AdminPlayersViewModel();
             }
         }
 
@@ -99,7 +101,7 @@ namespace MensErgerJeNiet
         {
             get
             {
-                return adminPositionsViewModel;
+                return new AdminPositionsViewModel();
             }
         }
 
@@ -107,7 +109,7 @@ namespace MensErgerJeNiet
         {
             get
             {
-                return adminPlayerHistoriesViewModel;
+                return new AdminPlayerHistoriesViewModel();
             }
         }
     }

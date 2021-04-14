@@ -64,7 +64,11 @@
             set
             {
                 playerHistory = value;
-                playerHistoryID = value.ID;
+                if (playerHistory != null)
+                {
+                    playerHistoryID = value.ID;
+                }
+
                 NotifyPropertyChanged();
             }
         }

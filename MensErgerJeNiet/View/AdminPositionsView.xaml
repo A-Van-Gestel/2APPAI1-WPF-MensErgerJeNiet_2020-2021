@@ -58,11 +58,21 @@
 
             <!-- Pion -->
             <TextBlock Style="{StaticResource  MaterialDesignSubtitle2TextBlock}" Margin="10,10,10,3" >Pion:</TextBlock>
-            <TextBox Margin="10,5,10,10" 
+            <!--<TextBox Margin="10,5,10,10" 
                      Text="{Binding CurrentPosition.Pion}" 
                      materialDesign:HintAssist.Hint="Pion"
                      MaxLength="1"
-                     ToolTip="Pion" />
+                     ToolTip="Pion" />-->
+            <ComboBox Margin="10,5,10,10" 
+                      SelectedValuePath="Tag" 
+                      SelectedValue="{Binding Path=CurrentPosition.Pion, Mode=TwoWay}" 
+                      materialDesign:ComboBoxAssist.ShowSelectedItem="True"
+                      materialDesign:HintAssist.Hint="Pion">
+                <ComboBoxItem Tag="1">1</ComboBoxItem>
+                <ComboBoxItem Tag="2">2</ComboBoxItem>
+                <ComboBoxItem Tag="3">3</ComboBoxItem>
+                <ComboBoxItem Tag="4">4</ComboBoxItem>
+            </ComboBox>
 
             <!-- Coordinate -->
             <TextBlock Style="{StaticResource  MaterialDesignSubtitle2TextBlock}" Margin="10,10,10,3" >Coordinate:</TextBlock>

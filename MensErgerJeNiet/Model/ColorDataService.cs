@@ -9,6 +9,9 @@ namespace MensErgerJeNiet.Model
 {
     class ColorDataService
     {
+        // Internal list of colors for dupe detection
+        private ObservableCollection<Color> colors;
+
         // Ophalen ConnectionString uit App.config
         private static string connectionString =
         ConfigurationManager.ConnectionStrings["azure"].ConnectionString;
@@ -49,6 +52,18 @@ namespace MensErgerJeNiet.Model
         // Update a Color
         public void UpdateColor(Color color)
         {
+            // --- Dupe detection ---
+            colors = GetColors();
+            foreach (Color color_internal in colors)
+            {
+                if (color.Name == color_internal.Name &
+                    color.Code == color_internal.Code)
+                {
+                    return;
+                }
+            }
+
+            // --- If no dupe, update ---
             // SQL statement update 
             string sql = "Update Color set name = @name, code = @code where id = @id";
 
@@ -64,6 +79,18 @@ namespace MensErgerJeNiet.Model
         // Insert a Color
         public int InsertColor(Color color)
         {
+            // --- Dupe detection ---
+            colors = GetColors();
+            foreach (Color color_internal in colors)
+            {
+                if (color.Name == color_internal.Name &
+                    color.Code == color_internal.Code)
+                {
+                    return color_internal.ID;
+                }
+            }
+
+            // --- If no dupe, instert ---
             // SQL statement insert
             string sql = "Insert into Color (name, code) values (@name, @code);" +
                          "SELECT CAST(SCOPE_IDENTITY() as int)";

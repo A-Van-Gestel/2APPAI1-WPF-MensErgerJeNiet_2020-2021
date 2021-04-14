@@ -9,6 +9,9 @@ namespace MensErgerJeNiet.Model
 {
     class PositionDataService
     {
+        // Internal list of positions for dupe detection
+        private ObservableCollection<Position> positions;
+
         // Ophalen ConnectionString uit App.config
         private static string connectionString =
         ConfigurationManager.ConnectionStrings["azure"].ConnectionString;
@@ -21,7 +24,7 @@ namespace MensErgerJeNiet.Model
         private static IDbConnection db = new SqlConnection(connectionString);
 
         // Get All Positions in a List
-        public ObservableCollection<Position> GetPosition()
+        public ObservableCollection<Position> GetPositions()
         {
             //// Stap 2 Dapper
             //// Uitschrijven SQL statement & bewaren in een string. 
@@ -56,6 +59,21 @@ namespace MensErgerJeNiet.Model
         // Update a Position
         public void UpdatePosition(Position position)
         {
+            // --- Dupe detection ---
+            positions = GetPositions();
+            foreach (Position position_internal in positions)
+            {
+                if (position.PlayerHistoryID == position_internal.PlayerHistoryID &
+                    position.Pion == position_internal.Pion &
+                    position.Coordinate == position_internal.Coordinate &
+                    position.IsHome == position_internal.IsHome &
+                    position.IsActive == position_internal.IsActive)
+                {
+                    return;
+                }
+            }
+
+            // --- If no dupe, update ---
             // SQL statement update 
             string sql = "Update Position set playerHistoryID = @playerHistoryID, pion = @pion, coordinate = @coordinate, isHome = @isHome, isActive = @isActive where id = @id";
 
@@ -74,6 +92,21 @@ namespace MensErgerJeNiet.Model
         // Insert a Position
         public int InsertPosition(Position position)
         {
+            // --- Dupe detection ---
+            positions = GetPositions();
+            foreach (Position position_internal in positions)
+            {
+                if (position.PlayerHistoryID == position_internal.PlayerHistoryID &
+                    position.Pion == position_internal.Pion &
+                    position.Coordinate == position_internal.Coordinate &
+                    position.IsHome == position_internal.IsHome &
+                    position.IsActive == position_internal.IsActive)
+                {
+                    return position_internal.ID;
+                }
+            }
+
+            // --- If no dupe, instert ---
             // SQL statement insert
             string sql = "Insert into Position (playerHistoryID, pion, coordinate, isHome, isActive) values (@playerHistoryID, @pion, @coordinate, @isHome, @isActive);" +
                          "SELECT CAST(SCOPE_IDENTITY() as int)";
