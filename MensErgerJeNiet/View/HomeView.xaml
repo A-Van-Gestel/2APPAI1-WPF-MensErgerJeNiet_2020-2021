@@ -24,7 +24,7 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
         <TextBlock Grid.Row="0" Style="{StaticResource GameTitle}" >Mens erger je niet!</TextBlock>
-        <Button Grid.Row="1" Command="{Binding GotoPlayerSelectionViewCommand}" >Play</Button>
+        <Button Grid.Row="1" Command="{Binding PlayCommand}" >Play</Button>
         <Button Grid.Row="2" Command="{Binding GotoHistoryViewCommand}" >History</Button>
         <Button Grid.Row="3" Command="{Binding GotoSpelRegelsViewCommand}" >Playing rules</Button>
         <Button Grid.Row="4" Command="{Binding GotoAdminViewCommand}" >Admin Tools</Button>
