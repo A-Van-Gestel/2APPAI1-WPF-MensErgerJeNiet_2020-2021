@@ -81,7 +81,6 @@ namespace MensErgerJeNiet.ViewModel
                     SelectedPlayerHistory = PlayerHistories.FirstOrDefault(ph => ph.ID == position.PlayerHistoryID);
                 }
             }
-
         }
 
         public void UpdatePosition()

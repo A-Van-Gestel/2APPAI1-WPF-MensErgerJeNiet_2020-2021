@@ -104,9 +104,6 @@ namespace MensErgerJeNiet.ViewModel
                     SelectedGame = Games.FirstOrDefault(g => g.ID == playerHistory.GameID);
                 }
             }
-
-
-
         }
 
         public void UpdatePlayerHistory()

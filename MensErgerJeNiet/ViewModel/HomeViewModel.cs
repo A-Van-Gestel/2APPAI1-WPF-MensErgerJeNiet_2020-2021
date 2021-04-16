@@ -32,7 +32,7 @@ namespace MensErgerJeNiet.ViewModel
         }
 
 
-        private Boolean IsGameActive()
+        private bool IsGameActive()
         {
             GameDataService contactDS = new GameDataService();
             ObservableCollection<Game> games = contactDS.GetGames();

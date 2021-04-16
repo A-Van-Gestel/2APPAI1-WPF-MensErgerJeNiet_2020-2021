@@ -53,7 +53,7 @@ namespace MensErgerJeNiet.Model
             // Stap 3 Dapper
             // Uitvoeren SQL statement op db instance 
             // Type casten van het generieke return type naar een collectie van positions
-            return (Position)db.Query<Position>(sql, id);
+            return (Position)db.Query<Position>(sql, new { id });
         }
 
         // Update a Position

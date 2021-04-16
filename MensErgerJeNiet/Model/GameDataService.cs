@@ -42,12 +42,12 @@ namespace MensErgerJeNiet.Model
         {
             // Stap 2 Dapper
             // Uitschrijven SQL statement & bewaren in een string. 
-            string sql = "Select * from Game order by Date where id = @id";
+            string sql = "Select * from Game where id = @id";
 
             // Stap 3 Dapper
             // Uitvoeren SQL statement op db instance 
             // Type casten van het generieke return type naar een collectie van colors
-            return (Game)db.QuerySingle<Game>(sql, id);
+            return db.QuerySingle<Game>(sql, new { id });
         }
 
         // Get the ID of the latest Game
