@@ -100,7 +100,8 @@ namespace MensErgerJeNiet.Model
                     playerHistory.CountSixes == playerHistory_internal.CountSixes &
                     playerHistory.CountTurns == playerHistory_internal.CountTurns &
                     playerHistory.IsTurn == playerHistory_internal.IsTurn &
-                    playerHistory.IsWinner == playerHistory_internal.IsWinner)
+                    playerHistory.IsWinner == playerHistory_internal.IsWinner &
+                    playerHistory.PionOffset == playerHistory_internal.PionOffset)
                 {
                     return;
                 }
@@ -108,7 +109,7 @@ namespace MensErgerJeNiet.Model
 
             // --- If no dupe, update ---
             // SQL statement update 
-            string sql = "Update PlayerHistory set playerID = @playerID, colorID = @colorID, gameID = @gameID, countTime = @countTime, countSixes = @countSixes, countTurns = @countTurns, isTurn = @isTurn, isWinner = @isWinner where id = @id";
+            string sql = "Update PlayerHistory set playerID = @playerID, colorID = @colorID, gameID = @gameID, countTime = @countTime, countSixes = @countSixes, countTurns = @countTurns, isTurn = @isTurn, isWinner = @isWinner, pionOffset = @pionOffset where id = @id";
 
             // Uitvoeren SQL statement en doorgeven parametercollectie
             db.Execute(sql, new
@@ -121,6 +122,7 @@ namespace MensErgerJeNiet.Model
                 playerHistory.CountTurns,
                 playerHistory.IsTurn,
                 playerHistory.IsWinner,
+                playerHistory.PionOffset,
                 playerHistory.ID
             });
         }
@@ -139,7 +141,8 @@ namespace MensErgerJeNiet.Model
                     playerHistory.CountSixes == playerHistory_internal.CountSixes &
                     playerHistory.CountTurns == playerHistory_internal.CountTurns &
                     playerHistory.IsTurn == playerHistory_internal.IsTurn &
-                    playerHistory.IsWinner == playerHistory_internal.IsWinner)
+                    playerHistory.IsWinner == playerHistory_internal.IsWinner &
+                    playerHistory.PionOffset == playerHistory_internal.PionOffset)
                 {
                     return playerHistory_internal.ID;
                 }
@@ -147,7 +150,7 @@ namespace MensErgerJeNiet.Model
 
             // --- If no dupe, instert ---
             // SQL statement insert
-            string sql = "Insert into PlayerHistory (playerID, colorID, gameID, countTime, countSixes, countTurns, isTurn, isWinner) values (@playerID, @colorID, @gameID, @countTime, @countSixes, @countTurns, @isTurn, @isWinner);" +
+            string sql = "Insert into PlayerHistory (playerID, colorID, gameID, countTime, countSixes, countTurns, isTurn, isWinner, pionOffset) values (@playerID, @colorID, @gameID, @countTime, @countSixes, @countTurns, @isTurn, @isWinner, @pionOffset);" +
                          "SELECT CAST(SCOPE_IDENTITY() as int)";
 
             // Uitvoeren SQL statement en doorgeven parametercollectie
@@ -161,6 +164,7 @@ namespace MensErgerJeNiet.Model
                 playerHistory.CountTurns,
                 playerHistory.IsTurn,
                 playerHistory.IsWinner,
+                playerHistory.PionOffset
             });
             return id;
         }

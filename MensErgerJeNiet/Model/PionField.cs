@@ -16,7 +16,7 @@ namespace MensErgerJeNiet.Model
         private SolidColorBrush pionColor = new SolidColorBrush(Colors.Turquoise);
         private string pionText = "test";
         private string pionVisibility = "Hidden";  // "Visible" | "Hidden"
-        private List<int> playersOnPionField;
+        private Position pionOnPionField;
         // Debug
         private string debugVisibility = "Visible";  // "Visible" | "Hidden"
 
@@ -26,7 +26,6 @@ namespace MensErgerJeNiet.Model
             Column = column;
             Row = row;
             FillColor = fillColor;
-            playersOnPionField = new List<int>();
         }
 
         public int ID
@@ -100,13 +99,24 @@ namespace MensErgerJeNiet.Model
         }
 
 
-        public List<int> PlayersOnPionField
+        public Position PionOnPionField
         {
-            get { return playersOnPionField; }
+            get { return pionOnPionField; }
             set
             {
-                playersOnPionField = value;
-                NotifyPropertyChanged("Content");
+                if (value != null)
+                {
+                    pionOnPionField = value;
+                    pionColor = (SolidColorBrush)new BrushConverter().ConvertFrom(value.PlayerHistory.Color.Code);
+                    pionText = value.Pion.ToString();
+                    pionVisibility = "Vissible";
+                }
+                else
+                {
+                    pionOnPionField = null;
+                    pionVisibility = "Hidden";
+                }
+                NotifyPropertyChanged();
             }
         }
 

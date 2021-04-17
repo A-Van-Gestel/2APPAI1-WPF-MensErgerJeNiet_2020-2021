@@ -63,8 +63,7 @@ namespace MensErgerJeNiet.ViewModel
         private void ReadPlayerHistory()
         {
             //instantiëren dataservice
-            PlayerHistoryDataService contactDS =
-               new PlayerHistoryDataService();
+            PlayerHistoryDataService contactDS = new PlayerHistoryDataService();
 
             PlayerHistories = new ObservableCollection<PlayerHistory>(contactDS.GetPlayerHistoriesFromWinners());
 

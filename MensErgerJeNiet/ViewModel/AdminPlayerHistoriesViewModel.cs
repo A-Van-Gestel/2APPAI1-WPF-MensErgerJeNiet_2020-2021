@@ -64,8 +64,7 @@ namespace MensErgerJeNiet.ViewModel
         private void ReadPlayerHistory()
         {
             //instantiëren dataservice
-            PlayerHistoryDataService contactDS =
-               new PlayerHistoryDataService();
+            PlayerHistoryDataService contactDS = new PlayerHistoryDataService();
 
             PlayerHistories = new ObservableCollection<PlayerHistory>(contactDS.GetPlayerHistories());
 
@@ -110,8 +109,7 @@ namespace MensErgerJeNiet.ViewModel
         {
             if (CurrentPlayerHistory != null)
             {
-                PlayerHistoryDataService contactDS =
-                new PlayerHistoryDataService();
+                PlayerHistoryDataService contactDS = new PlayerHistoryDataService();
                 contactDS.UpdatePlayerHistory(CurrentPlayerHistory);
 
                 //Refresh
@@ -141,8 +139,7 @@ namespace MensErgerJeNiet.ViewModel
         {
             if (CurrentPlayerHistory != null)
             {
-                PlayerHistoryDataService contactDS =
-                    new PlayerHistoryDataService();
+                PlayerHistoryDataService contactDS = new PlayerHistoryDataService();
                 contactDS.DeletePlayerHistory(CurrentPlayerHistory);
 
                 //Refresh

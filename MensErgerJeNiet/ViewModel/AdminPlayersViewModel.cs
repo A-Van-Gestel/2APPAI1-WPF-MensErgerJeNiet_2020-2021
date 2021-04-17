@@ -62,8 +62,7 @@ namespace MensErgerJeNiet.ViewModel
         private void ReadPlayer()
         {
             //instantiëren dataservice
-            PlayerDataService contactDS =
-               new PlayerDataService();
+            PlayerDataService contactDS = new PlayerDataService();
 
             Players = new ObservableCollection<Player>(contactDS.GetPlayers());
         }
@@ -72,8 +71,7 @@ namespace MensErgerJeNiet.ViewModel
         {
             if (CurrentPlayer != null)
             {
-                PlayerDataService contactDS =
-                new PlayerDataService();
+                PlayerDataService contactDS = new PlayerDataService();
                 contactDS.UpdatePlayer(CurrentPlayer);
 
                 //Refresh
@@ -102,8 +100,7 @@ namespace MensErgerJeNiet.ViewModel
         {
             if (CurrentPlayer != null)
             {
-                PlayerDataService contactDS =
-                    new PlayerDataService();
+                PlayerDataService contactDS = new PlayerDataService();
                 contactDS.DeletePlayer(CurrentPlayer);
 
                 //Refresh

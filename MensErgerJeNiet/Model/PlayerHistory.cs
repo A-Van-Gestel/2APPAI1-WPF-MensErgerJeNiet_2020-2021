@@ -13,9 +13,14 @@ namespace MensErgerJeNiet.Model
         private int countTurns;
         private bool isTurn;
         private bool isWinner;
+        private int pionOffset;
         private Player player;
         private Color color;
         private Game game;
+        private Position pion1;
+        private Position pion2;
+        private Position pion3;
+        private Position pion4;
 
 
         public PlayerHistory() 
@@ -28,9 +33,10 @@ namespace MensErgerJeNiet.Model
             CountTurns = 0;
             IsTurn = false;
             IsWinner = false;
+            PionOffset = 0;
         }
 
-        public PlayerHistory(int playerID, int colorID, int gameID, TimeSpan countTime, int countSixes, int countTurns, bool isTurn, bool isWinner)
+        public PlayerHistory(int playerID, int colorID, int gameID, TimeSpan countTime, int countSixes, int countTurns, bool isTurn, bool isWinner, int pionOffset)
         {
             PlayerID = playerID;
             ColorID = colorID;
@@ -40,6 +46,7 @@ namespace MensErgerJeNiet.Model
             CountTurns = countTurns;
             IsTurn = isTurn;
             IsWinner = isWinner;
+            PionOffset = pionOffset;
         }
 
 
@@ -219,6 +226,76 @@ namespace MensErgerJeNiet.Model
             set
             {
                 isWinner = value;
+                NotifyPropertyChanged();
+            }
+        }
+
+        public int PionOffset
+        {
+            get
+            {
+                return pionOffset;
+            }
+
+            set
+            {
+                pionOffset = value;
+                NotifyPropertyChanged();
+            }
+        }
+
+        public Position Pion1
+        {
+            get
+            {
+                return pion1;
+            }
+
+            set
+            {
+                pion1 = value;
+                NotifyPropertyChanged();
+            }
+        }
+
+        public Position Pion2
+        {
+            get
+            {
+                return pion2;
+            }
+
+            set
+            {
+                pion2 = value;
+                NotifyPropertyChanged();
+            }
+        }
+
+        public Position Pion3
+        {
+            get
+            {
+                return pion3;
+            }
+
+            set
+            {
+                pion3 = value;
+                NotifyPropertyChanged();
+            }
+        }
+
+        public Position Pion4
+        {
+            get
+            {
+                return pion4;
+            }
+
+            set
+            {
+                pion4 = value;
                 NotifyPropertyChanged();
             }
         }

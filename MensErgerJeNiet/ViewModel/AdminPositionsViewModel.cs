@@ -64,8 +64,7 @@ namespace MensErgerJeNiet.ViewModel
         private void ReadPosition()
         {
             //instantiëren dataservice
-            PositionDataService contactDS =
-               new PositionDataService();
+            PositionDataService contactDS = new PositionDataService();
 
             Positions = new ObservableCollection<Position>(contactDS.GetPositions());
 
@@ -87,8 +86,7 @@ namespace MensErgerJeNiet.ViewModel
         {
             if (CurrentPosition != null)
             {
-                PositionDataService contactDS =
-                new PositionDataService();
+                PositionDataService contactDS = new PositionDataService();
                 contactDS.UpdatePosition(CurrentPosition);
 
                 //Refresh
@@ -117,8 +115,7 @@ namespace MensErgerJeNiet.ViewModel
         {
             if (CurrentPosition != null)
             {
-                PositionDataService contactDS =
-                    new PositionDataService();
+                PositionDataService contactDS = new PositionDataService();
                 contactDS.DeletePosition(CurrentPosition);
 
                 //Refresh

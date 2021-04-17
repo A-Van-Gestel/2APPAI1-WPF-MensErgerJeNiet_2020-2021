@@ -66,14 +66,24 @@
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
 
-                <Ellipse Grid.Column="0" Grid.Row="0" Stroke="Black" Fill="Red" Margin="5"/>
-                <TextBlock Grid.Column="2" Grid.Row="0" Style="{StaticResource Title}">Red</TextBlock>
+                <Border Grid.Column="0" Grid.Row="0" Style="{StaticResource PionField}"
+                        Background="Green"
+                        Visibility="{Binding Player1.IsTurn, Converter={StaticResource BooleanToVisibilityConverter}}">
+                    <TextBlock Style="{StaticResource PionText}"
+                               Foreground="White"
+                               Text="Turn" />
+                </Border>
+                <TextBlock Grid.Column="2" Grid.Row="0" Style="{StaticResource Title}"
+                           Text="{Binding Player1.Player.Name}"/>
                 <TextBlock Grid.Column="1" Grid.Row="1" Style="{StaticResource PlayViewLabel}"># Sixes</TextBlock>
-                <TextBlock Grid.Column="2" Grid.Row="1" Style="{StaticResource PlayViewValue}">countSixes</TextBlock>
+                <TextBlock Grid.Column="2" Grid.Row="1" Style="{StaticResource PlayViewValue}"
+                           Text="{Binding Player1.CountSixes}"/>
                 <TextBlock Grid.Column="1" Grid.Row="2" Style="{StaticResource PlayViewLabel}"># Turns</TextBlock>
-                <TextBlock Grid.Column="2" Grid.Row="2" Style="{StaticResource PlayViewValue}">countTurns</TextBlock>
+                <TextBlock Grid.Column="2" Grid.Row="2" Style="{StaticResource PlayViewValue}"
+                           Text="{Binding Player1.CountTurns}"/>
                 <TextBlock Grid.Column="1" Grid.Row="3" Style="{StaticResource PlayViewLabel}"># Time</TextBlock>
-                <TextBlock Grid.Column="2" Grid.Row="3" Style="{StaticResource PlayViewValue}">countTime</TextBlock>
+                <TextBlock Grid.Column="2" Grid.Row="3" Style="{StaticResource PlayViewValue}"
+                           Text="{Binding Player1.CountTime}"/>
             </Grid>
 
 
@@ -86,7 +96,7 @@
                     <RowDefinition Height="52" />
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
-                <Button Grid.Row="1" Command="" >Pause</Button>
+                <Button Grid.Row="1" IsEnabled="false"  Command="" >Pause</Button>
                 <Button Grid.Row="3" Command="{Binding GotoHomeViewCommand}" >Stop</Button>
             </Grid>
 
@@ -104,14 +114,24 @@
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
 
-                <Ellipse Grid.Column="0" Grid.Row="0" Stroke="Black" Fill="Red" Margin="5"/>
-                <TextBlock Grid.Column="2" Grid.Row="0" Style="{StaticResource Title}">Green</TextBlock>
+                <Border Grid.Column="0" Grid.Row="0" Style="{StaticResource PionField}"
+                        Background="Green"
+                        Visibility="{Binding Player4.IsTurn, Converter={StaticResource BooleanToVisibilityConverter}}">
+                    <TextBlock Style="{StaticResource PionText}"
+                               Foreground="White"
+                               Text="Turn" />
+                </Border>
+                <TextBlock Grid.Column="2" Grid.Row="0" Style="{StaticResource Title}"
+                           Text="{Binding Player4.Player.Name}"/>
                 <TextBlock Grid.Column="1" Grid.Row="1" Style="{StaticResource PlayViewLabel}"># Sixes</TextBlock>
-                <TextBlock Grid.Column="2" Grid.Row="1" Style="{StaticResource PlayViewValue}">countSixes</TextBlock>
+                <TextBlock Grid.Column="2" Grid.Row="1" Style="{StaticResource PlayViewValue}"
+                           Text="{Binding Player4.CountSixes}"/>
                 <TextBlock Grid.Column="1" Grid.Row="2" Style="{StaticResource PlayViewLabel}"># Turns</TextBlock>
-                <TextBlock Grid.Column="2" Grid.Row="2" Style="{StaticResource PlayViewValue}">countTurns</TextBlock>
+                <TextBlock Grid.Column="2" Grid.Row="2" Style="{StaticResource PlayViewValue}"
+                           Text="{Binding Player4.CountTurns}"/>
                 <TextBlock Grid.Column="1" Grid.Row="3" Style="{StaticResource PlayViewLabel}"># Time</TextBlock>
-                <TextBlock Grid.Column="2" Grid.Row="3" Style="{StaticResource PlayViewValue}">countTime</TextBlock>
+                <TextBlock Grid.Column="2" Grid.Row="3" Style="{StaticResource PlayViewValue}"
+                           Text="{Binding Player4.CountTime}"/>
             </Grid>
         </Grid>
         
@@ -139,14 +159,24 @@
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
 
-                <Ellipse Grid.Column="2" Grid.Row="0" Stroke="Black" Fill="Red" Margin="5"/>
-                <TextBlock Grid.Column="0" Grid.Row="0" Style="{StaticResource Title}">Blue</TextBlock>
+                <Border Grid.Column="2" Grid.Row="0" Style="{StaticResource PionField}"
+                        Background="Green"
+                        Visibility="{Binding Player2.IsTurn, Converter={StaticResource BooleanToVisibilityConverter}}">
+                    <TextBlock Style="{StaticResource PionText}"
+                               Foreground="White"
+                               Text="Turn" />
+                </Border>
+                <TextBlock Grid.Column="0" Grid.Row="0" Style="{StaticResource Title}"
+                           Text="{Binding Player2.Player.Name}"/>
                 <TextBlock Grid.Column="0" Grid.Row="1" Style="{StaticResource PlayViewLabel}"># Sixes</TextBlock>
-                <TextBlock Grid.Column="1" Grid.Row="1" Style="{StaticResource PlayViewValue}">countSixes</TextBlock>
+                <TextBlock Grid.Column="1" Grid.Row="1" Style="{StaticResource PlayViewValue}"
+                           Text="{Binding Player2.CountSixes}"/>
                 <TextBlock Grid.Column="0" Grid.Row="2" Style="{StaticResource PlayViewLabel}"># Turns</TextBlock>
-                <TextBlock Grid.Column="1" Grid.Row="2" Style="{StaticResource PlayViewValue}">countTurns</TextBlock>
+                <TextBlock Grid.Column="1" Grid.Row="2" Style="{StaticResource PlayViewValue}"
+                           Text="{Binding Player2.CountTurns}"/>
                 <TextBlock Grid.Column="0" Grid.Row="3" Style="{StaticResource PlayViewLabel}"># Time</TextBlock>
-                <TextBlock Grid.Column="1" Grid.Row="3" Style="{StaticResource PlayViewValue}">countTime</TextBlock>
+                <TextBlock Grid.Column="1" Grid.Row="3" Style="{StaticResource PlayViewValue}"
+                           Text="{Binding Player2.CountTime}"/>
             </Grid>
 
             <!-- Dobbelsteen -->
@@ -156,11 +186,12 @@
                     <RowDefinition Height="52" />
                     <RowDefinition Height="10" />
                 </Grid.RowDefinitions>
-                
-                <Grid Grid.Row="0" Width="100" Height="100" Background="Black">
-                    <!-- Afbeelding Dobbelsteen -->
-                </Grid>
-                <Button Grid.Row="1" Command="" >Trow</Button>
+
+                <Image Grid.Row="0" Width="100" Height="100" Source="{Binding Dice.Image}" />
+
+                <Button Grid.Row="1"
+                        IsEnabled="{Binding IsActiveTrow}"
+                        Command="{Binding TrowCommand}" >Trow</Button>
             </Grid>
 
             <!-- Yellow -->
@@ -177,14 +208,24 @@
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
 
-                <Ellipse Grid.Column="2" Grid.Row="0" Stroke="Black" Fill="Red" Margin="5"/>
-                <TextBlock Grid.Column="0" Grid.Row="0" Style="{StaticResource Title}">Yellow</TextBlock>
+                <Border Grid.Column="2" Grid.Row="0" Style="{StaticResource PionField}"
+                        Background="Green"
+                        Visibility="{Binding Player3.IsTurn, Converter={StaticResource BooleanToVisibilityConverter}}">
+                    <TextBlock Style="{StaticResource PionText}"
+                               Foreground="White"
+                               Text="Turn" />
+                </Border>
+                <TextBlock Grid.Column="0" Grid.Row="0" Style="{StaticResource Title}"
+                           Text="{Binding Player3.Player.Name}"/>
                 <TextBlock Grid.Column="0" Grid.Row="1" Style="{StaticResource PlayViewLabel}"># Sixes</TextBlock>
-                <TextBlock Grid.Column="1" Grid.Row="1" Style="{StaticResource PlayViewValue}">countSixes</TextBlock>
+                <TextBlock Grid.Column="1" Grid.Row="1" Style="{StaticResource PlayViewValue}"
+                           Text="{Binding Player3.CountSixes}"/>
                 <TextBlock Grid.Column="0" Grid.Row="2" Style="{StaticResource PlayViewLabel}"># Turns</TextBlock>
-                <TextBlock Grid.Column="1" Grid.Row="2" Style="{StaticResource PlayViewValue}">countTurns</TextBlock>
+                <TextBlock Grid.Column="1" Grid.Row="2" Style="{StaticResource PlayViewValue}"
+                           Text="{Binding Player3.CountTurns}"/>
                 <TextBlock Grid.Column="0" Grid.Row="3" Style="{StaticResource PlayViewLabel}"># Time</TextBlock>
-                <TextBlock Grid.Column="1" Grid.Row="3" Style="{StaticResource PlayViewValue}">countTime</TextBlock>
+                <TextBlock Grid.Column="1" Grid.Row="3" Style="{StaticResource PlayViewValue}"
+                           Text="{Binding Player3.CountTime}"/>
             </Grid>
         </Grid>
 
@@ -204,8 +245,6 @@
 			                    ItemTemplate="{StaticResource PionFieldTemplate}" >
                     <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate>
-
-
                             <Grid Grid.Row="0" Background="#FFB9A896">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*"/>
@@ -243,6 +282,7 @@
                         </Style>
                     </ItemsControl.ItemContainerStyle>
                 </ItemsControl>
+                
 
                 <!-- Pion Buttons -->
                 <Grid Grid.Row="1" Background="Beige">
@@ -252,10 +292,18 @@
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <Button Grid.Column="0" Command="" >Pion 1</Button>
-                    <Button Grid.Column="1" Command="" >Pion 2</Button>
-                    <Button Grid.Column="2" Command="" >Pion 3</Button>
-                    <Button Grid.Column="3" Command="" >Pion 4</Button>
+                    <Button Grid.Column="0"
+                            IsEnabled="{Binding IsActivePion1}"
+                            Command="{Binding MovePion1Command}" >Pion 1</Button>
+                    <Button Grid.Column="1"
+                            IsEnabled="{Binding IsActivePion2}"
+                            Command="{Binding MovePion2Command}" >Pion 2</Button>
+                    <Button Grid.Column="2"
+                            IsEnabled="{Binding IsActivePion3}"
+                            Command="{Binding MovePion3Command}" >Pion 3</Button>
+                    <Button Grid.Column="3"
+                            IsEnabled="{Binding IsActivePion4}"
+                            Command="{Binding MovePion4Command}" >Pion 4</Button>
                 </Grid>
             </Grid>
         </materialDesign:Card>

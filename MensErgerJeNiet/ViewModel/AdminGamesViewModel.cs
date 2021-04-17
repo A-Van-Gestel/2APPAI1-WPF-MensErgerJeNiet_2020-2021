@@ -64,8 +64,7 @@ namespace MensErgerJeNiet.ViewModel
         private void ReadGame()
         {
             //instantiëren dataservice
-            GameDataService contactDS =
-               new GameDataService();
+            GameDataService contactDS = new GameDataService();
 
             Games = new ObservableCollection<Game>(contactDS.GetGames());
         }
@@ -74,8 +73,7 @@ namespace MensErgerJeNiet.ViewModel
         {
             if (CurrentGame != null)
             {
-                GameDataService contactDS =
-                new GameDataService();
+                GameDataService contactDS = new GameDataService();
                 contactDS.UpdateGame(CurrentGame);
 
                 //Refresh
@@ -104,8 +102,7 @@ namespace MensErgerJeNiet.ViewModel
         {
             if (CurrentGame != null)
             {
-                GameDataService contactDS =
-                    new GameDataService();
+                GameDataService contactDS = new GameDataService();
                 contactDS.DeleteGame(CurrentGame);
 
                 //Refresh

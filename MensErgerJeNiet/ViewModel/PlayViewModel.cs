@@ -13,15 +13,28 @@ namespace MensErgerJeNiet.ViewModel
     {
         public PlayViewModel()
         {
-            Board = new Board();
             ReadPlayerHistories();
             ReadPositions();
+            SetPlayerHistoryPions();
+            SetPlayers();
+            Board = new Board(Player1.Color.Code, Player2.Color.Code, Player3.Color.Code, Player4.Color.Code, new List<Position>(positions));
+            Dice = new Dice();
             KoppelenCommands();
         }
 
 
         // ----- Game setup -----
+        // --- Variables ---
         private Board board;
+        private PlayerHistory player1;
+        private PlayerHistory player2;
+        private PlayerHistory player3;
+        private PlayerHistory player4;
+        private bool isActivePion1 = true;
+        private bool isActivePion2 = true;
+        private bool isActivePion3 = true;
+        private bool isActivePion4 = true;
+
         public Board Board
         {
             get
@@ -35,7 +48,60 @@ namespace MensErgerJeNiet.ViewModel
             }
         }
 
+        public PlayerHistory Player1
+        {
+            get
+            {
+                return player1;
+            }
+            set
+            {
+                player1 = value;
+                NotifyPropertyChanged();
+            }
+        }
 
+        public PlayerHistory Player2
+        {
+            get
+            {
+                return player2;
+            }
+            set
+            {
+                player2 = value;
+                NotifyPropertyChanged();
+            }
+        }
+
+        public PlayerHistory Player3
+        {
+            get
+            {
+                return player3;
+            }
+            set
+            {
+                player3 = value;
+                NotifyPropertyChanged();
+            }
+        }
+
+        public PlayerHistory Player4
+        {
+            get
+            {
+                return player4;
+            }
+            set
+            {
+                player4 = value;
+                NotifyPropertyChanged();
+            }
+        }
+
+
+        // --- Functions ---
         private int GameActiveID()
         {
             GameDataService contactDS = new GameDataService();
@@ -161,13 +227,155 @@ namespace MensErgerJeNiet.ViewModel
             }
         }
 
+        private void SetPlayerHistoryPions()
+        {
+            foreach (Position position in Positions)
+            {
+                foreach (PlayerHistory playerHistory in PlayerHistories)
+                {
+                    if (position.PlayerHistoryID == playerHistory.ID)
+                    {
+                        if (position.Pion == 1)
+                        {
+                            playerHistory.Pion1 = position;
+                        }
+                        if (position.Pion == 2)
+                        {
+                            playerHistory.Pion2 = position;
+                        }
+                        if (position.Pion == 3)
+                        {
+                            playerHistory.Pion3 = position;
+                        }
+                        if (position.Pion == 4)
+                        {
+                            playerHistory.Pion4 = position;
+                        }
+                    }
+                }
+            }
+        }
+
+        private void SetPlayers()
+        {
+            if (PlayerHistories.Count == 4)
+            {
+                Player1 = PlayerHistories[0];
+                Player2 = PlayerHistories[1];
+                Player3 = PlayerHistories[2];
+                Player4 = PlayerHistories[3];
+            }
+        }
+
+        public bool IsActiveTrow
+        {
+            get
+            {
+                return !Dice.IsTrown;
+            }
+        }
+
+        public bool IsActivePion1
+        {
+            get
+            {
+                if (Dice.IsTrown & isActivePion1)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+
+            set
+            {
+                isActivePion1 = value;
+                NotifyPropertyChanged();
+            }
+        }
+
+        public bool IsActivePion2
+        {
+            get
+            {
+                if (Dice.IsTrown & isActivePion2)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+
+            set
+            {
+                isActivePion2 = value;
+                NotifyPropertyChanged();
+            }
+        }
+
+        public bool IsActivePion3
+        {
+            get
+            {
+                if (Dice.IsTrown & isActivePion3)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+
+            set
+            {
+                isActivePion3 = value;
+                NotifyPropertyChanged();
+            }
+        }
+
+        public bool IsActivePion4
+        {
+            get
+            {
+                if (Dice.IsTrown & isActivePion4)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+
+            set
+            {
+                isActivePion4 = value;
+                NotifyPropertyChanged();
+            }
+        }
+
 
         // ----- ICommands -----
         public ICommand GotoHomeViewCommand { get; set; }
+        public ICommand TrowCommand { get; set; }
+        public ICommand MovePion1Command { get; set; }
+        public ICommand MovePion2Command { get; set; }
+        public ICommand MovePion3Command { get; set; }
+        public ICommand MovePion4Command { get; set; }
 
         private void KoppelenCommands()
         {
             GotoHomeViewCommand = new BaseCommand(HomeView);
+            TrowCommand = new BaseCommand(Trow);
+            MovePion1Command = new BaseCommand(MovePion1);
+            MovePion2Command = new BaseCommand(MovePion2);
+            MovePion3Command = new BaseCommand(MovePion3);
+            MovePion4Command = new BaseCommand(MovePion4);
         }
 
         // ----- Commands -----
@@ -177,8 +385,48 @@ namespace MensErgerJeNiet.ViewModel
             pageNavigationService.Navigate("HomeView");
         }
 
+        private void Trow()
+        {
+            Dice.Trow();
+        }
+        
+
+        private void MovePion1()
+        {
+            return;
+        }
+
+        private void MovePion2()
+        {
+            return;
+        }
+
+        private void MovePion3()
+        {
+            return;
+        }
+
+        private void MovePion4()
+        {
+            return;
+        }
+
 
         // ----- Foreign keys and stuff -----
+        private Dice dice;
+        public Dice Dice
+        {
+            get
+            {
+                return dice;
+            }
+            set
+            {
+                dice = value;
+                NotifyPropertyChanged();
+            }
+        }
+
         private ObservableCollection<PlayerHistory> playerHistories;
         public ObservableCollection<PlayerHistory> PlayerHistories
         {

@@ -47,6 +47,9 @@
                     <GridViewColumn Width="NaN" 
                                     Header="isWinner"
                                     DisplayMemberBinding="{Binding IsWinner}" />
+                    <GridViewColumn Width="NaN" 
+                                    Header="Offset"
+                                    DisplayMemberBinding="{Binding PionOffset}" />
                 </GridView>
             </ListView.View>
         </ListView>

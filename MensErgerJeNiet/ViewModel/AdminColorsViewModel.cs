@@ -62,8 +62,7 @@ namespace MensErgerJeNiet.ViewModel
         private void ReadColors()
         {
             //instantiëren dataservice
-            ColorDataService contactDS =
-               new ColorDataService();
+            ColorDataService contactDS = new ColorDataService();
 
             Colors = new ObservableCollection<Color>(contactDS.GetColors());
         }
@@ -72,8 +71,7 @@ namespace MensErgerJeNiet.ViewModel
         {
             if (CurrentColor != null)
             {
-                ColorDataService contactDS =
-                new ColorDataService();
+                ColorDataService contactDS = new ColorDataService();
                 contactDS.UpdateColor(CurrentColor);
 
                 //Refresh
@@ -104,8 +102,7 @@ namespace MensErgerJeNiet.ViewModel
         {
             if (CurrentColor != null)
             {
-                ColorDataService contactDS =
-                    new ColorDataService();
+                ColorDataService contactDS = new ColorDataService();
                 contactDS.DeleteColor(CurrentColor);
 
                 //Refresh

@@ -219,8 +219,7 @@ namespace MensErgerJeNiet.ViewModel
         private void ReadColors()
         {
             //instantiëren dataservice
-            ColorDataService contactDS =
-               new ColorDataService();
+            ColorDataService contactDS = new ColorDataService();
 
             Colors = new ObservableCollection<Color>(contactDS.GetColors());
         }
@@ -281,7 +280,8 @@ namespace MensErgerJeNiet.ViewModel
                                                 countSixes: 0,
                                                 countTurns: 0,
                                                 isTurn: true,
-                                                isWinner: false));
+                                                isWinner: false,
+                                                pionOffset: 0));
                 }
 
                 // Player 2
@@ -294,7 +294,8 @@ namespace MensErgerJeNiet.ViewModel
                                                 countSixes: 0,
                                                 countTurns: 0,
                                                 isTurn: false,
-                                                isWinner: false));
+                                                isWinner: false,
+                                                pionOffset: 10));
                 }
                 // Player 3
                 if (player3ID != 0)
@@ -306,7 +307,8 @@ namespace MensErgerJeNiet.ViewModel
                                                 countSixes: 0,
                                                 countTurns: 0,
                                                 isTurn: false,
-                                                isWinner: false));
+                                                isWinner: false,
+                                                pionOffset: 20));
                 }
                 // Player 4
                 if (player4ID != 0)
@@ -318,7 +320,8 @@ namespace MensErgerJeNiet.ViewModel
                                                 countSixes: 0,
                                                 countTurns: 0,
                                                 isTurn: false,
-                                                isWinner: false));
+                                                isWinner: false,
+                                                pionOffset: 30));
                 }
             }
         }
