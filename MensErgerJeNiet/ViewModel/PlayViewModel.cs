@@ -299,15 +299,22 @@ namespace MensErgerJeNiet.ViewModel
             if (Dice.NumberDots == 6)
             {
                 currentPlayer.CountSixes++;
+                currentPlayer.IsTurn = true;
             }
             contactDS.UpdatePlayerHistory(CurrentPlayer);
             SetPlayers();
 
-            // Next Player
-            SetNextCurrentPlayer();
-            currentPlayer.IsTurn = true;
-            contactDS.UpdatePlayerHistory(CurrentPlayer);
-            SetPlayers();
+            // Check if the next player needs to be loaded
+            if (Dice.NumberDots != 6)
+            {
+                // Next Player
+                SetNextCurrentPlayer();
+                currentPlayer.IsTurn = true;
+                contactDS.UpdatePlayerHistory(CurrentPlayer);
+                SetPlayers();
+            }
+
+            // Start the Timer
             timerStart = DateTime.UtcNow;
 
             // Set Dice to not trown

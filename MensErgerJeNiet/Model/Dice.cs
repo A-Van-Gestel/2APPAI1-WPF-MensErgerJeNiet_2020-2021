@@ -42,8 +42,7 @@ namespace MensErgerJeNiet.Model
 
         public void Trow()
         {
-            //numberDots = random.Next(1, 7);
-            numberDots = 6;
+            numberDots = random.Next(1, 7);
             isTrown = true;
             NotifyPropertyChanged("NumberDots");
             NotifyPropertyChanged("Image");

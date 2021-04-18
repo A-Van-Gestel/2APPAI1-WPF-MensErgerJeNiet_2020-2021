@@ -144,22 +144,22 @@ namespace MensErgerJeNiet.Model
             var PionField = this.FirstOrDefault(s => s.PionOnPionField == pion);
             int currentPionField;
 
-            // IF: Move not valid
+            // IF: Move not valid [Checks 1]
+            // - Is Out but no 6
+            // - Is already Home
+            // - Number of steps is bigger than the board
             if (pion.IsActive == false && steps != 6 ||
-                pion.IsHome == true)
+                pion.IsHome == true ||
+                (pion.Coordinate + pion.PlayerHistory.PionOffset + steps) >= (44 + pion.PlayerHistory.PionOffset))
             {
                 return;
             }
 
-            // remove current pion position from this PionField
-            PionField.PionOnPionField = null;
-
             // IF: Pion moved to Board
             if (pion.IsActive == false && steps == 6)
             {
-                pion.IsActive = true;
-                PionField = this.FirstOrDefault(s => s.ID == (1 + pion.PlayerHistory.PionOffset));
-                currentPionField = PionField.ID - steps;
+                var startPionField = this.FirstOrDefault(s => s.ID == (1 + pion.PlayerHistory.PionOffset));
+                currentPionField = startPionField.ID - steps;
             }
 
             // ELSE: Pion already on Board
@@ -169,13 +169,20 @@ namespace MensErgerJeNiet.Model
             }
 
             // Get next PionField
-            var newPionField = this.FirstOrDefault(s => s.ID == (currentPionField + steps));
+            var nextPionField = this.FirstOrDefault(s => s.ID == (currentPionField + steps));
 
             // IF: next PionField has Pion
-            if (newPionField.PionOnPionField != null)
+            if (nextPionField.PionOnPionField != null)
             {
+                // IF: Move not valid [Checks 2]
+                // - If next pion is is of own Player
+                if (pion.PlayerHistoryID == nextPionField.PionOnPionField.PlayerHistoryID)
+                {
+                    return;
+                }
+
                 // Move current Pion to Out
-                var oldPion = newPionField.PionOnPionField;
+                var oldPion = nextPionField.PionOnPionField;
                 oldPion.IsActive = false;
                 oldPion.Coordinate = 1;
 
@@ -186,9 +193,15 @@ namespace MensErgerJeNiet.Model
                 contactDS.UpdatePion(oldPion);
             }
 
+            // remove current selected Pion position from PionField
+            PionField.PionOnPionField = null;
+
             // Move selected Pion to next PionField
-            newPionField.PionOnPionField = pion;
-            pion.Coordinate = newPionField.ID;
+            nextPionField.PionOnPionField = pion;
+            pion.Coordinate = nextPionField.ID;
+
+            // Make sure the pion's active as it passed all the checks
+            pion.IsActive = true;
 
             // Save selected Pion to database
             contactDS.UpdatePion(pion);
