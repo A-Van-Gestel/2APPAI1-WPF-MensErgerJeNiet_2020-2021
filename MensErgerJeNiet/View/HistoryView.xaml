@@ -22,7 +22,7 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
         <TextBlock Grid.Row="0" Style="{StaticResource GameTitle}" >Mens erger je niet!</TextBlock>
-        <TextBlock Grid.Row="1" Style="{StaticResource Title}">Historiek</TextBlock>
+        <TextBlock Grid.Row="1" Style="{StaticResource Title}">Winner History</TextBlock>
         <ListView Grid.Row="2" 
                   Margin="200,0"
                   ItemsSource="{Binding PlayerHistories}" 

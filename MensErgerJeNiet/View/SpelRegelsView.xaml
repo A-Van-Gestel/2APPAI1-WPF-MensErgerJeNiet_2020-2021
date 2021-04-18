@@ -22,19 +22,75 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
         <TextBlock Grid.Row="0" Style="{StaticResource GameTitle}" >Mens erger je niet!</TextBlock>
-        <TextBlock Grid.Row="1" Style="{StaticResource Title}">Spelregels</TextBlock>
+        <TextBlock Grid.Row="1" Style="{StaticResource Title}">Playing Rules</TextBlock>
         <ScrollViewer Grid.Row="2">
-            <TextBlock Style="{StaticResource TextBlock}" VerticalAlignment="Top" TextWrapping="Wrap" Padding="250 0 250 0" ScrollViewer.VerticalScrollBarVisibility="Auto">
-            Bij dit spel heeft iedere speler vier pionnen die een ronde over het bord moeten maken om veilig op een van de eindcirkels te geraken. Eenmaal daar kan een pion niet meer worden verzet. Als dat met alle pionnen is gelukt, heeft men het spel gewonnen.
+            <Grid ScrollViewer.VerticalScrollBarVisibility="Auto">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <!-- Overview -->
+                <TextBlock Grid.Row="0" Style="{StaticResource Title}">Overview</TextBlock>
+                <TextBlock Grid.Row="1" Style="{StaticResource TextBlock}" VerticalAlignment="Top" TextWrapping="Wrap" Padding="250 0 250 0">
+            The most played variant of the game can be played by 2, 3, 4 players – one player per board side. The special one has a pattern for 6 players. Each player has four game pieces, which are in the "out" area when the game starts, and which must be brought into the player's "home" row.
             <LineBreak/><LineBreak/>
-            Elke speler heeft pionnen van een eigen kleur, een eigen beginpunt, en eigen eindcirkels waar andere pionnen niet mogen komen. De spelers gooien om beurten met een dobbelsteen en moeten een van hun pionnen met de klok mee het aantal cirkels verplaatsen dat de worp aangeeft. Als men een pion heeft aangeraakt is de keuze definitief en moet deze pion verplaatst worden. Wanneer een pion op een cirkel komt waar al een andere pion staat, dan wordt deze afgegooid (geslagen). Een afgegooide pion moet weer opnieuw in het spel worden gebracht en van voren af aan zijn ronde maken.
+            The rows are arranged in a cross position. They are surrounded and connected with a circle of fields, over which the game pieces move in clockwise direction. There are three fields on each side of the board. At the beginning of the game, the players' pieces are placed in the four fields marked "B" on the far left side, the "out" section. The coloured field just left of centre, marked "A", is each player's "start" field. The white field just to the right of the start field leads to the "home" row, marked "a", "b", "c", "d". Each game piece enters the circle at the "start" field ("A"), moves (clockwise) over the board and finally enters the "home" row. The first player with all of their pieces in their "home" row wins the game.
             <LineBreak/><LineBreak/>
-            Als men het rijtje met de vier eindcirkels van de eigen kleur bereikt, mag men doortellend afhankelijk van het aantal gegooide ogen dit rijtje binnengaan. Het is niet verplicht om eerst 1 te gooien om het rijtje eindcirkels binnen te mogen lopen. Men zet het aantal stappen dat met de dobbelsteen is gegooid; als het eindpunt van de rij eindcirkels wordt bereikt, dan kan de pion niet verder worden verplaatst.
+            The players throw game dice in turn and can advance any of their pieces in the game by the thrown number of dots on the die.
             <LineBreak/><LineBreak/>
-            Wanneer een zes wordt gegooid mag de speler, indien voorradig, een nieuwe pion in het spel brengen. Daarna gooit hij nogmaals, en daarbij is hij verplicht met de zojuist net in het spel gekomen pion te spelen, met het risico een andere eigen pion af te gooien. Een speler moet ook zes gooien om te kunnen beginnen met zetten, aangezien pas dan een pion op het bord mag worden geplaatst. Hierdoor kan het gebeuren dat de speler een aantal beurten niet kan zetten. Dit kan ook gebeuren als al zijn pionnen zijn afgegooid en hij helemaal opnieuw moet beginnen.
+            Throwing a six means bringing a piece into the game (by placing one from the "out" ("B") area onto the "start" or "A" field) and throwing the dice again. If a piece is on the "A" field and there are still pieces in the "out" area, it must be moved as soon as possible. If a piece cannot be brought into the game then any other piece in the game must be moved by the thrown number, if that is possible. A commonly played variation allows a player who has no pieces in the circle of fields to have three tries to throw a six.
             <LineBreak/><LineBreak/>
-            Wordt er een zes gegooid terwijl er geen nieuwe pionnen voorradig zijn, dan kan met een willekeurige pion gespeeld worden. Ook dan krijgt de speler een extra beurt en wordt er met een willekeurige pion gespeeld.
-            </TextBlock>
+            Pieces can jump over other pieces, and throw out pieces from other players (into that player's "out" area) if they land on them. A player cannot throw out his own pieces, though he can advance further than the last field in the "home" row. A player can be thrown out if he is on his "start" field.
+                </TextBlock>
+
+                <!-- History -->
+                <TextBlock Grid.Row="2" Style="{StaticResource  Title}">History</TextBlock>
+                <TextBlock Grid.Row="3" Style="{StaticResource  TitleSub}">Roots</TextBlock>
+                <TextBlock Grid.Row="4" Style="{StaticResource TextBlock}" VerticalAlignment="Top" TextWrapping="Wrap" Padding="250 0 250 0">
+            The game goes back to an old Indian game called Pachisi, which is still known today. Moreover, it is very common in Sri Lanka ('pahada kolya'), Malaysia ('dhola'), Myanmar ('pasit', 'chwe-pyit-thi' or 'ansah-pyit-thi'), Iran ('pachis'), as well as in Arabic countries ('parchis'). Finally, through the Moors, it was brought to Spain, and thus to Europe. Occasionally, it is played at oriental courts using household servants as tokens on correspondingly large fields.
+            <LineBreak/><LineBreak/>
+                </TextBlock>
+                
+                
+                <TextBlock Grid.Row="5" Style="{StaticResource  TitleSub}">Beginnings in the early 20th century</TextBlock>
+                <TextBlock Grid.Row="6" Style="{StaticResource TextBlock}" VerticalAlignment="Top" TextWrapping="Wrap" Padding="250 0 250 0">
+                In its present form, Mensch ärgere Dich nicht was invented in the winter months of 1907/1908 by Josef Friedrich Schmidt, a native of Amberg, Germany and the founder of Schmidt Spiele. This game was invented in a workshop in Munich-Giesing and was based on the English game, Ludo. This game was first published in 1910 and was produced in series from 1914 on. Mensch ärgere Dich nicht is considered the most popular parlour game in Germany. In contrast to Ludo, the game's role model, Schmidt left aside all tactical and strategic variations in the rules. Also, the symbolism of the origin game, Pachisi, was completely eliminated.
+            <LineBreak/><LineBreak/>
+                    The rules of this classic game have essentially not changed since 1914, but now there are different variations of the game, e.g. Nichts als Ärger and Teufelsrad. While the game was not particularly successful in the early years, it became popular during the First World War. Schmidt sent 3,000 games to field hospitals so that the soldiers had something to do to escape boredom. Thanks to this tactic and the subsequent word-of-mouth propaganda, it was possible to sell 1 million games at the price of 35 Pfennigs by 1920.
+            <LineBreak/><LineBreak/>
+                </TextBlock>
+                
+                
+                <TextBlock Grid.Row="7" Style="{StaticResource  TitleSub}">Developments and copies after the World War II</TextBlock>
+                <TextBlock Grid.Row="8" Style="{StaticResource TextBlock}" VerticalAlignment="Top" TextWrapping="Wrap" Padding="250 0 250 0">
+                After the Second World War, the game remained largely unchanged. In 1953, Schmidt Spiele introduced an official Mensch ärgere Dich nicht version as a licensed edition in East Germany. Soon after, almost identical counterfeits appeared in West Germany under the title of "Wir werfen raus!" and "Mensch wir werfen raus!". One version, "Verliere nicht den Kopf!" puts a shortcut across in the middle of the board. Its successor, "Raus!", which had a square-shaped board, was also being sold at the time. Different counterfeits appeared in other countries, such as an Austrian version of the game, such as Das Spiel, by the Viennese publisher Werner Schneider Jr. In addition to these games, many other promotional games appeared in the 1980s that were modeled after the original. Apart from these counterfeits, other internationally refined and independent games evolved from Mensch ärgere Dich nicht and other Pachisi spin-offs. These games include: Hexentanz, das VIP Game, Tock, its spin-off, Sorry!, Dog and DOG, as well as Huckepack.
+            <LineBreak/><LineBreak/>
+                </TextBlock>
+                
+                
+                <TextBlock Grid.Row="9" Style="{StaticResource  TitleSub}">Further developments in the 21st century</TextBlock>
+                <TextBlock Grid.Row="10" Style="{StaticResource TextBlock}" VerticalAlignment="Top" TextWrapping="Wrap" Padding="250 0 250 0">
+                Additionally, this board game established itself in tournament form. On February 11, 2010, the Deutsche Post issued a 55 cent coin with a special stamp to celebrate the game's 100th anniversary. In January 2014, Schmidt Spiele released a card game with the title Mensch ärgere Dich nicht: Das Kartenspiel. Schmidt's hometown Amberg set the world record for simultaneous gameplay of Mensch ärgere Dich nicht with 1692 people on 375 game-boards in July 2017.
+            <LineBreak/><LineBreak/>
+                </TextBlock>
+
+                <!-- Source -->
+                <TextBlock Grid.Row="11" Style="{StaticResource  Title}">Source</TextBlock>
+                <TextBlock Grid.Row="12" Style="{StaticResource TextBlock}" VerticalAlignment="Top" TextWrapping="Wrap" Padding="250 0 250 0">
+                English Wikipedia: Mensch ärgere Dich nicht
+                </TextBlock>
+            </Grid>
         </ScrollViewer>
 
         <Button Grid.Row="3" Command="{Binding GotoHomeViewCommand}" >Back</Button>

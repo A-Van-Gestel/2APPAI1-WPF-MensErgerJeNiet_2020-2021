@@ -100,7 +100,7 @@ namespace MensErgerJeNiet.Model
             // Blue Home
             this.Add(new PionField(id: 51, column: 5, row: 1, fillColor: (SolidColorBrush)new BrushConverter().ConvertFrom(color2)));
             this.Add(new PionField(id: 52, column: 5, row: 2, fillColor: (SolidColorBrush)new BrushConverter().ConvertFrom(color2)));
-            this.Add(new PionField(id: 53, column: 5, row: 3, fillColor: (SolidColorBrush)new BrushConverter().ConvertFrom(color2))); ;
+            this.Add(new PionField(id: 53, column: 5, row: 3, fillColor: (SolidColorBrush)new BrushConverter().ConvertFrom(color2)));
             this.Add(new PionField(id: 54, column: 5, row: 4, fillColor: (SolidColorBrush)new BrushConverter().ConvertFrom(color2)));
 
             // Green Home

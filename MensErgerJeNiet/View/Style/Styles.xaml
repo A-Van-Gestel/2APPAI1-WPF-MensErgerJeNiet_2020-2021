@@ -26,6 +26,11 @@
         <Setter Property="FontWeight" Value="Bold" />
     </Style>
 
+    <!-- TitleSub TextBlock -->
+    <Style  BasedOn="{StaticResource Title}" TargetType="{x:Type TextBlock}" x:Key="TitleSub">
+        <Setter Property="FontSize" Value="18" />
+    </Style>
+
     <!-- GameTitle TextBlock -->
     <Style  BasedOn="{StaticResource MaterialDesignTextBlock}" TargetType="{x:Type TextBlock}" x:Key="GameTitle">
         <Setter Property="HorizontalAlignment" Value="Center" />
