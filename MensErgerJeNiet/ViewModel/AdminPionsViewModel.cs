@@ -6,53 +6,53 @@ using System.Windows.Input;
 
 namespace MensErgerJeNiet.ViewModel
 {
-    class AdminPositionsViewModel : BaseViewModel
+    class AdminPionsViewModel : BaseViewModel
     {
-        public AdminPositionsViewModel()
+        public AdminPionsViewModel()
         {
-            ReadPosition();
+            ReadPion();
             KoppelenCommands();
         }
 
-        private ObservableCollection<Position> positions;
-        public ObservableCollection<Position> Positions
+        private ObservableCollection<Pion> pions;
+        public ObservableCollection<Pion> Pions
         {
             get
             {
-                return positions;
+                return pions;
             }
 
             set
             {
-                positions = value;
+                pions = value;
                 NotifyPropertyChanged();
             }
         }
 
-        private Position currentPosition;
-        public Position CurrentPosition
+        private Pion currentPion;
+        public Pion CurrentPion
         {
             get
             {
-                if (currentPosition == null)
+                if (currentPion == null)
                 {
-                    currentPosition = new Position();
+                    currentPion = new Pion();
                 }
-                return currentPosition;
+                return currentPion;
             }
 
             set
             {
-                currentPosition = value;
+                currentPion = value;
                 NotifyPropertyChanged();
             }
         }
 
         private void KoppelenCommands()
         {
-            UpdateCommand = new BaseCommand(UpdatePosition);
-            DeleteCommand = new BaseCommand(DeletePosition);
-            AddCommand = new BaseCommand(AddPosition);
+            UpdateCommand = new BaseCommand(UpdatePion);
+            DeleteCommand = new BaseCommand(DeletePion);
+            AddCommand = new BaseCommand(AddPion);
             GotoAdminViewCommand = new BaseCommand(AdminView);
         }
 
@@ -61,65 +61,65 @@ namespace MensErgerJeNiet.ViewModel
         public ICommand AddCommand { get; set; }
         public ICommand GotoAdminViewCommand { get; set; }
 
-        private void ReadPosition()
+        private void ReadPion()
         {
             //instantiëren dataservice
-            PositionDataService contactDS = new PositionDataService();
+            PionDataService contactDS = new PionDataService();
 
-            Positions = new ObservableCollection<Position>(contactDS.GetPositions());
+            Pions = new ObservableCollection<Pion>(contactDS.GetPions());
 
             //PlayerHistories inlezen
             PlayerHistoryDataService playerHistoryDataService = new PlayerHistoryDataService();
             PlayerHistories = playerHistoryDataService.GetPlayerHistories();
 
-            foreach (Position position in Positions)
+            foreach (Pion pion in Pions)
             {
                 //Relatie
-                if (position.PlayerHistoryID > 0)
+                if (pion.PlayerHistoryID > 0)
                 {
-                    SelectedPlayerHistory = PlayerHistories.FirstOrDefault(ph => ph.ID == position.PlayerHistoryID);
+                    SelectedPlayerHistory = PlayerHistories.FirstOrDefault(ph => ph.ID == pion.PlayerHistoryID);
                 }
             }
         }
 
-        public void UpdatePosition()
+        public void UpdatePion()
         {
-            if (CurrentPosition != null)
+            if (CurrentPion != null)
             {
-                PositionDataService contactDS = new PositionDataService();
-                contactDS.UpdatePosition(CurrentPosition);
+                PionDataService contactDS = new PionDataService();
+                contactDS.UpdatePion(CurrentPion);
 
                 //Refresh
-                ReadPosition();
+                ReadPion();
             }
         }
 
-        public void AddPosition()
+        public void AddPion()
         {
-            PositionDataService contactDS = new PositionDataService();
-            if (CurrentPosition != null)
+            PionDataService contactDS = new PionDataService();
+            if (CurrentPion != null)
             {
-                contactDS.InsertPosition(CurrentPosition);
+                contactDS.InsertPion(CurrentPion);
             }
             else
             {
-                contactDS.InsertPosition(new Position());
+                contactDS.InsertPion(new Pion());
             }
 
             //Refresh
-            ReadPosition();
+            ReadPion();
         }
 
 
-        public void DeletePosition()
+        public void DeletePion()
         {
-            if (CurrentPosition != null)
+            if (CurrentPion != null)
             {
-                PositionDataService contactDS = new PositionDataService();
-                contactDS.DeletePosition(CurrentPosition);
+                PionDataService contactDS = new PionDataService();
+                contactDS.DeletePion(CurrentPion);
 
                 //Refresh
-                ReadPosition();
+                ReadPion();
             }
         }
 

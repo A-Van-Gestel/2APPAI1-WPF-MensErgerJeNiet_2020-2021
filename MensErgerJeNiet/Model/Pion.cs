@@ -1,29 +1,29 @@
 ﻿namespace MensErgerJeNiet.Model
 {
-    class Position : BaseModel
+    class Pion : BaseModel
     {
         private int id;
         private int playerHistoryID;
-        private int pion;
+        private int pionNr;
         private int coordinate;
         private bool isHome;
         private bool isActive;
         private PlayerHistory playerHistory;
 
 
-        public Position() 
+        public Pion() 
         {
             PlayerHistoryID = 1;
-            Pion = 1;
+            PionNr = 1;
             Coordinate = 1;
             IsHome = true;
             IsActive = false;
         }
 
-        public Position(int playerHistoryID, int pion, int coordinate, bool isHome, bool isActive)
+        public Pion(int playerHistoryID, int pionNr, int coordinate, bool isHome, bool isActive)
         {
             PlayerHistoryID = playerHistoryID;
-            Pion = pion;
+            PionNr = pionNr;
             Coordinate = coordinate;
             IsHome = isHome;
             IsActive = isActive;
@@ -73,16 +73,16 @@
             }
         }
 
-        public int Pion
+        public int PionNr
         {
             get
             {
-                return pion;
+                return pionNr;
             }
 
             set
             {
-                pion = value;
+                pionNr = value;
                 NotifyPropertyChanged();
             }
         }

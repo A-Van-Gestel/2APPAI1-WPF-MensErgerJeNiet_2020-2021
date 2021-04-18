@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace MensErgerJeNiet.View
 {
     /// <summary>
-    /// Interaction logic for AdminPositionsView.xaml
+    /// Interaction logic for AdminPionsView.xaml
     /// </summary>
-    public partial class AdminPositionsView : Page
+    public partial class AdminPionsView : Page
     {
-        public AdminPositionsView()
+        public AdminPionsView()
         {
             InitializeComponent();
         }

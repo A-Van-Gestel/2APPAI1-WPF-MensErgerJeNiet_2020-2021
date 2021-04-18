@@ -14,10 +14,10 @@ namespace MensErgerJeNiet.ViewModel
         public PlayViewModel()
         {
             ReadPlayerHistories();
-            ReadPositions();
+            ReadPions();
             SetPlayerHistoryPions();
             SetPlayers();
-            Board = new Board(Player1.Color.Code, Player2.Color.Code, Player3.Color.Code, Player4.Color.Code, new List<Position>(positions));
+            Board = new Board(Player1.Color.Code, Player2.Color.Code, Player3.Color.Code, Player4.Color.Code, new List<Pion>(pions));
             Dice = new Dice();
             KoppelenCommands();
         }
@@ -195,61 +195,61 @@ namespace MensErgerJeNiet.ViewModel
             }
         }
 
-        private List<Position> PositionsActive(ObservableCollection<PlayerHistory>PlayerHistories)
+        private List<Pion> PionsActive(ObservableCollection<PlayerHistory>PlayerHistories)
         {
-            List<Position> PositionsActive_internal = new List<Position>();
-            PositionDataService contactDS = new PositionDataService();
-            ObservableCollection<Position> positions = contactDS.GetPositions();
-            foreach (Position position in positions)
+            List<Pion> PionsActive_internal = new List<Pion>();
+            PionDataService contactDS = new PionDataService();
+            ObservableCollection<Pion> pions = contactDS.GetPions();
+            foreach (Pion pion in pions)
             {
                 foreach (PlayerHistory playerHistory in PlayerHistories)
                 {
-                    if (position.PlayerHistoryID == playerHistory.ID)
+                    if (pion.PlayerHistoryID == playerHistory.ID)
                     {
-                        PositionsActive_internal.Add(position);
+                        PionsActive_internal.Add(pion);
                     }
                 }
             }
-            return PositionsActive_internal;
+            return PionsActive_internal;
         }
 
-        private void ReadPositions()
+        private void ReadPions()
         {
-            Positions = new ObservableCollection<Position>(PositionsActive(playerHistories));
+            Pions = new ObservableCollection<Pion>(PionsActive(playerHistories));
 
-            foreach (Position position in Positions)
+            foreach (Pion pion in Pions)
             {
                 //Relatie
-                if (position.PlayerHistoryID > 0)
+                if (pion.PlayerHistoryID > 0)
                 {
-                    position.PlayerHistory = PlayerHistories.FirstOrDefault(ph => ph.ID == position.PlayerHistoryID);
+                    pion.PlayerHistory = PlayerHistories.FirstOrDefault(ph => ph.ID == pion.PlayerHistoryID);
                 }
             }
         }
 
         private void SetPlayerHistoryPions()
         {
-            foreach (Position position in Positions)
+            foreach (Pion pion in Pions)
             {
                 foreach (PlayerHistory playerHistory in PlayerHistories)
                 {
-                    if (position.PlayerHistoryID == playerHistory.ID)
+                    if (pion.PlayerHistoryID == playerHistory.ID)
                     {
-                        if (position.Pion == 1)
+                        if (pion.PionNr == 1)
                         {
-                            playerHistory.Pion1 = position;
+                            playerHistory.Pion1 = pion;
                         }
-                        if (position.Pion == 2)
+                        if (pion.PionNr == 2)
                         {
-                            playerHistory.Pion2 = position;
+                            playerHistory.Pion2 = pion;
                         }
-                        if (position.Pion == 3)
+                        if (pion.PionNr == 3)
                         {
-                            playerHistory.Pion3 = position;
+                            playerHistory.Pion3 = pion;
                         }
-                        if (position.Pion == 4)
+                        if (pion.PionNr == 4)
                         {
-                            playerHistory.Pion4 = position;
+                            playerHistory.Pion4 = pion;
                         }
                     }
                 }
@@ -487,17 +487,17 @@ namespace MensErgerJeNiet.ViewModel
             }
         }
 
-        private ObservableCollection<Position> positions;
-        public ObservableCollection<Position> Positions
+        private ObservableCollection<Pion> pions;
+        public ObservableCollection<Pion> Pions
         {
             get
             {
-                return positions;
+                return pions;
             }
 
             set
             {
-                positions = value;
+                pions = value;
                 NotifyPropertyChanged();
             }
         }

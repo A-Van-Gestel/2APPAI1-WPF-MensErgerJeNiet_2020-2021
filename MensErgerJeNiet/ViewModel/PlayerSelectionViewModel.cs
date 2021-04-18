@@ -327,9 +327,9 @@ namespace MensErgerJeNiet.ViewModel
         }
 
 
-        private void AddPositions()
+        private void AddPions()
         {
-            PositionDataService contactDS = new PositionDataService();
+            PionDataService contactDS = new PionDataService();
 
             if (playerHistory1ID != 0 & playerHistory2ID != 0 & playerHistory3ID != 0 & playerHistory4ID != 0)
             {
@@ -339,8 +339,8 @@ namespace MensErgerJeNiet.ViewModel
                 {
                     for (int i = 1; i <= 4; i++)
                     {
-                        contactDS.InsertPosition(new Position(playerHistoryID: playerHistoryID,
-                                                   pion: i,
+                        contactDS.InsertPion(new Pion(playerHistoryID: playerHistoryID,
+                                                   pionNr: i,
                                                    coordinate: 1,
                                                    isHome: false,
                                                    isActive: false));
@@ -382,7 +382,7 @@ namespace MensErgerJeNiet.ViewModel
                             AddPlayers();
                             AddGame();
                             AddPlayerHistories();
-                            AddPositions();
+                            AddPions();
 
                             PageNavigationService pageNavigationService = new PageNavigationService();
                             pageNavigationService.Navigate("PlayView");

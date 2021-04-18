@@ -17,7 +17,7 @@ namespace MensErgerJeNiet.Model
 
         // Intenal lists for deletion
         private ObservableCollection<Player> players;
-        private ObservableCollection<Position> positions;
+        private ObservableCollection<Pion> pions;
 
         // Ophalen ConnectionString uit App.config
         private static string connectionString =
@@ -184,16 +184,16 @@ namespace MensErgerJeNiet.Model
             //    }
             //}
 
-            // --- If no usage, delete positions linked to it, then itself, and finally players linked to it ---
-            // - Delete positions linked to it -
-            //positions inlezen
-            PositionDataService positionDataService = new PositionDataService();
-            positions = positionDataService.GetPositions();
-            foreach (Position position_internal in positions)
+            // --- If no usage, delete pions linked to it, then itself, and finally players linked to it ---
+            // - Delete pions linked to it -
+            //pions inlezen
+            PionDataService pionDataService = new PionDataService();
+            pions = pionDataService.GetPions();
+            foreach (Pion pion_internal in pions)
             {
-                if (playerHistory.ID == position_internal.PlayerHistoryID)
+                if (playerHistory.ID == pion_internal.PlayerHistoryID)
                 {
-                    positionDataService.DeletePosition(position_internal);
+                    pionDataService.DeletePion(pion_internal);
                 }
             }
 

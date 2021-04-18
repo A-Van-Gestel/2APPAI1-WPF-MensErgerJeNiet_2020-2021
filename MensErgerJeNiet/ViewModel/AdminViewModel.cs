@@ -14,7 +14,7 @@ namespace MensErgerJeNiet.ViewModel
         public ICommand GotoAdminColorsViewCommand { get; set; }
         public ICommand GotoAdminGamesViewCommand { get; set; }
         public ICommand GotoAdminPlayersViewCommand { get; set; }
-        public ICommand GotoAdminPositionsViewCommand { get; set; }
+        public ICommand GotoAdminPionsViewCommand { get; set; }
         public ICommand GotoAdminPlayerHistoriesViewCommand { get; set; }
 
 
@@ -29,7 +29,7 @@ namespace MensErgerJeNiet.ViewModel
             GotoAdminColorsViewCommand = new BaseCommand(AdminColorsView);
             GotoAdminGamesViewCommand = new BaseCommand(AdminGamesView);
             GotoAdminPlayersViewCommand = new BaseCommand(AdminPlayersView);
-            GotoAdminPositionsViewCommand = new BaseCommand(AdminPositionsView);
+            GotoAdminPionsViewCommand = new BaseCommand(AdminPionsView);
             GotoAdminPlayerHistoriesViewCommand = new BaseCommand(AdminPlayerHistoriesView);
         }
 
@@ -58,10 +58,10 @@ namespace MensErgerJeNiet.ViewModel
             pageNavigationService.Navigate("AdminPlayersView");
         }
 
-        private void AdminPositionsView()
+        private void AdminPionsView()
         {
             PageNavigationService pageNavigationService = new PageNavigationService();
-            pageNavigationService.Navigate("AdminPositionsView");
+            pageNavigationService.Navigate("AdminPionsView");
         }
 
         private void AdminPlayerHistoriesView()

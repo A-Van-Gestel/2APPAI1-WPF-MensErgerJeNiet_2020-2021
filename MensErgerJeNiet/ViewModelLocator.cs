@@ -21,7 +21,7 @@ namespace MensErgerJeNiet
         //private static AdminColorsViewModel adminColorsViewModel = new AdminColorsViewModel();
         //private static AdminGamesViewModel adminGamesViewModel = new AdminGamesViewModel();
         //private static AdminPlayersViewModel adminPlayersViewModel = new AdminPlayersViewModel();
-        //private static AdminPositionsViewModel adminPositionsViewModel = new AdminPositionsViewModel();
+        //private static AdminPionsViewModel adminPionsViewModel = new AdminPionsViewModel();
         //private static AdminPlayerHistoriesViewModel adminPlayerHistoriesViewModel = new AdminPlayerHistoriesViewModel();
 
         public static HomeViewModel HomeViewModel
@@ -97,11 +97,11 @@ namespace MensErgerJeNiet
             }
         }
 
-        public static AdminPositionsViewModel AdminPositionsViewModel
+        public static AdminPionsViewModel AdminPionsViewModel
         {
             get
             {
-                return new AdminPositionsViewModel();
+                return new AdminPionsViewModel();
             }
         }
 

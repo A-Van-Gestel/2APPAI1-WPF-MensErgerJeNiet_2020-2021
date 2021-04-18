@@ -11,10 +11,10 @@ namespace MensErgerJeNiet.Model
     class Board : ObservableCollection<PionField>
     {
 
-        public Board(string color1, string color2, string color3, string color4, List<Position>positions)
+        public Board(string color1, string color2, string color3, string color4, List<Pion>pions)
         {
             CreateBoard(color1, color2, color3, color4);
-            PutPlayersOnStart(positions);
+            PutPlayersOnStart(pions);
         }
 
         private void CreateBoard(string color1, string color2, string color3, string color4)
@@ -120,30 +120,30 @@ namespace MensErgerJeNiet.Model
 
         }
 
-        public void PutPlayersOnStart(List<Position> positions)
+        public void PutPlayersOnStart(List<Pion> pions)
         {
-            foreach (Position position in positions)
+            foreach (Pion pion in pions)
             {
-                if (position.IsActive)
+                if (pion.IsActive)
                 {
-                    var startPionField = this.FirstOrDefault(s => s.ID == position.Coordinate);
-                    startPionField.PionOnPionField = position;
+                    var startPionField = this.FirstOrDefault(s => s.ID == pion.Coordinate);
+                    startPionField.PionOnPionField = pion;
                 }
                 else
                 {
-                    var startPionField = this.FirstOrDefault(s => s.ID == -(position.Pion + position.PlayerHistory.PionOffset));
-                    startPionField.PionOnPionField = position;
+                    var startPionField = this.FirstOrDefault(s => s.ID == -(pion.PionNr + pion.PlayerHistory.PionOffset));
+                    startPionField.PionOnPionField = pion;
                 }
 
             }
         }
 
-        public void MovePion(Position position, int steps)
+        public void MovePion(Pion pion, int steps)
         {
-            PositionDataService contactDS = new PositionDataService();
+            PionDataService contactDS = new PionDataService();
 
             // get current PionField
-            var PionField = this.FirstOrDefault(s => s.PionOnPionField == position);
+            var PionField = this.FirstOrDefault(s => s.PionOnPionField == pion);
             if (PionField != null)
             {
                 int currentPionField = PionField.ID;
@@ -159,11 +159,11 @@ namespace MensErgerJeNiet.Model
                     oldPion.Coordinate = 1;
 
                     // Move selected pion to PionField
-                    newPionField.PionOnPionField = position;
+                    newPionField.PionOnPionField = pion;
 
                     // Save both to database
-                    contactDS.UpdatePosition(oldPion);
-                    contactDS.UpdatePosition(position);
+                    contactDS.UpdatePion(oldPion);
+                    contactDS.UpdatePion(pion);
                 }
             }
         }

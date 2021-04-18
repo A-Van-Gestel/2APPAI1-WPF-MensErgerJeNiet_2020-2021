@@ -17,10 +17,10 @@ namespace MensErgerJeNiet.Model
         private Player player;
         private Color color;
         private Game game;
-        private Position pion1;
-        private Position pion2;
-        private Position pion3;
-        private Position pion4;
+        private Pion pion1;
+        private Pion pion2;
+        private Pion pion3;
+        private Pion pion4;
 
 
         public PlayerHistory() 
@@ -244,7 +244,7 @@ namespace MensErgerJeNiet.Model
             }
         }
 
-        public Position Pion1
+        public Pion Pion1
         {
             get
             {
@@ -258,7 +258,7 @@ namespace MensErgerJeNiet.Model
             }
         }
 
-        public Position Pion2
+        public Pion Pion2
         {
             get
             {
@@ -272,7 +272,7 @@ namespace MensErgerJeNiet.Model
             }
         }
 
-        public Position Pion3
+        public Pion Pion3
         {
             get
             {
@@ -286,7 +286,7 @@ namespace MensErgerJeNiet.Model
             }
         }
 
-        public Position Pion4
+        public Pion Pion4
         {
             get
             {
