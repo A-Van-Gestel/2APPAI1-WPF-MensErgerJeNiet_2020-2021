@@ -37,8 +37,16 @@
                                     Header="Winner"  
                                     DisplayMemberBinding="{Binding Player.Name}" />
                     <GridViewColumn Width="NaN" 
-                                    Header="Color"
-                                    DisplayMemberBinding="{Binding Color}" />
+                                    Header="Color">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <Rectangle Fill="{Binding Color.Code}" Width="14" Height="14" Margin="0,2,5,2" />
+                                    <TextBlock Text="{Binding Color.Name}" />
+                                </StackPanel>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
                     <GridViewColumn Width="NaN" 
                                     Header="#Sixes"
                                     DisplayMemberBinding="{Binding CountSixes}" />

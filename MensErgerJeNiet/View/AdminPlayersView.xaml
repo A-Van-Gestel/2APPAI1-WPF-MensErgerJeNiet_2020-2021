@@ -36,7 +36,7 @@
             <TextBox Margin="10,5,10,10" 
                      Text="{Binding CurrentPlayer.Name}" 
                      materialDesign:HintAssist.Hint="Player Name"
-                     MaxLength="50"
+                     MaxLength="9"
                      ToolTip="Player Name" />
             
 

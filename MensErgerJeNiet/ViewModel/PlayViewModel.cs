@@ -289,7 +289,7 @@ namespace MensErgerJeNiet.ViewModel
 
         private void NextTurn()
         {
-            PlayerHistoryDataService contactDS = new PlayerHistoryDataService();
+            PlayerHistoryDataService playerHistoryDS = new PlayerHistoryDataService();
 
             // Current Player
             timerEnd = DateTime.UtcNow;
@@ -301,31 +301,91 @@ namespace MensErgerJeNiet.ViewModel
                 currentPlayer.CountSixes++;
                 currentPlayer.IsTurn = true;
             }
-            contactDS.UpdatePlayerHistory(CurrentPlayer);
+            playerHistoryDS.UpdatePlayerHistory(CurrentPlayer);
             SetPlayers();
 
-            // Check if the next player needs to be loaded
-            if (Dice.NumberDots != 6)
+            // IF: Winner
+            // - set winner state
+            // - set game to finished
+            // - View Winner History
+            if (IsWinner(CurrentPlayer))
             {
-                // Next Player
-                SetNextCurrentPlayer();
-                currentPlayer.IsTurn = true;
-                contactDS.UpdatePlayerHistory(CurrentPlayer);
-                SetPlayers();
+                // Set winner state
+                currentPlayer.IsWinner = true;
+                playerHistoryDS.UpdatePlayerHistory(CurrentPlayer);
+
+                // Set game to finished
+                game.IsActive = false;
+                GameDataService gameDS = new GameDataService();
+                gameDS.UpdateGame(game);
+
+                // Go to Winner History view
+                PageNavigationService pageNavigationService = new PageNavigationService();
+                pageNavigationService.Navigate("HistoryView");
             }
 
-            // Start the Timer
-            timerStart = DateTime.UtcNow;
+            // ELSE: continue
+            else
+            {
+                // Check if the next player needs to be loaded
+                if (Dice.NumberDots != 6)
+                {
+                    // Next Player
+                    SetNextCurrentPlayer();
+                    currentPlayer.IsTurn = true;
+                    playerHistoryDS.UpdatePlayerHistory(CurrentPlayer);
+                    SetPlayers();
+                }
 
-            // Set Dice to not trown
-            Dice.IsTrown = false;
+                // Start the Timer
+                timerStart = DateTime.UtcNow;
 
-            NotifyPropertyChanged("IsActivePion1");
-            NotifyPropertyChanged("IsActivePion2");
-            NotifyPropertyChanged("IsActivePion3");
-            NotifyPropertyChanged("IsActivePion4");
-            NotifyPropertyChanged("IsActiveTrow");
-            NotifyPropertyChanged();
+                // Set Dice to not trown
+                Dice.IsTrown = false;
+
+                NotifyPropertyChanged("IsActivePion1");
+                NotifyPropertyChanged("IsActivePion2");
+                NotifyPropertyChanged("IsActivePion3");
+                NotifyPropertyChanged("IsActivePion4");
+                NotifyPropertyChanged("IsActiveTrow");
+                NotifyPropertyChanged();
+            }
+        }
+
+        private bool IsWinner(PlayerHistory currentPlayer)
+        {
+            int isHomeCount = 0;
+            if (currentPlayer.Pion1.IsHome == true)
+            {
+                isHomeCount++;
+
+            }
+            if (currentPlayer.Pion2.IsHome == true)
+            {
+                isHomeCount++;
+
+            }
+            if (currentPlayer.Pion3.IsHome == true)
+            {
+                isHomeCount++;
+
+            }
+            if (currentPlayer.Pion4.IsHome == true)
+            {
+                isHomeCount++;
+
+            }
+
+            // Check win state
+            if (isHomeCount == 4)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+            
         }
 
         public PlayerHistory CurrentPlayer

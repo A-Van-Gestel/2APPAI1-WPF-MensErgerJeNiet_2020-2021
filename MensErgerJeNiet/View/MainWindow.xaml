@@ -14,5 +14,5 @@
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}"
         ShowsNavigationUI="False"
-        Title="Mens erger je niet!" Height="720" Width="1280" Source="PlayView.xaml">
+        Title="Mens erger je niet!" Height="720" Width="1280" Source="HomeView.xaml">
 </NavigationWindow>

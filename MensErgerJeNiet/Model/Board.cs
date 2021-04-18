@@ -150,7 +150,7 @@ namespace MensErgerJeNiet.Model
             // - Number of steps is bigger than the board
             if (pion.IsActive == false && steps != 6 ||
                 pion.IsHome == true ||
-                (pion.Coordinate + pion.PlayerHistory.PionOffset + steps) >= (44 + pion.PlayerHistory.PionOffset))
+                (pion.Coordinate + pion.PlayerHistory.PionOffset + steps) > (40 + pion.PionNr + pion.PlayerHistory.PionOffset))
             {
                 return;
             }
@@ -202,6 +202,12 @@ namespace MensErgerJeNiet.Model
 
             // Make sure the pion's active as it passed all the checks
             pion.IsActive = true;
+
+            // IF: Pion is Home
+            if (pion.Coordinate == (40 + pion.PionNr + pion.PlayerHistory.PionOffset))
+            {
+                pion.IsHome = true;
+            }
 
             // Save selected Pion to database
             contactDS.UpdatePion(pion);

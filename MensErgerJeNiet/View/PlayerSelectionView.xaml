@@ -52,7 +52,7 @@
         <TextBlock Grid.Row="4" Grid.Column="0" Style="{StaticResource PlayerSelectionPlayer}">Player 1</TextBlock>
         <TextBox Grid.Row="4" Grid.Column="1" Style="{StaticResource PlayerSelectionInputName}"
                  Text="{Binding Player1.Name}"
-                 MaxLength="50"
+                 MaxLength="9"
                  materialDesign:HintAssist.Hint="Player name" />
         <ComboBox   Grid.Row="4" Grid.Column="3" Style="{StaticResource PlayerSelectionInputKleur}"
                     ItemsSource="{Binding Colors}" 
@@ -74,7 +74,7 @@
         <TextBlock Grid.Row="5" Grid.Column="0" Style="{StaticResource PlayerSelectionPlayer}">Player 2</TextBlock>
         <TextBox Grid.Row="5" Grid.Column="1" Style="{StaticResource PlayerSelectionInputName}"
                  Text="{Binding Player2.Name}"
-                 MaxLength="50"
+                 MaxLength="9"
                  materialDesign:HintAssist.Hint="Player name" />
         <ComboBox   Grid.Row="5" Grid.Column="3" Style="{StaticResource PlayerSelectionInputKleur}"
                     ItemsSource="{Binding Colors}" 
@@ -96,7 +96,7 @@
         <TextBlock Grid.Row="6" Grid.Column="0" Style="{StaticResource PlayerSelectionPlayer}">Player 3</TextBlock>
         <TextBox Grid.Row="6" Grid.Column="1" Style="{StaticResource PlayerSelectionInputName}"
                  Text="{Binding Player3.Name}"
-                 MaxLength="50"
+                 MaxLength="9"
                  materialDesign:HintAssist.Hint="Player name" />
         <ComboBox   Grid.Row="6" Grid.Column="3" Style="{StaticResource PlayerSelectionInputKleur}"
                     ItemsSource="{Binding Colors}" 
@@ -118,7 +118,7 @@
         <TextBlock Grid.Row="7" Grid.Column="0" Style="{StaticResource PlayerSelectionPlayer}">Player 4</TextBlock>
         <TextBox Grid.Row="7" Grid.Column="1" Style="{StaticResource PlayerSelectionInputName}"
                  Text="{Binding Player4.Name}"
-                 MaxLength="50"
+                 MaxLength="9"
                  materialDesign:HintAssist.Hint="Player name" />
         <ComboBox   Grid.Row="7" Grid.Column="3" Style="{StaticResource PlayerSelectionInputKleur}"
                     ItemsSource="{Binding Colors}" 
