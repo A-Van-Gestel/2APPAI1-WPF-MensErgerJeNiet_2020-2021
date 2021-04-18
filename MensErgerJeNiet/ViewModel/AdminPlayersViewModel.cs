@@ -90,7 +90,7 @@ namespace MensErgerJeNiet.ViewModel
             {
                 contactDS.InsertPlayer(new Player());
             }
-            
+
             //Refresh
             ReadPlayer();
         }

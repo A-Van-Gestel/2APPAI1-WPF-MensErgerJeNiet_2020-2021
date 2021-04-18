@@ -2,9 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace MensErgerJeNiet.ViewModel
@@ -214,7 +211,7 @@ namespace MensErgerJeNiet.ViewModel
         {
             GotoHomeViewCommand = new BaseCommand(HomeView);
             PlayCommand = new BaseCommand(Play);
-    }
+        }
 
         private void ReadColors()
         {

@@ -9,7 +9,7 @@ namespace MensErgerJeNiet.Model
         private string code;
 
 
-        public Color() 
+        public Color()
         {
             var random = new Random();
             var randomColor = $"#{random.Next(0x1000000):X6}";

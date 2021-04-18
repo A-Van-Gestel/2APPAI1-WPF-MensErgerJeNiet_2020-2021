@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Navigation;
+﻿using System.Windows.Navigation;
 
 namespace MensErgerJeNiet.Model
 {
     public static class ApplicationHelper
-    { 
+    {
         private static NavigationService navigator;
         public static NavigationService NavigationService
         {

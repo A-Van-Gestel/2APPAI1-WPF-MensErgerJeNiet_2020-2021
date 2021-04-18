@@ -108,6 +108,13 @@
         <Setter Property="BorderThickness" Value="1" />
     </Style>
 
+    <!-- PionFieldBackground Border -->
+    <Style  TargetType="{x:Type Border}" x:Key="PionFieldBackground">
+        <Setter Property="CornerRadius" Value="50" />
+        <Setter Property="Background" Value="Gray"/>
+        <Setter Property="Opacity" Value="0.15 "/>
+    </Style>
+
     <!-- Pion Border -->
     <Style  TargetType="{x:Type Border}" x:Key="Pion">
         <Setter Property="Margin" Value="5" />

@@ -1,7 +1,5 @@
 ﻿using MensErgerJeNiet.Model;
-using System;
 using System.Collections.ObjectModel;
-using System.Linq;
 using System.Windows.Input;
 
 namespace MensErgerJeNiet.ViewModel
@@ -92,7 +90,7 @@ namespace MensErgerJeNiet.ViewModel
             {
                 contactDS.InsertGame(new Game());
             }
-                
+
             //Refresh
             ReadGame();
         }

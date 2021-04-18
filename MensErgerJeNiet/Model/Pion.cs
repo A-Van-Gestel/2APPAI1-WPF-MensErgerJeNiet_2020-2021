@@ -11,7 +11,7 @@
         private PlayerHistory playerHistory;
 
 
-        public Pion() 
+        public Pion()
         {
             PlayerHistoryID = 1;
             PionNr = 1;

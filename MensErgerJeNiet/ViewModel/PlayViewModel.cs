@@ -3,8 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace MensErgerJeNiet.ViewModel
@@ -205,7 +203,7 @@ namespace MensErgerJeNiet.ViewModel
             timerStart = DateTime.UtcNow;
         }
 
-        private List<Pion> PionsActive(ObservableCollection<PlayerHistory>PlayerHistories)
+        private List<Pion> PionsActive(ObservableCollection<PlayerHistory> PlayerHistories)
         {
             List<Pion> PionsActive_internal = new List<Pion>();
             PionDataService contactDS = new PionDataService();
@@ -385,7 +383,7 @@ namespace MensErgerJeNiet.ViewModel
             {
                 return false;
             }
-            
+
         }
 
         public PlayerHistory CurrentPlayer
@@ -501,7 +499,7 @@ namespace MensErgerJeNiet.ViewModel
             NotifyPropertyChanged("IsActiveTrow");
             NotifyPropertyChanged();
         }
-        
+
 
         private void MovePion1()
         {

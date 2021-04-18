@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Media;
 
 namespace MensErgerJeNiet.Model
@@ -11,7 +8,7 @@ namespace MensErgerJeNiet.Model
     class Board : ObservableCollection<PionField>
     {
 
-        public Board(string color1, string color2, string color3, string color4, List<Pion>pions)
+        public Board(string color1, string color2, string color3, string color4, List<Pion> pions)
         {
             CreateBoard(color1, color2, color3, color4);
             PutPlayersOnStart(pions);

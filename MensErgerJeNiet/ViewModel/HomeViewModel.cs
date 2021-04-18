@@ -1,16 +1,16 @@
 ﻿using MensErgerJeNiet.Model;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace MensErgerJeNiet.ViewModel
 {
     class HomeViewModel : BaseViewModel
     {
+        // --- Variables ---
+        private string playText = "Play";
+        private bool isGameActive = false;
+
+
         // ----- ICommands -----
         public ICommand PlayCommand { get; set; }
         public ICommand GotoHistoryViewCommand { get; set; }
@@ -20,6 +20,7 @@ namespace MensErgerJeNiet.ViewModel
 
         public HomeViewModel()
         {
+            isGameActive = IsGameActive();
             KoppelenCommands();
         }
 
@@ -40,10 +41,26 @@ namespace MensErgerJeNiet.ViewModel
             {
                 if (game.IsActive == true)
                 {
+                    PlayText = "Continue";
                     return true;
                 }
             }
+            PlayText = "Play";
             return false;
+        }
+
+        public string PlayText
+        {
+            get
+            {
+                return playText;
+            }
+
+            set
+            {
+                playText = value;
+                NotifyPropertyChanged();
+            }
         }
 
 
@@ -51,7 +68,7 @@ namespace MensErgerJeNiet.ViewModel
         // ----- Commands -----
         private void Play()
         {
-            if (IsGameActive())
+            if (isGameActive)
             {
                 PlayView();
             }
@@ -84,7 +101,7 @@ namespace MensErgerJeNiet.ViewModel
             PageNavigationService pageNavigationService = new PageNavigationService();
             pageNavigationService.Navigate("SpelRegelsView");
         }
-        
+
         private void AdminView()
         {
             PageNavigationService pageNavigationService = new PageNavigationService();

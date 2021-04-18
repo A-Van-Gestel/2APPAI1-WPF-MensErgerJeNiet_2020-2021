@@ -9,7 +9,7 @@ namespace MensErgerJeNiet.Model
         private bool isActive;
 
 
-        public Game() 
+        public Game()
         {
             Date = DateTime.Now;
             IsActive = true;
@@ -69,6 +69,6 @@ namespace MensErgerJeNiet.Model
         {
             return ID.ToString();
         }
-        
+
     }
 }

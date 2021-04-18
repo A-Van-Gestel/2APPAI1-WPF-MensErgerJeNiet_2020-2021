@@ -23,7 +23,7 @@ namespace MensErgerJeNiet.Model
         private Pion pion4;
 
 
-        public PlayerHistory() 
+        public PlayerHistory()
         {
             PlayerID = 1;
             ColorID = 1;
@@ -122,7 +122,7 @@ namespace MensErgerJeNiet.Model
                 color = value;
                 if (color != null)
                 {
-                colorID = value.ID;
+                    colorID = value.ID;
                 }
                 NotifyPropertyChanged();
             }
@@ -154,7 +154,7 @@ namespace MensErgerJeNiet.Model
                 game = value;
                 if (game != null)
                 {
-                gameID = value.ID;
+                    gameID = value.ID;
                 }
                 NotifyPropertyChanged();
             }

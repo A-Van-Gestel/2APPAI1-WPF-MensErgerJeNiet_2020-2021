@@ -1,9 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using Dapper;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
-using Dapper;
-using System.Configuration;
-using System.Collections.ObjectModel;
 
 namespace MensErgerJeNiet.Model
 {

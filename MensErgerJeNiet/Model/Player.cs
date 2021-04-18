@@ -6,7 +6,7 @@
         private string name;
 
 
-        public Player() 
+        public Player()
         {
             Name = "New player";
         }
