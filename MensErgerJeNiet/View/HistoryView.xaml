@@ -47,7 +47,7 @@
                                     DisplayMemberBinding="{Binding CountTurns}" />
                     <GridViewColumn Width="NaN" 
                                     Header="#Time"
-                                    DisplayMemberBinding="{Binding CountTime}" />
+                                    DisplayMemberBinding="{Binding CountTime, StringFormat=\{0:hh\\:mm\\:ss\}}" />
                     <GridViewColumn Width="NaN" 
                                     Header="Date"
                                     DisplayMemberBinding="{Binding Path=Game.Date, StringFormat={}{0:MM/dd/yyyy}}" />

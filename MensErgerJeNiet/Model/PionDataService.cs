@@ -75,7 +75,7 @@ namespace MensErgerJeNiet.Model
 
             // --- If no dupe, update ---
             // SQL statement update 
-            string sql = "Update Pion set playerHistoryID = @playerHistoryID, pion = @pion, coordinate = @coordinate, isHome = @isHome, isActive = @isActive where id = @id";
+            string sql = "Update Pion set playerHistoryID = @playerHistoryID, pionNr = @pionNr, coordinate = @coordinate, isHome = @isHome, isActive = @isActive where id = @id";
 
             // Uitvoeren SQL statement en doorgeven parametercollectie
             db.Execute(sql, new
@@ -108,7 +108,7 @@ namespace MensErgerJeNiet.Model
 
             // --- If no dupe, instert ---
             // SQL statement insert
-            string sql = "Insert into Pion (playerHistoryID, pion, coordinate, isHome, isActive) values (@playerHistoryID, @pion, @coordinate, @isHome, @isActive);" +
+            string sql = "Insert into Pion (playerHistoryID, pionNr, coordinate, isHome, isActive) values (@playerHistoryID, @pionNr, @coordinate, @isHome, @isActive);" +
                          "SELECT CAST(SCOPE_IDENTITY() as int)";
 
             // Uitvoeren SQL statement en doorgeven parametercollectie

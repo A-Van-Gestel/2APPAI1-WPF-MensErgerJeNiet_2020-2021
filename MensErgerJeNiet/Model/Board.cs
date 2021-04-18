@@ -117,7 +117,6 @@ namespace MensErgerJeNiet.Model
             this.Add(new PionField(id: 72, column: 5, row: 8, fillColor: (SolidColorBrush)new BrushConverter().ConvertFrom(color4)));
             this.Add(new PionField(id: 73, column: 5, row: 7, fillColor: (SolidColorBrush)new BrushConverter().ConvertFrom(color4)));
             this.Add(new PionField(id: 74, column: 5, row: 6, fillColor: (SolidColorBrush)new BrushConverter().ConvertFrom(color4)));
-
         }
 
         public void PutPlayersOnStart(List<Pion> pions)
@@ -134,7 +133,6 @@ namespace MensErgerJeNiet.Model
                     var startPionField = this.FirstOrDefault(s => s.ID == -(pion.PionNr + pion.PlayerHistory.PionOffset));
                     startPionField.PionOnPionField = pion;
                 }
-
             }
         }
 
@@ -144,28 +142,56 @@ namespace MensErgerJeNiet.Model
 
             // get current PionField
             var PionField = this.FirstOrDefault(s => s.PionOnPionField == pion);
-            if (PionField != null)
+            int currentPionField;
+
+            // IF: Move not valid
+            if (pion.IsActive == false && steps != 6 ||
+                pion.IsHome == true)
             {
-                int currentPionField = PionField.ID;
-                // remove old pion from this PionField
-                PionField.PionOnPionField = null;
-                // get next PionField
-                var newPionField = this.FirstOrDefault(s => s.ID == (currentPionField + steps));
-                if (newPionField != null)
-                {
-                    // Move current pion to Out
-                    var oldPion = newPionField.PionOnPionField;
-                    oldPion.IsActive = false;
-                    oldPion.Coordinate = 1;
-
-                    // Move selected pion to PionField
-                    newPionField.PionOnPionField = pion;
-
-                    // Save both to database
-                    contactDS.UpdatePion(oldPion);
-                    contactDS.UpdatePion(pion);
-                }
+                return;
             }
+
+            // remove current pion position from this PionField
+            PionField.PionOnPionField = null;
+
+            // IF: Pion moved to Board
+            if (pion.IsActive == false && steps == 6)
+            {
+                pion.IsActive = true;
+                PionField = this.FirstOrDefault(s => s.ID == (1 + pion.PlayerHistory.PionOffset));
+                currentPionField = PionField.ID - steps;
+            }
+
+            // ELSE: Pion already on Board
+            else
+            {
+                currentPionField = PionField.ID;
+            }
+
+            // Get next PionField
+            var newPionField = this.FirstOrDefault(s => s.ID == (currentPionField + steps));
+
+            // IF: next PionField has Pion
+            if (newPionField.PionOnPionField != null)
+            {
+                // Move current Pion to Out
+                var oldPion = newPionField.PionOnPionField;
+                oldPion.IsActive = false;
+                oldPion.Coordinate = 1;
+
+                var outPionField = this.FirstOrDefault(s => s.ID == -(oldPion.PionNr + oldPion.PlayerHistory.PionOffset));
+                outPionField.PionOnPionField = oldPion;
+
+                // Save currentPion to database
+                contactDS.UpdatePion(oldPion);
+            }
+
+            // Move selected Pion to next PionField
+            newPionField.PionOnPionField = pion;
+            pion.Coordinate = newPionField.ID;
+
+            // Save selected Pion to database
+            contactDS.UpdatePion(pion);
         }
     }
 }

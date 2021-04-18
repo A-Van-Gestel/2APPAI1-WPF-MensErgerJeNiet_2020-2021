@@ -361,21 +361,21 @@ namespace MensErgerJeNiet.ViewModel
         {
             if (Player1.Name != "" & Player2.Name != "" & Player3.Name != "" & Player4.Name != "")
             {
-                if (Player1.Name != Player2.Name &
-                    Player1.Name != Player3.Name &
-                    Player1.Name != Player4.Name &
-                    Player2.Name != Player3.Name &
-                    Player2.Name != Player4.Name &
+                if (Player1.Name != Player2.Name &&
+                    Player1.Name != Player3.Name &&
+                    Player1.Name != Player4.Name &&
+                    Player2.Name != Player3.Name &&
+                    Player2.Name != Player4.Name &&
                     Player3.Name != Player4.Name)
                 {
 
                     if (ColorPlayer1.ID != 0 & ColorPlayer2.ID != 0 & ColorPlayer3.ID != 0 & ColorPlayer4.ID != 0)
                     {
-                        if (ColorPlayer1.ID != ColorPlayer2.ID &
-                            ColorPlayer1.ID != ColorPlayer3.ID &
-                            ColorPlayer1.ID != ColorPlayer4.ID &
-                            ColorPlayer2.ID != ColorPlayer3.ID &
-                            ColorPlayer2.ID != ColorPlayer4.ID &
+                        if (ColorPlayer1.ID != ColorPlayer2.ID &&
+                            ColorPlayer1.ID != ColorPlayer3.ID &&
+                            ColorPlayer1.ID != ColorPlayer4.ID &&
+                            ColorPlayer2.ID != ColorPlayer3.ID &&
+                            ColorPlayer2.ID != ColorPlayer4.ID &&
                             ColorPlayer3.ID != ColorPlayer4.ID)
                         {
                             ErrorMessage = "";

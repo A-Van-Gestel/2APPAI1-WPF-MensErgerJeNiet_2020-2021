@@ -116,6 +116,9 @@ namespace MensErgerJeNiet.Model
                     pionOnPionField = null;
                     pionVisibility = "Hidden";
                 }
+                NotifyPropertyChanged("PionColor");
+                NotifyPropertyChanged("PionText");
+                NotifyPropertyChanged("PionVisibility");
                 NotifyPropertyChanged();
             }
         }

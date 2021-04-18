@@ -26,14 +26,15 @@ namespace MensErgerJeNiet.ViewModel
         // ----- Game setup -----
         // --- Variables ---
         private Board board;
+        private PlayerHistory currentPlayer;
+        private int currentPlayerIndex;
         private PlayerHistory player1;
         private PlayerHistory player2;
         private PlayerHistory player3;
         private PlayerHistory player4;
-        private bool isActivePion1 = true;
-        private bool isActivePion2 = true;
-        private bool isActivePion3 = true;
-        private bool isActivePion4 = true;
+        // Timer
+        private DateTime timerStart;
+        private DateTime timerEnd;
 
         public Board Board
         {
@@ -143,6 +144,11 @@ namespace MensErgerJeNiet.ViewModel
             ObservableCollection<Player> players = playerDataService.GetPlayers();
             foreach (PlayerHistory playerHistory in PlayerHistories)
             {
+                if (playerHistory.IsTurn == true)
+                {
+                    currentPlayerIndex = PlayerHistories.IndexOf(playerHistory);
+                }
+
                 foreach (Player player in players)
                 {
                     if (playerHistory.PlayerID == player.ID)
@@ -193,6 +199,10 @@ namespace MensErgerJeNiet.ViewModel
                     playerHistory.Game = Game;
                 }
             }
+
+            // Current Player
+            currentPlayer = PlayerHistories[currentPlayerIndex];
+            timerStart = DateTime.UtcNow;
         }
 
         private List<Pion> PionsActive(ObservableCollection<PlayerHistory>PlayerHistories)
@@ -267,6 +277,58 @@ namespace MensErgerJeNiet.ViewModel
             }
         }
 
+        private void SetNextCurrentPlayer()
+        {
+            currentPlayerIndex++;
+            if (currentPlayerIndex == (PlayerHistories.Count))
+            {
+                currentPlayerIndex = 0;
+            }
+            currentPlayer = PlayerHistories[currentPlayerIndex];
+        }
+
+        private void NextTurn()
+        {
+            PlayerHistoryDataService contactDS = new PlayerHistoryDataService();
+
+            // Current Player
+            timerEnd = DateTime.UtcNow;
+            currentPlayer.IsTurn = false;
+            currentPlayer.CountTurns++;
+            currentPlayer.CountTime += timerEnd - timerStart;
+            if (Dice.NumberDots == 6)
+            {
+                currentPlayer.CountSixes++;
+            }
+            contactDS.UpdatePlayerHistory(CurrentPlayer);
+            SetPlayers();
+
+            // Next Player
+            SetNextCurrentPlayer();
+            currentPlayer.IsTurn = true;
+            contactDS.UpdatePlayerHistory(CurrentPlayer);
+            SetPlayers();
+            timerStart = DateTime.UtcNow;
+
+            // Set Dice to not trown
+            Dice.IsTrown = false;
+
+            NotifyPropertyChanged("IsActivePion1");
+            NotifyPropertyChanged("IsActivePion2");
+            NotifyPropertyChanged("IsActivePion3");
+            NotifyPropertyChanged("IsActivePion4");
+            NotifyPropertyChanged("IsActiveTrow");
+            NotifyPropertyChanged();
+        }
+
+        public PlayerHistory CurrentPlayer
+        {
+            get
+            {
+                return currentPlayer;
+            }
+        }
+
         public bool IsActiveTrow
         {
             get
@@ -279,7 +341,7 @@ namespace MensErgerJeNiet.ViewModel
         {
             get
             {
-                if (Dice.IsTrown & isActivePion1)
+                if (Dice.IsTrown & !currentPlayer.Pion1.IsHome)
                 {
                     return true;
                 }
@@ -289,18 +351,13 @@ namespace MensErgerJeNiet.ViewModel
                 }
             }
 
-            set
-            {
-                isActivePion1 = value;
-                NotifyPropertyChanged();
-            }
         }
 
         public bool IsActivePion2
         {
             get
             {
-                if (Dice.IsTrown & isActivePion2)
+                if (Dice.IsTrown & !currentPlayer.Pion2.IsHome)
                 {
                     return true;
                 }
@@ -308,12 +365,6 @@ namespace MensErgerJeNiet.ViewModel
                 {
                     return false;
                 }
-            }
-
-            set
-            {
-                isActivePion2 = value;
-                NotifyPropertyChanged();
             }
         }
 
@@ -321,7 +372,7 @@ namespace MensErgerJeNiet.ViewModel
         {
             get
             {
-                if (Dice.IsTrown & isActivePion3)
+                if (Dice.IsTrown & !currentPlayer.Pion3.IsHome)
                 {
                     return true;
                 }
@@ -329,12 +380,6 @@ namespace MensErgerJeNiet.ViewModel
                 {
                     return false;
                 }
-            }
-
-            set
-            {
-                isActivePion3 = value;
-                NotifyPropertyChanged();
             }
         }
 
@@ -342,7 +387,7 @@ namespace MensErgerJeNiet.ViewModel
         {
             get
             {
-                if (Dice.IsTrown & isActivePion4)
+                if (Dice.IsTrown & !currentPlayer.Pion4.IsHome)
                 {
                     return true;
                 }
@@ -350,12 +395,6 @@ namespace MensErgerJeNiet.ViewModel
                 {
                     return false;
                 }
-            }
-
-            set
-            {
-                isActivePion4 = value;
-                NotifyPropertyChanged();
             }
         }
 
@@ -388,27 +427,37 @@ namespace MensErgerJeNiet.ViewModel
         private void Trow()
         {
             Dice.Trow();
+            NotifyPropertyChanged("IsActivePion1");
+            NotifyPropertyChanged("IsActivePion2");
+            NotifyPropertyChanged("IsActivePion3");
+            NotifyPropertyChanged("IsActivePion4");
+            NotifyPropertyChanged("IsActiveTrow");
+            NotifyPropertyChanged();
         }
         
 
         private void MovePion1()
         {
-            return;
+            Board.MovePion(currentPlayer.Pion1, Dice.NumberDots);
+            NextTurn();
         }
 
         private void MovePion2()
         {
-            return;
+            Board.MovePion(currentPlayer.Pion2, Dice.NumberDots);
+            NextTurn();
         }
 
         private void MovePion3()
         {
-            return;
+            Board.MovePion(currentPlayer.Pion3, Dice.NumberDots);
+            NextTurn();
         }
 
         private void MovePion4()
         {
-            return;
+            Board.MovePion(currentPlayer.Pion4, Dice.NumberDots);
+            NextTurn();
         }
 
 

@@ -34,7 +34,7 @@
                                     DisplayMemberBinding="{Binding Game}" />
                     <GridViewColumn Width="NaN" 
                                     Header="#Time"
-                                    DisplayMemberBinding="{Binding CountTime}" />
+                                    DisplayMemberBinding="{Binding CountTime, StringFormat=\{0:hh\\:mm\\:ss\}}" />
                     <GridViewColumn Width="NaN" 
                                     Header="#Sixes"
                                     DisplayMemberBinding="{Binding CountSixes}" />
