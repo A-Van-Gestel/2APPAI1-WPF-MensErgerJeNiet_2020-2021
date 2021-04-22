@@ -67,7 +67,7 @@ namespace MensErgerJeNiet.Model
 
         public override string ToString()
         {
-            return ID.ToString();
+            return ID.ToString() + " (" + Date.Year + "-" + Date.Month + "-" + Date.Day + " | " + IsActive + ")";
         }
 
     }

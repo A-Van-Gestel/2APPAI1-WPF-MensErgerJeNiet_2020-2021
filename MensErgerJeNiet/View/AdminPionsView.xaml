@@ -13,7 +13,7 @@
 
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="632" />
+            <ColumnDefinition Width="850" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
@@ -36,10 +36,10 @@
                                     Header="Coordinate"
                                     DisplayMemberBinding="{Binding Coordinate}" />
                     <GridViewColumn Width="NaN" 
-                                    Header="isHome"
+                                    Header="Home"
                                     DisplayMemberBinding="{Binding IsHome}" />
                     <GridViewColumn Width="NaN" 
-                                    Header="isActive"
+                                    Header="Active"
                                     DisplayMemberBinding="{Binding IsActive}" />
                 </GridView>
             </ListView.View>
@@ -76,42 +76,115 @@
 
             <!-- Coordinate -->
             <TextBlock Style="{StaticResource  MaterialDesignSubtitle2TextBlock}" Margin="10,10,10,3" >Coordinate:</TextBlock>
-            <TextBox Margin="10,5,10,10" 
-                     Text="{Binding CurrentPion.Coordinate}" 
-                     materialDesign:HintAssist.Hint="Coordinate"
-                     MaxLength="3"
-                     ToolTip="Coordinate" />
+            <ComboBox Margin="10,5,10,10" 
+                      SelectedValuePath="Tag" 
+                      SelectedValue="{Binding Path=CurrentPion.Coordinate, Mode=TwoWay}" 
+                      materialDesign:ComboBoxAssist.ShowSelectedItem="True"
+                      materialDesign:HintAssist.Hint="Coordinate">
+                <ComboBoxItem Tag="1">1 (Start P1)</ComboBoxItem>
+                <ComboBoxItem Tag="2">2</ComboBoxItem>
+                <ComboBoxItem Tag="3">3</ComboBoxItem>
+                <ComboBoxItem Tag="4">4</ComboBoxItem>
+                <ComboBoxItem Tag="5">5</ComboBoxItem>
+                <ComboBoxItem Tag="6">6</ComboBoxItem>
+                <ComboBoxItem Tag="7">7</ComboBoxItem>
+                <ComboBoxItem Tag="8">8</ComboBoxItem>
+                <ComboBoxItem Tag="9">9</ComboBoxItem>
+                <ComboBoxItem Tag="10">10</ComboBoxItem>
+                <ComboBoxItem Tag="11">11 (Start P2)</ComboBoxItem>
+                <ComboBoxItem Tag="12">12</ComboBoxItem>
+                <ComboBoxItem Tag="13">13</ComboBoxItem>
+                <ComboBoxItem Tag="14">14</ComboBoxItem>
+                <ComboBoxItem Tag="15">15</ComboBoxItem>
+                <ComboBoxItem Tag="16">16</ComboBoxItem>
+                <ComboBoxItem Tag="17">17</ComboBoxItem>
+                <ComboBoxItem Tag="18">18</ComboBoxItem>
+                <ComboBoxItem Tag="19">19</ComboBoxItem>
+                <ComboBoxItem Tag="20">20</ComboBoxItem>
+                <ComboBoxItem Tag="21">21 (Start P3)</ComboBoxItem>
+                <ComboBoxItem Tag="22">22</ComboBoxItem>
+                <ComboBoxItem Tag="23">23</ComboBoxItem>
+                <ComboBoxItem Tag="24">24</ComboBoxItem>
+                <ComboBoxItem Tag="25">25</ComboBoxItem>
+                <ComboBoxItem Tag="26">26</ComboBoxItem>
+                <ComboBoxItem Tag="27">27</ComboBoxItem>
+                <ComboBoxItem Tag="28">28</ComboBoxItem>
+                <ComboBoxItem Tag="29">29</ComboBoxItem>
+                <ComboBoxItem Tag="30">30</ComboBoxItem>
+                <ComboBoxItem Tag="31">31 (Start P4)</ComboBoxItem>
+                <ComboBoxItem Tag="32">32</ComboBoxItem>
+                <ComboBoxItem Tag="33">33</ComboBoxItem>
+                <ComboBoxItem Tag="34">34</ComboBoxItem>
+                <ComboBoxItem Tag="35">35</ComboBoxItem>
+                <ComboBoxItem Tag="36">36</ComboBoxItem>
+                <ComboBoxItem Tag="37">37</ComboBoxItem>
+                <ComboBoxItem Tag="38">38</ComboBoxItem>
+                <ComboBoxItem Tag="39">39</ComboBoxItem>
+                <ComboBoxItem Tag="40">40</ComboBoxItem>
+                <ComboBoxItem Tag="41">Home P1 (Pion 1)</ComboBoxItem>
+                <ComboBoxItem Tag="42">Home P1 (Pion 2)</ComboBoxItem>
+                <ComboBoxItem Tag="43">Home P1 (Pion 3)</ComboBoxItem>
+                <ComboBoxItem Tag="44">Home P1 (Pion 4)</ComboBoxItem>
+                <ComboBoxItem Tag="51">Home P2 (Pion 1)</ComboBoxItem>
+                <ComboBoxItem Tag="52">Home P2 (Pion 2)</ComboBoxItem>
+                <ComboBoxItem Tag="53">Home P2 (Pion 3)</ComboBoxItem>
+                <ComboBoxItem Tag="54">Home P2 (Pion 4)</ComboBoxItem>
+                <ComboBoxItem Tag="61">Home P3 (Pion 1)</ComboBoxItem>
+                <ComboBoxItem Tag="62">Home P3 (Pion 2)</ComboBoxItem>
+                <ComboBoxItem Tag="63">Home P3 (Pion 3)</ComboBoxItem>
+                <ComboBoxItem Tag="64">Home P3 (Pion 4)</ComboBoxItem>
+                <ComboBoxItem Tag="71">Home P4 (Pion 1)</ComboBoxItem>
+                <ComboBoxItem Tag="72">Home P4 (Pion 2)</ComboBoxItem>
+                <ComboBoxItem Tag="73">Home P4 (Pion 3)</ComboBoxItem>
+                <ComboBoxItem Tag="74">Home P4 (Pion 4)</ComboBoxItem>
+            </ComboBox>
 
             <!-- IsHome -->
-            <TextBlock Style="{StaticResource  MaterialDesignSubtitle2TextBlock}" Margin="10,10,10,3" >IsHome:</TextBlock>
+            <TextBlock Style="{StaticResource  MaterialDesignSubtitle2TextBlock}" Margin="10,10,10,3" >Home:</TextBlock>
             <ComboBox Margin="10,5,10,10" 
                       SelectedValuePath="Tag" 
                       SelectedValue="{Binding Path=CurrentPion.IsHome, Mode=TwoWay}" 
                       materialDesign:ComboBoxAssist.ShowSelectedItem="True"
-                      materialDesign:HintAssist.Hint="IsHome">
+                      materialDesign:HintAssist.Hint="Home">
                 <ComboBoxItem Tag="True">True</ComboBoxItem>
                 <ComboBoxItem Tag="False">False</ComboBoxItem>
             </ComboBox>
 
             <!-- IsActive -->
-            <TextBlock Style="{StaticResource  MaterialDesignSubtitle2TextBlock}" Margin="10,10,10,3" >IsActive:</TextBlock>
+            <TextBlock Style="{StaticResource  MaterialDesignSubtitle2TextBlock}" Margin="10,10,10,3" >Active:</TextBlock>
             <ComboBox Margin="10,5,10,10" 
                       SelectedValuePath="Tag" 
                       SelectedValue="{Binding Path=CurrentPion.IsActive, Mode=TwoWay}" 
                       materialDesign:ComboBoxAssist.ShowSelectedItem="True"
-                      materialDesign:HintAssist.Hint="IsActive">
+                      materialDesign:HintAssist.Hint="Active">
                 <ComboBoxItem Tag="True">True</ComboBoxItem>
                 <ComboBoxItem Tag="False">False</ComboBoxItem>
             </ComboBox>
 
-            <Button Margin="10,50,10,10" Content="Update"
+            <Grid Margin="10,5,10,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50" />
+                    <RowDefinition Height="50" />
+                </Grid.RowDefinitions>
+
+                <Button Grid.Row="0" Grid.Column="0"
+                    Content="Update"
                     Command="{Binding UpdateCommand}" />
-            <Button Margin="10,0,10,10" Content="Delete"
+                <Button Grid.Row="0" Grid.Column="1"
+                    Content="Delete"
                     Command="{Binding DeleteCommand}" />
-            <Button Margin="10,0,10,10" Content="Add"
+                <Button Grid.Row="0" Grid.Column="2"
+                    Content="Add"
                     Command="{Binding AddCommand}" />
 
-            <Button Margin="0,100,0,0" Command="{Binding GotoAdminViewCommand}" Content="Back" />
+                <Button Grid.Row="1" Grid.Column="1"
+                    Command="{Binding GotoAdminViewCommand}" Content="Back" />
+            </Grid>
         </StackPanel>
     </Grid>
 </Page>

@@ -56,7 +56,7 @@ namespace MensErgerJeNiet.Model
         {
             // Stap 2 Dapper
             // Uitschrijven SQL statement & bewaren in een string. 
-            string sql = "Select * from PlayerHistory ph INNER JOIN Player pl ON ph.PlayerID = pl.Id INNER JOIN Color c ON ph.ColorID = c.Id INNER JOIN Game g ON ph.GameID = g.Id where isWinner = 1";
+            string sql = "Select * from PlayerHistory ph INNER JOIN Player pl ON ph.PlayerID = pl.Id INNER JOIN Color c ON ph.ColorID = c.Id INNER JOIN Game g ON ph.GameID = g.Id where isWinner = 1 order by g.Date desc";
 
             //// Stap 3 Dapper
             //// Uitvoeren SQL statement op db instance 

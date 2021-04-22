@@ -13,7 +13,7 @@
 
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="632" />
+            <ColumnDefinition Width="850" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
@@ -27,7 +27,7 @@
                                     Header="Date"
                                     DisplayMemberBinding="{Binding Path=Date, StringFormat={}{0:MM/dd/yyyy}}" />
                     <GridViewColumn Width="150" 
-                                    Header="isActive"
+                                    Header="Active"
                                     DisplayMemberBinding="{Binding IsActive}" />
                 </GridView>
             </ListView.View>
@@ -41,24 +41,40 @@
                         ToolTip="Date" />
 
             <!-- IsActive -->
-            <TextBlock Style="{StaticResource  MaterialDesignSubtitle2TextBlock}" Margin="10,10,10,3" >IsActive:</TextBlock>
+            <TextBlock Style="{StaticResource  MaterialDesignSubtitle2TextBlock}" Margin="10,10,10,3" >Active:</TextBlock>
             <ComboBox Margin="10,5,10,10" 
                       SelectedValuePath="Tag" 
                       SelectedValue="{Binding Path=CurrentGame.IsActive, Mode=TwoWay}" 
                       materialDesign:ComboBoxAssist.ShowSelectedItem="True"
-                      materialDesign:HintAssist.Hint="IsActive">
+                      materialDesign:HintAssist.Hint="Active">
                 <ComboBoxItem Tag="True">True</ComboBoxItem>
                 <ComboBoxItem Tag="False">False</ComboBoxItem>
             </ComboBox>
 
-            <Button Margin="10,50,10,10" Content="Update"
+            <Grid Margin="10,5,10,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50" />
+                    <RowDefinition Height="50" />
+                </Grid.RowDefinitions>
+
+                <Button Grid.Row="0" Grid.Column="0"
+                    Content="Update"
                     Command="{Binding UpdateCommand}" />
-            <Button Margin="10,0,10,10" Content="Delete"
+                <Button Grid.Row="0" Grid.Column="1"
+                    Content="Delete"
                     Command="{Binding DeleteCommand}" />
-            <Button Margin="10,0,10,10" Content="Add"
+                <Button Grid.Row="0" Grid.Column="2"
+                    Content="Add"
                     Command="{Binding AddCommand}" />
 
-            <Button Margin="0,100,0,0" Command="{Binding GotoAdminViewCommand}" Content="Back" />
+                <Button Grid.Row="1" Grid.Column="1"
+                    Command="{Binding GotoAdminViewCommand}" Content="Back" />
+            </Grid>
         </StackPanel>
     </Grid>
 </Page>

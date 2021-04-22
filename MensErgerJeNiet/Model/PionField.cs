@@ -12,8 +12,10 @@ namespace MensErgerJeNiet.Model
         private string pionText = "test";
         private string pionVisibility = "Hidden";  // "Visible" | "Hidden"
         private Pion pionOnPionField;
+        // Background
+        private string darkenVisibility = "Hidden";  // "Visible" | "Hidden"
         // Debug
-        private string debugVisibility = "Visible";  // "Visible" | "Hidden"
+        private string debugVisibility = "Hidden";  // "Visible" | "Hidden"
 
         public PionField(int id, int column, int row, SolidColorBrush fillColor)
         {
@@ -21,6 +23,16 @@ namespace MensErgerJeNiet.Model
             Column = column;
             Row = row;
             FillColor = fillColor;
+        }
+        
+
+        public PionField(int id, int column, int row, SolidColorBrush fillColor, string darkenVisibility)
+        {
+            ID = id;
+            Column = column;
+            Row = row;
+            FillColor = fillColor;
+            DarkenVisibility = darkenVisibility;
         }
 
         public int ID
@@ -114,6 +126,17 @@ namespace MensErgerJeNiet.Model
                 NotifyPropertyChanged("PionColor");
                 NotifyPropertyChanged("PionText");
                 NotifyPropertyChanged("PionVisibility");
+                NotifyPropertyChanged();
+            }
+        }
+
+        // Background
+        public string DarkenVisibility
+        {
+            get { return darkenVisibility; }
+            set
+            {
+                darkenVisibility = value;
                 NotifyPropertyChanged();
             }
         }

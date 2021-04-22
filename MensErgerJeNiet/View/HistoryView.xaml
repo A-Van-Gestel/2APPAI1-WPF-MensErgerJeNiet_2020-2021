@@ -32,7 +32,7 @@
                 <GridView>
                     <GridViewColumn Width="NaN" 
                                     Header="Game"  
-                                    DisplayMemberBinding="{Binding Game, StringFormat=Game {0:#}}" />
+                                    DisplayMemberBinding="{Binding Game.ID, StringFormat=Game {0:#}}" />
                     <GridViewColumn Width="NaN" 
                                     Header="Winner"  
                                     DisplayMemberBinding="{Binding Player.Name}" />

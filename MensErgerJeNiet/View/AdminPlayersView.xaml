@@ -13,7 +13,7 @@
 
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="632" />
+            <ColumnDefinition Width="850" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
@@ -38,16 +38,32 @@
                      materialDesign:HintAssist.Hint="Player Name"
                      MaxLength="9"
                      ToolTip="Player Name" />
-            
 
-            <Button Margin="10,50,10,10" Content="Update"
+
+            <Grid Margin="10,5,10,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50" />
+                    <RowDefinition Height="50" />
+                </Grid.RowDefinitions>
+
+                <Button Grid.Row="0" Grid.Column="0"
+                    Content="Update"
                     Command="{Binding UpdateCommand}" />
-            <Button Margin="10,0,10,10" Content="Delete"
+                <Button Grid.Row="0" Grid.Column="1"
+                    Content="Delete"
                     Command="{Binding DeleteCommand}" />
-            <Button Margin="10,0,10,10" Content="Add"
+                <Button Grid.Row="0" Grid.Column="2"
+                    Content="Add"
                     Command="{Binding AddCommand}" />
 
-            <Button Margin="0,100,0,0" Command="{Binding GotoAdminViewCommand}" Content="Back" />
+                <Button Grid.Row="1" Grid.Column="1"
+                    Command="{Binding GotoAdminViewCommand}" Content="Back" />
+            </Grid>
         </StackPanel>
     </Grid>
 </Page>

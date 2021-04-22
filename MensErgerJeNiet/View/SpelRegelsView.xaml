@@ -15,8 +15,8 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="125" />
             <RowDefinition Height="50" />
-            <RowDefinition Height="350" />
-            <RowDefinition Height="Auto" MinHeight="57" />
+            <RowDefinition Height="450" />
+            <RowDefinition Height="*" MinHeight="57" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />

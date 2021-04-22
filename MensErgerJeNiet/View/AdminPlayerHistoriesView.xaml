@@ -27,8 +27,16 @@
                                     Header="Player"  
                                     DisplayMemberBinding="{Binding Player}" />
                     <GridViewColumn Width="NaN" 
-                                    Header="Color"
-                                    DisplayMemberBinding="{Binding Color}" />
+                                    Header="Color">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <Rectangle Fill="{Binding Color.Code}" Width="14" Height="14" Margin="0,2,5,2" />
+                                    <TextBlock Text="{Binding Color.Name}" />
+                                </StackPanel>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
                     <GridViewColumn Width="NaN" 
                                     Header="Game"
                                     DisplayMemberBinding="{Binding Game}" />
@@ -42,10 +50,10 @@
                                     Header="#Turns"
                                     DisplayMemberBinding="{Binding CountTurns}" />
                     <GridViewColumn Width="NaN" 
-                                    Header="isTurn"
+                                    Header="Turn"
                                     DisplayMemberBinding="{Binding IsTurn}" />
                     <GridViewColumn Width="NaN" 
-                                    Header="isWinner"
+                                    Header="Winner"
                                     DisplayMemberBinding="{Binding IsWinner}" />
                     <GridViewColumn Width="NaN" 
                                     Header="Offset"
@@ -130,23 +138,23 @@
                      ToolTip="#Turns" />
 
             <!-- isTurn -->
-            <TextBlock Style="{StaticResource  MaterialDesignSubtitle2TextBlock}" Margin="10,10,10,3" >isTurn:</TextBlock>
+            <TextBlock Style="{StaticResource  MaterialDesignSubtitle2TextBlock}" Margin="10,10,10,3" >Turn:</TextBlock>
             <ComboBox Margin="10,5,10,10" 
                       SelectedValuePath="Tag" 
                       SelectedValue="{Binding Path=CurrentPlayerHistory.IsTurn, Mode=TwoWay}" 
                       materialDesign:ComboBoxAssist.ShowSelectedItem="True"
-                      materialDesign:HintAssist.Hint="IsTurn">
+                      materialDesign:HintAssist.Hint="Turn">
                 <ComboBoxItem Tag="True">True</ComboBoxItem>
                 <ComboBoxItem Tag="False">False</ComboBoxItem>
             </ComboBox>
 
             <!-- isWinner -->
-            <TextBlock Style="{StaticResource  MaterialDesignSubtitle2TextBlock}" Margin="10,10,10,3" >isWinner:</TextBlock>
+            <TextBlock Style="{StaticResource  MaterialDesignSubtitle2TextBlock}" Margin="10,10,10,3" >Winner:</TextBlock>
             <ComboBox Margin="10,5,10,10" 
                       SelectedValuePath="Tag" 
                       SelectedValue="{Binding Path=CurrentPlayerHistory.IsWinner, Mode=TwoWay}" 
                       materialDesign:ComboBoxAssist.ShowSelectedItem="True"
-                      materialDesign:HintAssist.Hint="IsWinner">
+                      materialDesign:HintAssist.Hint="Winner">
                 <ComboBoxItem Tag="True">True</ComboBoxItem>
                 <ComboBoxItem Tag="False">False</ComboBoxItem>
             </ComboBox>

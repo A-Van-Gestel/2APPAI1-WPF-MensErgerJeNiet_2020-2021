@@ -18,7 +18,8 @@
                 <Border Style="{StaticResource PionField}"
                         Background="{Binding FillColor}" >
                     <Grid>
-                        <Border Style="{StaticResource PionFieldBackground}" />
+                        <Border Style="{StaticResource PionFieldBackground}"
+                                Visibility="{Binding DarkenVisibility}"/>
                         <TextBlock Style="{StaticResource PionText}"
                                    Text="{Binding ID}"
                                    Visibility="{Binding DebugVisibility}" />

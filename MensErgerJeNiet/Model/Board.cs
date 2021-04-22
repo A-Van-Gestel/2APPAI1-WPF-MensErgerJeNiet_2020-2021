@@ -18,32 +18,32 @@ namespace MensErgerJeNiet.Model
         {
             // --- Out Fields ---
             // Red Out
-            this.Add(new PionField(id: -1, column: 0, row: 0, fillColor: (SolidColorBrush)new BrushConverter().ConvertFrom(color1)));
-            this.Add(new PionField(id: -2, column: 1, row: 0, fillColor: (SolidColorBrush)new BrushConverter().ConvertFrom(color1)));
-            this.Add(new PionField(id: -3, column: 0, row: 1, fillColor: (SolidColorBrush)new BrushConverter().ConvertFrom(color1)));
-            this.Add(new PionField(id: -4, column: 1, row: 1, fillColor: (SolidColorBrush)new BrushConverter().ConvertFrom(color1)));
+            this.Add(new PionField(id: -1, column: 0, row: 0, fillColor: (SolidColorBrush)new BrushConverter().ConvertFrom(color1), darkenVisibility: "Visible"));
+            this.Add(new PionField(id: -2, column: 1, row: 0, fillColor: (SolidColorBrush)new BrushConverter().ConvertFrom(color1), darkenVisibility: "Visible"));
+            this.Add(new PionField(id: -3, column: 0, row: 1, fillColor: (SolidColorBrush)new BrushConverter().ConvertFrom(color1), darkenVisibility: "Visible"));
+            this.Add(new PionField(id: -4, column: 1, row: 1, fillColor: (SolidColorBrush)new BrushConverter().ConvertFrom(color1), darkenVisibility: "Visible"));
 
             // Blue Out
-            this.Add(new PionField(id: -11, column: 9, row: 0, fillColor: (SolidColorBrush)new BrushConverter().ConvertFrom(color2)));
-            this.Add(new PionField(id: -12, column: 10, row: 0, fillColor: (SolidColorBrush)new BrushConverter().ConvertFrom(color2)));
-            this.Add(new PionField(id: -13, column: 9, row: 1, fillColor: (SolidColorBrush)new BrushConverter().ConvertFrom(color2)));
-            this.Add(new PionField(id: -14, column: 10, row: 1, fillColor: (SolidColorBrush)new BrushConverter().ConvertFrom(color2)));
+            this.Add(new PionField(id: -11, column: 9, row: 0, fillColor: (SolidColorBrush)new BrushConverter().ConvertFrom(color2), darkenVisibility: "Visible"));
+            this.Add(new PionField(id: -12, column: 10, row: 0, fillColor: (SolidColorBrush)new BrushConverter().ConvertFrom(color2), darkenVisibility: "Visible"));
+            this.Add(new PionField(id: -13, column: 9, row: 1, fillColor: (SolidColorBrush)new BrushConverter().ConvertFrom(color2), darkenVisibility: "Visible"));
+            this.Add(new PionField(id: -14, column: 10, row: 1, fillColor: (SolidColorBrush)new BrushConverter().ConvertFrom(color2), darkenVisibility: "Visible"));
 
             // Green Out
-            this.Add(new PionField(id: -21, column: 9, row: 9, fillColor: (SolidColorBrush)new BrushConverter().ConvertFrom(color3)));
-            this.Add(new PionField(id: -22, column: 10, row: 9, fillColor: (SolidColorBrush)new BrushConverter().ConvertFrom(color3)));
-            this.Add(new PionField(id: -23, column: 9, row: 10, fillColor: (SolidColorBrush)new BrushConverter().ConvertFrom(color3)));
-            this.Add(new PionField(id: -24, column: 10, row: 10, fillColor: (SolidColorBrush)new BrushConverter().ConvertFrom(color3)));
+            this.Add(new PionField(id: -21, column: 9, row: 9, fillColor: (SolidColorBrush)new BrushConverter().ConvertFrom(color3), darkenVisibility: "Visible"));
+            this.Add(new PionField(id: -22, column: 10, row: 9, fillColor: (SolidColorBrush)new BrushConverter().ConvertFrom(color3), darkenVisibility: "Visible"));
+            this.Add(new PionField(id: -23, column: 9, row: 10, fillColor: (SolidColorBrush)new BrushConverter().ConvertFrom(color3), darkenVisibility: "Visible"));
+            this.Add(new PionField(id: -24, column: 10, row: 10, fillColor: (SolidColorBrush)new BrushConverter().ConvertFrom(color3), darkenVisibility: "Visible"));
 
             // Yellow Out
-            this.Add(new PionField(id: -31, column: 0, row: 9, fillColor: (SolidColorBrush)new BrushConverter().ConvertFrom(color4)));
-            this.Add(new PionField(id: -32, column: 1, row: 9, fillColor: (SolidColorBrush)new BrushConverter().ConvertFrom(color4)));
-            this.Add(new PionField(id: -33, column: 0, row: 10, fillColor: (SolidColorBrush)new BrushConverter().ConvertFrom(color4)));
-            this.Add(new PionField(id: -34, column: 1, row: 10, fillColor: (SolidColorBrush)new BrushConverter().ConvertFrom(color4)));
+            this.Add(new PionField(id: -31, column: 0, row: 9, fillColor: (SolidColorBrush)new BrushConverter().ConvertFrom(color4), darkenVisibility: "Visible"));
+            this.Add(new PionField(id: -32, column: 1, row: 9, fillColor: (SolidColorBrush)new BrushConverter().ConvertFrom(color4), darkenVisibility: "Visible"));
+            this.Add(new PionField(id: -33, column: 0, row: 10, fillColor: (SolidColorBrush)new BrushConverter().ConvertFrom(color4), darkenVisibility: "Visible"));
+            this.Add(new PionField(id: -34, column: 1, row: 10, fillColor: (SolidColorBrush)new BrushConverter().ConvertFrom(color4), darkenVisibility: "Visible"));
 
             // --- Game Fields ---
             // Red Start
-            this.Add(new PionField(id: 1, column: 0, row: 4, fillColor: (SolidColorBrush)new BrushConverter().ConvertFrom(color1)));
+            this.Add(new PionField(id: 1, column: 0, row: 4, fillColor: (SolidColorBrush)new BrushConverter().ConvertFrom(color1), darkenVisibility: "Visible"));
             this.Add(new PionField(id: 2, column: 1, row: 4, fillColor: new SolidColorBrush(Colors.White)));
             this.Add(new PionField(id: 3, column: 2, row: 4, fillColor: new SolidColorBrush(Colors.White)));
             this.Add(new PionField(id: 4, column: 3, row: 4, fillColor: new SolidColorBrush(Colors.White)));
@@ -55,7 +55,7 @@ namespace MensErgerJeNiet.Model
             this.Add(new PionField(id: 10, column: 5, row: 0, fillColor: new SolidColorBrush(Colors.White)));
 
             // Blue Start
-            this.Add(new PionField(id: 11, column: 6, row: 0, fillColor: (SolidColorBrush)new BrushConverter().ConvertFrom(color2)));
+            this.Add(new PionField(id: 11, column: 6, row: 0, fillColor: (SolidColorBrush)new BrushConverter().ConvertFrom(color2), darkenVisibility: "Visible"));
             this.Add(new PionField(id: 12, column: 6, row: 1, fillColor: new SolidColorBrush(Colors.White)));
             this.Add(new PionField(id: 13, column: 6, row: 2, fillColor: new SolidColorBrush(Colors.White)));
             this.Add(new PionField(id: 14, column: 6, row: 3, fillColor: new SolidColorBrush(Colors.White)));
@@ -67,7 +67,7 @@ namespace MensErgerJeNiet.Model
             this.Add(new PionField(id: 20, column: 10, row: 5, fillColor: new SolidColorBrush(Colors.White)));
 
             // Green Start
-            this.Add(new PionField(id: 21, column: 10, row: 6, fillColor: (SolidColorBrush)new BrushConverter().ConvertFrom(color3)));
+            this.Add(new PionField(id: 21, column: 10, row: 6, fillColor: (SolidColorBrush)new BrushConverter().ConvertFrom(color3), darkenVisibility: "Visible"));
             this.Add(new PionField(id: 22, column: 9, row: 6, fillColor: new SolidColorBrush(Colors.White)));
             this.Add(new PionField(id: 23, column: 8, row: 6, fillColor: new SolidColorBrush(Colors.White)));
             this.Add(new PionField(id: 24, column: 7, row: 6, fillColor: new SolidColorBrush(Colors.White)));
@@ -79,7 +79,7 @@ namespace MensErgerJeNiet.Model
             this.Add(new PionField(id: 30, column: 5, row: 10, fillColor: new SolidColorBrush(Colors.White)));
 
             // Yellow Start
-            this.Add(new PionField(id: 31, column: 4, row: 10, fillColor: (SolidColorBrush)new BrushConverter().ConvertFrom(color4)));
+            this.Add(new PionField(id: 31, column: 4, row: 10, fillColor: (SolidColorBrush)new BrushConverter().ConvertFrom(color4), darkenVisibility: "Visible"));
             this.Add(new PionField(id: 32, column: 4, row: 9, fillColor: new SolidColorBrush(Colors.White)));
             this.Add(new PionField(id: 33, column: 4, row: 8, fillColor: new SolidColorBrush(Colors.White)));
             this.Add(new PionField(id: 34, column: 4, row: 7, fillColor: new SolidColorBrush(Colors.White)));
@@ -92,28 +92,28 @@ namespace MensErgerJeNiet.Model
 
             // --- Home Fields ---
             // Red Home
-            this.Add(new PionField(id: 41, column: 1, row: 5, fillColor: (SolidColorBrush)new BrushConverter().ConvertFrom(color1)));
-            this.Add(new PionField(id: 42, column: 2, row: 5, fillColor: (SolidColorBrush)new BrushConverter().ConvertFrom(color1)));
-            this.Add(new PionField(id: 43, column: 3, row: 5, fillColor: (SolidColorBrush)new BrushConverter().ConvertFrom(color1)));
-            this.Add(new PionField(id: 44, column: 4, row: 5, fillColor: (SolidColorBrush)new BrushConverter().ConvertFrom(color1)));
+            this.Add(new PionField(id: 41, column: 1, row: 5, fillColor: (SolidColorBrush)new BrushConverter().ConvertFrom(color1), darkenVisibility: "Visible"));
+            this.Add(new PionField(id: 42, column: 2, row: 5, fillColor: (SolidColorBrush)new BrushConverter().ConvertFrom(color1), darkenVisibility: "Visible"));
+            this.Add(new PionField(id: 43, column: 3, row: 5, fillColor: (SolidColorBrush)new BrushConverter().ConvertFrom(color1), darkenVisibility: "Visible"));
+            this.Add(new PionField(id: 44, column: 4, row: 5, fillColor: (SolidColorBrush)new BrushConverter().ConvertFrom(color1), darkenVisibility: "Visible"));
 
             // Blue Home
-            this.Add(new PionField(id: 51, column: 5, row: 1, fillColor: (SolidColorBrush)new BrushConverter().ConvertFrom(color2)));
-            this.Add(new PionField(id: 52, column: 5, row: 2, fillColor: (SolidColorBrush)new BrushConverter().ConvertFrom(color2)));
-            this.Add(new PionField(id: 53, column: 5, row: 3, fillColor: (SolidColorBrush)new BrushConverter().ConvertFrom(color2)));
-            this.Add(new PionField(id: 54, column: 5, row: 4, fillColor: (SolidColorBrush)new BrushConverter().ConvertFrom(color2)));
+            this.Add(new PionField(id: 51, column: 5, row: 1, fillColor: (SolidColorBrush)new BrushConverter().ConvertFrom(color2), darkenVisibility: "Visible"));
+            this.Add(new PionField(id: 52, column: 5, row: 2, fillColor: (SolidColorBrush)new BrushConverter().ConvertFrom(color2), darkenVisibility: "Visible"));
+            this.Add(new PionField(id: 53, column: 5, row: 3, fillColor: (SolidColorBrush)new BrushConverter().ConvertFrom(color2), darkenVisibility: "Visible"));
+            this.Add(new PionField(id: 54, column: 5, row: 4, fillColor: (SolidColorBrush)new BrushConverter().ConvertFrom(color2), darkenVisibility: "Visible"));
 
             // Green Home
-            this.Add(new PionField(id: 61, column: 9, row: 5, fillColor: (SolidColorBrush)new BrushConverter().ConvertFrom(color3)));
-            this.Add(new PionField(id: 62, column: 8, row: 5, fillColor: (SolidColorBrush)new BrushConverter().ConvertFrom(color3)));
-            this.Add(new PionField(id: 63, column: 7, row: 5, fillColor: (SolidColorBrush)new BrushConverter().ConvertFrom(color3)));
-            this.Add(new PionField(id: 64, column: 6, row: 5, fillColor: (SolidColorBrush)new BrushConverter().ConvertFrom(color3)));
+            this.Add(new PionField(id: 61, column: 9, row: 5, fillColor: (SolidColorBrush)new BrushConverter().ConvertFrom(color3), darkenVisibility: "Visible"));
+            this.Add(new PionField(id: 62, column: 8, row: 5, fillColor: (SolidColorBrush)new BrushConverter().ConvertFrom(color3), darkenVisibility: "Visible"));
+            this.Add(new PionField(id: 63, column: 7, row: 5, fillColor: (SolidColorBrush)new BrushConverter().ConvertFrom(color3), darkenVisibility: "Visible"));
+            this.Add(new PionField(id: 64, column: 6, row: 5, fillColor: (SolidColorBrush)new BrushConverter().ConvertFrom(color3), darkenVisibility: "Visible"));
 
             // Yellow Home
-            this.Add(new PionField(id: 71, column: 5, row: 9, fillColor: (SolidColorBrush)new BrushConverter().ConvertFrom(color4)));
-            this.Add(new PionField(id: 72, column: 5, row: 8, fillColor: (SolidColorBrush)new BrushConverter().ConvertFrom(color4)));
-            this.Add(new PionField(id: 73, column: 5, row: 7, fillColor: (SolidColorBrush)new BrushConverter().ConvertFrom(color4)));
-            this.Add(new PionField(id: 74, column: 5, row: 6, fillColor: (SolidColorBrush)new BrushConverter().ConvertFrom(color4)));
+            this.Add(new PionField(id: 71, column: 5, row: 9, fillColor: (SolidColorBrush)new BrushConverter().ConvertFrom(color4), darkenVisibility: "Visible"));
+            this.Add(new PionField(id: 72, column: 5, row: 8, fillColor: (SolidColorBrush)new BrushConverter().ConvertFrom(color4), darkenVisibility: "Visible"));
+            this.Add(new PionField(id: 73, column: 5, row: 7, fillColor: (SolidColorBrush)new BrushConverter().ConvertFrom(color4), darkenVisibility: "Visible"));
+            this.Add(new PionField(id: 74, column: 5, row: 6, fillColor: (SolidColorBrush)new BrushConverter().ConvertFrom(color4), darkenVisibility: "Visible"));
         }
 
         public void PutPlayersOnStart(List<Pion> pions)
