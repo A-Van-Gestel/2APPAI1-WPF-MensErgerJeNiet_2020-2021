@@ -14,7 +14,7 @@ namespace MensErgerJeNiet.Model
 
         // Ophalen ConnectionString uit App.config
         private static string connectionString =
-        ConfigurationManager.ConnectionStrings["azure"].ConnectionString;
+        ConfigurationManager.ConnectionStrings["local"].ConnectionString;
 
 
         // Stap 1 Dapper
